@@ -1,0 +1,6 @@
+{
+  "name": "Run It Like the Rich",
+  "description": "Simple systems. Clean books. Compliance under control. A practical back-office reset for small business owners.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
