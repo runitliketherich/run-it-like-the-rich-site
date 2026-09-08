@@ -67,6 +67,9 @@ export default function Navbar({ onOpenBooking, onOpenNewsletter }: NavbarProps)
             <a href="#work-with-laura" className="text-[#121212]/70 hover:text-[#C5A059] transition-colors" id="nav-lnk-laura">
               Work With Laura
             </a>
+            <a href="/vhq" className="text-[#121212]/70 hover:text-[#C5A059] transition-colors" id="nav-lnk-vhq">
+              Virtual HQ
+            </a>
           </div>
 
           {/* CTA Button */}
@@ -126,13 +129,13 @@ export default function Navbar({ onOpenBooking, onOpenNewsletter }: NavbarProps)
             >
               Work With Laura
             </button>
-            <button
-              onClick={() => handleMobileLinkClick('#virtual-hq')}
+            <a
+              href="/vhq"
               className="block w-full text-left text-2xl font-serif text-[#121212] hover:text-[#C5A059]"
               id="mobile-lnk-virtualhq"
             >
               The Virtual HQ
-            </button>
+            </a>
           </div>
 
           <div className="space-y-3" id="mobile-nav-cta">
