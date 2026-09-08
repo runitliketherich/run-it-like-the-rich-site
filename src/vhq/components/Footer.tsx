@@ -117,6 +117,15 @@ export const Footer: React.FC<FooterProps> = ({ onScrollToForm, onScrollToFeatur
             </div>
           </div>
 
+          <div className="md:col-span-3 space-y-3">
+            <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-slate-300">Explore the system</h4>
+            <ul className="space-y-2 text-xs text-slate-400">
+              <li><a href="/" className="hover:text-white transition-colors">Run It Like the Rich</a></li>
+              <li><a href="/train-the-gaap" className="hover:text-white transition-colors">Train the GAAP™</a></li>
+              <li><a href="/storybook-exit" className="hover:text-white transition-colors">StoryBookExit™</a></li>
+            </ul>
+          </div>
+
         </div>
 
         {/* Bottom Copyright & Back to Top */}

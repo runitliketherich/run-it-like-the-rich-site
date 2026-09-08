@@ -70,6 +70,12 @@ export default function Navbar({ onOpenBooking, onOpenNewsletter }: NavbarProps)
             <a href="/vhq" className="text-[#121212]/70 hover:text-[#C5A059] transition-colors" id="nav-lnk-vhq">
               Virtual HQ
             </a>
+            <a href="/train-the-gaap" className="text-[#121212]/70 hover:text-[#C5A059] transition-colors" id="nav-lnk-train-gaap">
+              Train the GAAP
+            </a>
+            <a href="/storybook-exit" className="text-[#121212]/70 hover:text-[#C5A059] transition-colors" id="nav-lnk-storybook-exit">
+              StoryBook Exit
+            </a>
           </div>
 
           {/* CTA Button */}
@@ -135,6 +141,18 @@ export default function Navbar({ onOpenBooking, onOpenNewsletter }: NavbarProps)
               id="mobile-lnk-virtualhq"
             >
               The Virtual HQ
+            </a>
+            <a
+              href="/train-the-gaap"
+              className="block w-full text-left text-2xl font-serif text-[#121212] hover:text-[#C5A059]"
+            >
+              Train the GAAP
+            </a>
+            <a
+              href="/storybook-exit"
+              className="block w-full text-left text-2xl font-serif text-[#121212] hover:text-[#C5A059]"
+            >
+              StoryBook Exit
             </a>
           </div>
 
