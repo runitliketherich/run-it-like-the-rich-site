@@ -29,6 +29,7 @@ CONFIG = {
     "linkedinUrl": "https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/",
     "tiktokUrl": "",
     "shopUrl": "",
+    "signupEndpoint": "",  # optional: email-list endpoint; blank = send people to the Substack subscribe page
 }
 
 SOCIAL = [("Substack", "substackUrl"), ("YouTube", "youtubeUrl"), ("Instagram", "instagramUrl"),
@@ -136,6 +137,23 @@ JS = r'''
       } catch(e){ done('Select and copy'); }
     });
   });
+  // free checklist sign-up
+  document.querySelectorAll('.fb-form').forEach(function(f){
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!f.reportValidity()) return;
+      var em = f.querySelector('input[type=email]').value.trim();
+      if(C.signupEndpoint){
+        fetch(C.signupEndpoint, {method:'POST', mode:'no-cors', body: new URLSearchParams({email: em, source: 'Clean Start Checklist', page: location.hostname})}).catch(function(){});
+      } else if(C.substackUrl){
+        var a = document.createElement('a');
+        a.href = C.substackUrl.replace(/\/$/, '') + '/subscribe?email=' + encodeURIComponent(em);
+        a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove();
+      }
+      f.hidden = true;
+      f.parentNode.querySelector('.fb-done').hidden = false;
+    });
+  });
   // topic preselect from #book / #join / #message
   var form = document.getElementById('cf');
   function pick(){
@@ -192,7 +210,13 @@ def fill(body, key, mode):
 
 def page(key, mode, standalone):
     s = BY_KEY[key]
-    body = fill((SRC / "pages" / f"{key}.html").read_text(), key, mode)
+    raw = (SRC / "pages" / f"{key}.html").read_text()
+    # hero: two columns, text left, free checklist sign-up right
+    start = raw.index('<section class="band hero"><div class="wrap">')
+    end = raw.index('</div></section>', start)
+    fb = (SRC / "partials" / "freebie.html").read_text().replace("{{FBID}}", key)
+    raw = raw[:start] + raw[start:end].replace('<div class="wrap">', '<div class="wrap hero-grid">', 1) + fb + raw[end:]
+    body = fill(raw, key, mode)
     head = f'''<title>{s[4]}</title>
 <meta name="description" content="{html.escape(s[5])}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

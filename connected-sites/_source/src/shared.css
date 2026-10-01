@@ -342,3 +342,20 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 .card-navy{background:var(--light);border:1.5px solid var(--gold);color:var(--ink)}
 .card-navy h3{color:var(--navy)}
 .card-navy .tag{color:var(--rust);border-color:var(--line)}
+
+/* No diagonal split: plain light header with a free-checklist box */
+.band::before,.band::after{display:none}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.freebie{background:var(--cream);border:1.5px solid var(--gold);border-radius:var(--r-panel);padding:clamp(22px,3vw,30px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.freebie h3{font-size:26px;color:var(--navy)}
+.freebie .eyebrow{color:var(--rust)}
+.freebie p{color:var(--ink)}
+.freebie .checks{gap:8px}
+.freebie .checks li{color:var(--ink);font-size:15px}
+.fb-form{display:flex;flex-direction:column;gap:12px}
+.fb-form .btn{width:100%}
+.fb-done{display:flex;flex-direction:column;gap:12px}
+
+/* Light sections: soft rust instead of light blue */
+:root{--soft:#f6e8e0}

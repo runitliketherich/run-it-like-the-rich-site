@@ -348,6 +348,23 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 .card-navy{background:var(--light);border:1.5px solid var(--gold);color:var(--ink)}
 .card-navy h3{color:var(--navy)}
 .card-navy .tag{color:var(--rust);border-color:var(--line)}
+
+/* No diagonal split: plain light header with a free-checklist box */
+.band::before,.band::after{display:none}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.freebie{background:var(--cream);border:1.5px solid var(--gold);border-radius:var(--r-panel);padding:clamp(22px,3vw,30px);display:flex;flex-direction:column;gap:14px;min-width:0}
+.freebie h3{font-size:26px;color:var(--navy)}
+.freebie .eyebrow{color:var(--rust)}
+.freebie p{color:var(--ink)}
+.freebie .checks{gap:8px}
+.freebie .checks li{color:var(--ink);font-size:15px}
+.fb-form{display:flex;flex-direction:column;gap:12px}
+.fb-form .btn{width:100%}
+.fb-done{display:flex;flex-direction:column;gap:12px}
+
+/* Light sections: soft rust instead of light blue */
+:root{--soft:#f6e8e0}
 </style>
 <link rel="canonical" href="https://thehq.online/">
 <meta property="og:title" content="The HQ Club">
@@ -359,7 +376,7 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
   <nav aria-label="Sites"><a class="lnk" href="https://virtualhq.online/">Virtual HQ</a><a class="lnk" href="https://trainthegaap.com/">Train the GAAP</a><a class="lnk" href="https://storybookexit.com/">StoryBook Exit</a><a class="lnk" href="https://runitliketherich.com/">Articles</a><a class="lnk" href="https://laurapoincot.com/#contact">Contact</a>
   <a class="btn btn-gold btn-sm" href="https://thehq.online/#join" target="_blank" rel="noopener">Join the HQ Club</a></nav>
 </div></header>
-<main><section class="band hero"><div class="wrap">
+<main><section class="band hero"><div class="wrap hero-grid">
   <div class="stack-lg" style="max-width:740px">
     <p class="eyebrow">The HQ Club · Early access is open</p>
     <h1>Get every system built. Then keep it running.</h1>
@@ -369,6 +386,26 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
       <a class="btn btn-line" href="https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support" target="_blank" rel="noopener">Book a call</a>
     </div>
   </div>
+<aside class="freebie" aria-labelledby="fb-title">
+  <p class="eyebrow">Free checklist</p>
+  <h3 id="fb-title">The Clean Start Checklist</h3>
+  <p>Every Admin, Books and Compliance setup step for a Florida business, in one place.</p>
+  <ul class="checks small">
+    <li>48 setup steps, from forming the company to the monthly close</li>
+    <li>Sales tax lookup by ZIP code</li>
+    <li>A 12-month compliance calendar</li>
+  </ul>
+  <form class="fb-form" novalidate>
+    <label class="fl" for="fb-email-hq">Your email
+      <input id="fb-email-hq" name="email" type="email" required autocomplete="email" placeholder="you@yourbusiness.com"></label>
+    <button class="btn btn-gold" type="submit">Send me the checklist</button>
+    <p class="small muted">You'll also get the Run It Like the Rich newsletter. Unsubscribe anytime.</p>
+  </form>
+  <div class="fb-done" hidden>
+    <p><b>You're on the list.</b> Confirm your subscription in the tab that just opened, then start here:</p>
+    <a class="btn btn-navy" href="https://runitliketherich.com/clean-start">Open the Clean Start Checklist</a>
+  </div>
+</aside>
 </div></section>
 
 <section class="sec"><div class="wrap">
@@ -577,7 +614,7 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 <script>
 (function(){
   var f = document.getElementById('intake'); if(!f) return;
-  var C = {"email": "support@thehq.online", "phone": "", "chatUrl": "", "bookingUrl": "https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support", "joinUrl": "", "formEndpoint": "", "qboInviteEmail": "laurapoincot@gmail.com", "intakeEndpoint": "", "substackUrl": "https://runitliketherich.substack.com/", "youtubeUrl": "https://www.youtube.com/@RunItLikeTheRich", "instagramUrl": "https://www.instagram.com/runitliketherich/", "facebookUrl": "https://www.facebook.com/profile.php?id=61583470245237", "linkedinUrl": "https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/", "tiktokUrl": "", "shopUrl": ""};
+  var C = {"email": "support@thehq.online", "phone": "", "chatUrl": "", "bookingUrl": "https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support", "joinUrl": "", "formEndpoint": "", "qboInviteEmail": "laurapoincot@gmail.com", "intakeEndpoint": "", "substackUrl": "https://runitliketherich.substack.com/", "youtubeUrl": "https://www.youtube.com/@RunItLikeTheRich", "instagramUrl": "https://www.instagram.com/runitliketherich/", "facebookUrl": "https://www.facebook.com/profile.php?id=61583470245237", "linkedinUrl": "https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/", "tiktokUrl": "", "shopUrl": "", "signupEndpoint": ""};
   var st = document.getElementById('intake-status');
   function show(m){ st.textContent = m; st.hidden = false; }
   function collect(){
@@ -701,7 +738,7 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 
 <script>
 (function(){
-  var C = {"email": "support@thehq.online", "phone": "", "chatUrl": "", "bookingUrl": "https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support", "joinUrl": "", "formEndpoint": "", "qboInviteEmail": "laurapoincot@gmail.com", "intakeEndpoint": "", "substackUrl": "https://runitliketherich.substack.com/", "youtubeUrl": "https://www.youtube.com/@RunItLikeTheRich", "instagramUrl": "https://www.instagram.com/runitliketherich/", "facebookUrl": "https://www.facebook.com/profile.php?id=61583470245237", "linkedinUrl": "https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/", "tiktokUrl": "", "shopUrl": ""};
+  var C = {"email": "support@thehq.online", "phone": "", "chatUrl": "", "bookingUrl": "https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support", "joinUrl": "", "formEndpoint": "", "qboInviteEmail": "laurapoincot@gmail.com", "intakeEndpoint": "", "substackUrl": "https://runitliketherich.substack.com/", "youtubeUrl": "https://www.youtube.com/@RunItLikeTheRich", "instagramUrl": "https://www.instagram.com/runitliketherich/", "facebookUrl": "https://www.facebook.com/profile.php?id=61583470245237", "linkedinUrl": "https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/", "tiktokUrl": "", "shopUrl": "", "signupEndpoint": ""};
   // hide ways that have no link yet
   document.querySelectorAll('[data-need]').forEach(function(el){
     if(!C[el.getAttribute('data-need')]) el.hidden = true;
@@ -721,6 +758,23 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
       try {
         navigator.clipboard.writeText(v).then(function(){ done('Copied'); }, function(){ done('Select and copy'); });
       } catch(e){ done('Select and copy'); }
+    });
+  });
+  // free checklist sign-up
+  document.querySelectorAll('.fb-form').forEach(function(f){
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!f.reportValidity()) return;
+      var em = f.querySelector('input[type=email]').value.trim();
+      if(C.signupEndpoint){
+        fetch(C.signupEndpoint, {method:'POST', mode:'no-cors', body: new URLSearchParams({email: em, source: 'Clean Start Checklist', page: location.hostname})}).catch(function(){});
+      } else if(C.substackUrl){
+        var a = document.createElement('a');
+        a.href = C.substackUrl.replace(/\/$/, '') + '/subscribe?email=' + encodeURIComponent(em);
+        a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove();
+      }
+      f.hidden = true;
+      f.parentNode.querySelector('.fb-done').hidden = false;
     });
   });
   // topic preselect from #book / #join / #message

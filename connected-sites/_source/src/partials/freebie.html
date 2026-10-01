@@ -1,0 +1,20 @@
+<aside class="freebie" aria-labelledby="fb-title">
+  <p class="eyebrow">Free checklist</p>
+  <h3 id="fb-title">The Clean Start Checklist</h3>
+  <p>Every Admin, Books and Compliance setup step for a Florida business, in one place.</p>
+  <ul class="checks small">
+    <li>48 setup steps, from forming the company to the monthly close</li>
+    <li>Sales tax lookup by ZIP code</li>
+    <li>A 12-month compliance calendar</li>
+  </ul>
+  <form class="fb-form" novalidate>
+    <label class="fl" for="fb-email-{{FBID}}">Your email
+      <input id="fb-email-{{FBID}}" name="email" type="email" required autocomplete="email" placeholder="you@yourbusiness.com"></label>
+    <button class="btn btn-gold" type="submit">Send me the checklist</button>
+    <p class="small muted">You'll also get the Run It Like the Rich newsletter. Unsubscribe anytime.</p>
+  </form>
+  <div class="fb-done" hidden>
+    <p><b>You're on the list.</b> Confirm your subscription in the tab that just opened, then start here:</p>
+    <a class="btn btn-navy" href="{{CLEAN}}">Open the Clean Start Checklist</a>
+  </div>
+</aside>
