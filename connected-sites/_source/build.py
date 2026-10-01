@@ -346,6 +346,10 @@ def main():
         (out / "index.html").write_text(page(key, "deploy", standalone=True))
         if key == "riltr":
             shutil.copy(SRC / "clean-start.html", out / "clean-start.html")
+        if key == "vhq":
+            for m in ("virtual-hq-tour.mp4", "virtual-hq-tour.jpg"):
+                shutil.copy(SRC / "media" / m, out / m)
+                shutil.copy(SRC / "media" / m, ROOT / "preview" / m)
     for tk, t in TOOLS.items():
         raw = tool_raw(tk)
         kw = dict(raw=raw, title=t["title"], desc=t["lead"], path=t["slug"])
