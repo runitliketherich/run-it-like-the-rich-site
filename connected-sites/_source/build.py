@@ -20,6 +20,7 @@ CONFIG = {
     "bookingUrl": "https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support",
     "joinUrl": "",        # HQ Club checkout / payment link
     "formEndpoint": "",   # Formspree (or similar) endpoint so the form sends without an email app
+    "qboInviteEmail": "laurapoincot@gmail.com",  # email clients invite as their QuickBooks accountant
     "intakeEndpoint": "", # Google Apps Script web app URL for the HQ Club intake (see _source/intake-apps-script.gs)
     "substackUrl": "https://runitliketherich.substack.com/",
     "youtubeUrl": "https://www.youtube.com/@RunItLikeTheRich",
@@ -62,6 +63,8 @@ MARK_NAVY = b64("mark-navy.png")
 CSS = (SRC / "shared.css").read_text()
 
 def url_for(key, mode, anchor=""):
+    if key == "clean":
+        return "https://claude.ai/artifact/Sc7ySwDKDSyn73bFjAPsm3" if mode == "preview" else "https://runitliketherich.com/clean-start"
     if mode == "preview":
         f = "index.html" if key == "hub" else f"{key}.html"
         return f + (f"#{anchor}" if anchor else "")
@@ -99,7 +102,7 @@ def footer(key, mode):
   <h2>Every site leads to the same place: a business that runs without you.</h2>
   <div class="fam-grid">{"".join(cards)}</div>
   <div class="follow">
-    <div class="stack" style="gap:8px"><b>Follow along</b><div class="socs">{social_links()}</div></div>
+    <div class="stack" style="gap:8px"><b>Follow along</b><div class="socs">{social_links()}<a class="soc" href="{url_for("clean", mode)}">Free: Clean Start Checklist</a></div></div>
     <div class="row"><a class="btn btn-gold btn-sm" href="{book}"{link_attrs(book)}>Book a call</a><a class="btn btn-line btn-sm" href="{url_for("hub", mode, "message")}">Send a message</a></div>
   </div>
   <div class="signoff">
@@ -176,8 +179,9 @@ def fill(body, key, mode):
         "{{BOOK}}": book, "{{BOOK_ATTR}}": link_attrs(book),
         "{{JOIN}}": join, "{{JOIN_ATTR}}": link_attrs(join),
         "{{MARK_GOLD}}": MARK_GOLD, "{{MARK_NAVY}}": MARK_NAVY,
-        "{{EMAIL}}": CONFIG["email"], "{{SOCIAL}}": social_links("soc soc-light"), "{{SCORECARD}}": (SRC / "partials" / "scorecard.html").read_text(),
+        "{{EMAIL}}": CONFIG["email"], "{{QBO_EMAIL}}": CONFIG["qboInviteEmail"], "{{SOCIAL}}": social_links("soc soc-light"), "{{SCORECARD}}": (SRC / "partials" / "scorecard.html").read_text(),
     }
+    body = body.replace("{{CLEAN}}", url_for("clean", mode))
     body = body.replace("{{INTAKE}}", (SRC / "partials" / "intake.html").read_text().replace("__CONFIG__", json.dumps(CONFIG)))
     for part in ("offer", "fullservice", "cta"):
         body = body.replace("{{%s}}" % part.upper(), (SRC / "partials" / f"{part}.html").read_text())
@@ -213,6 +217,8 @@ def main():
         out = ROOT / "deploy" / dom
         out.mkdir(parents=True)
         (out / "index.html").write_text(page(key, "deploy", standalone=True))
+        if key == "riltr":
+            shutil.copy(SRC / "clean-start.html", out / "clean-start.html")
     print("built", [p.name for p in (ROOT / "preview").iterdir()])
 
 if __name__ == "__main__":
