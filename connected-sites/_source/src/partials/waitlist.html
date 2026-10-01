@@ -1,0 +1,50 @@
+<section class="sec" id="join"><div class="wrap" style="max-width:860px">
+  <div class="waitlist">
+    <div class="stack" style="gap:10px">
+      <p class="eyebrow">Coming soon · The HQ Club</p>
+      <h2>Join the waitlist.</h2>
+      <p class="lead">The HQ Club isn't open yet. Leave your email and you'll be first to know when it opens, with the founding pricing.</p>
+    </div>
+    <form class="wl-form" id="waitlist" novalidate>
+      <input type="hidden" name="form" value="HQ Club waitlist">
+      <div class="f2">
+        <label class="fl" for="wl-name">Name<input id="wl-name" name="name" autocomplete="name"></label>
+        <label class="fl" for="wl-email">Email *<input id="wl-email" name="email" type="email" required autocomplete="email" placeholder="you@yourbusiness.com"></label>
+      </div>
+      <label class="fl" for="wl-biz">Business (optional)<input id="wl-biz" name="company" autocomplete="organization"></label>
+      <button class="btn btn-gold" type="submit">Join the waitlist</button>
+      <p class="small muted">You'll also get the Run It Like the Rich newsletter. Unsubscribe anytime.</p>
+    </form>
+    <div class="wl-done" id="waitlist-done" hidden>
+      <p class="eyebrow">You're on the list</p>
+      <h3>Thanks. I'll email you when the HQ Club opens.</h3>
+      <p>Confirm your subscription in the tab that just opened. In the meantime, grab a free checklist or book a call if you want help sooner.</p>
+      <div class="row"><a class="btn btn-navy" href="{{URL:clean}}">Open the Clean Start Checklist</a><a class="btn btn-line" href="{{BOOK}}"{{BOOK_ATTR}}>Book a call</a></div>
+    </div>
+  </div>
+</div></section>
+
+<script>
+(function(){
+  var f = document.getElementById('waitlist'); if(!f) return;
+  var C = __CONFIG__;
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!f.reportValidity()) return;
+    var fd = new FormData(f), o = {};
+    fd.forEach(function(v,k){ o[k] = v; });
+    o.submittedAt = new Date().toISOString();
+    var url = C.waitlistEndpoint || C.intakeEndpoint;
+    if(url){
+      fetch(url, {method:'POST', mode:'no-cors', body: new URLSearchParams(o)}).catch(function(){});
+    }
+    if(C.substackUrl){
+      var a = document.createElement('a');
+      a.href = C.substackUrl.replace(/\/$/, '') + '/subscribe?email=' + encodeURIComponent(o.email);
+      a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove();
+    }
+    f.hidden = true;
+    var d = document.getElementById('waitlist-done'); d.hidden = false;
+  });
+})();
+</script>

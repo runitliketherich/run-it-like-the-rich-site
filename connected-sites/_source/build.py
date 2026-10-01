@@ -23,6 +23,7 @@ CONFIG = {
     "joinUrl": "",        # HQ Club checkout / payment link
     "formEndpoint": "",   # Formspree (or similar) endpoint so the form sends without an email app
     "qboInviteEmail": "laurapoincot@gmail.com",  # email clients invite as their QuickBooks accountant
+    "waitlistEndpoint": "",  # optional: where waitlist sign-ups are sent (e.g. the Apps Script URL)
     "intakeEndpoint": "", # Google Apps Script web app URL for the HQ Club intake (see _source/intake-apps-script.gs)
     "substackUrl": "https://runitliketherich.substack.com/",
     "youtubeUrl": "https://www.youtube.com/@RunItLikeTheRich",
@@ -45,7 +46,7 @@ SITES = [
     # key, domain, name, one-liner, title, description
     ("hub", "laurapoincot.com", "Laura Poincot", "Message, email or book a call. Every program in one place.",
      "Laura Poincot", "Contact Laura Poincot and see every Run It Like the Rich program in one place."),
-    ("hq", "thehq.online", "The HQ Club", "Early access is open. Build every system, then keep it running.",
+    ("hq", "thehq.online", "The HQ Club", "Coming soon. Join the waitlist for founding pricing.",
      "The HQ Club", "Early access to the HQ Club: every Admin, Books and Compliance system built for your business."),
     ("vhq", "virtualhq.online", "Virtual HQ", "One operating map that connects the tools you already use.",
      "Virtual HQ", "Virtual HQ: one controlled operating environment for your business."),
@@ -94,7 +95,7 @@ def header(key, mode):
 <header class="top"><div class="wrap">
   <a class="home" href="{url_for(key, mode)}"><b>{home_name}</b><span>Run It Like the Rich</span></a>
   <nav aria-label="Sites">{nav}<a class="lnk" href="{contact}">Contact</a>
-  <a class="btn btn-gold btn-sm" href="{join}"{link_attrs(join)}>Join the HQ Club</a></nav>
+  <a class="btn btn-gold btn-sm" href="{join}"{link_attrs(join)}>Join the waitlist</a></nav>
 </div></header>'''
 
 def footer(key, mode):
@@ -164,7 +165,7 @@ JS = r'''
   var form = document.getElementById('cf');
   function pick(){
     if(!form) return;
-    var map = {book:'Book a call', join:'Join the HQ Club', fullservice:'Full-service options', message:'Quick question'};
+    var map = {book:'Book a call', join:'HQ Club waitlist', fullservice:'Full-service options', message:'Quick question'};
     var h = (location.hash || '').slice(1), want = map[h];
     if(!want) return;
     var r = form.querySelector('input[name="topic"][value="' + want + '"]');
@@ -206,7 +207,7 @@ def fill(body, key, mode):
         "{{EMAIL}}": CONFIG["email"], "{{QBO_EMAIL}}": CONFIG["qboInviteEmail"], "{{SOCIAL}}": social_links("soc soc-light"), "{{SCORECARD}}": (SRC / "partials" / "scorecard.html").read_text(),
     }
     body = body.replace("{{CLEAN}}", url_for("clean", mode))
-    body = body.replace("{{INTAKE}}", (SRC / "partials" / "intake.html").read_text().replace("__CONFIG__", json.dumps(CONFIG)))
+    body = body.replace("{{INTAKE}}", (SRC / "partials" / "waitlist.html").read_text().replace("__CONFIG__", json.dumps(CONFIG)))
     for part in ("offer", "fullservice", "cta"):
         body = body.replace("{{%s}}" % part.upper(), (SRC / "partials" / f"{part}.html").read_text())
     for k, v in reps.items():

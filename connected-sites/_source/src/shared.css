@@ -377,3 +377,10 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 #ts-sum{font-size:14px;background:var(--paper)}
 .vid{border-radius:var(--r-panel);overflow:hidden;border:1.5px solid var(--line);background:#000;max-width:1000px}
 .vid video{display:block;width:100%;height:auto;aspect-ratio:16/9}
+
+/* HQ Club waitlist */
+.waitlist{background:var(--cream);border:1.5px solid var(--gold);border-radius:var(--r-panel);padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:20px}
+.wl-form{display:flex;flex-direction:column;gap:14px}
+.wl-form .btn{align-self:flex-start}
+.wl-done{display:flex;flex-direction:column;gap:12px}
+.wl-done h3{font-size:26px}

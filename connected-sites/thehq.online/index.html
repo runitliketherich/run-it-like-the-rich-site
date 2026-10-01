@@ -383,6 +383,13 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 #ts-sum{font-size:14px;background:var(--paper)}
 .vid{border-radius:var(--r-panel);overflow:hidden;border:1.5px solid var(--line);background:#000;max-width:1000px}
 .vid video{display:block;width:100%;height:auto;aspect-ratio:16/9}
+
+/* HQ Club waitlist */
+.waitlist{background:var(--cream);border:1.5px solid var(--gold);border-radius:var(--r-panel);padding:clamp(24px,4vw,40px);display:flex;flex-direction:column;gap:20px}
+.wl-form{display:flex;flex-direction:column;gap:14px}
+.wl-form .btn{align-self:flex-start}
+.wl-done{display:flex;flex-direction:column;gap:12px}
+.wl-done h3{font-size:26px}
 </style>
 <link rel="canonical" href="https://thehq.online/">
 <meta property="og:title" content="The HQ Club">
@@ -392,15 +399,15 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 <header class="top"><div class="wrap">
   <a class="home" href="https://thehq.online/"><b>The HQ Club</b><span>Run It Like the Rich</span></a>
   <nav aria-label="Sites"><a class="lnk" href="https://virtualhq.online/">Virtual HQ</a><a class="lnk" href="https://trainthegaap.com/">Train the GAAP</a><a class="lnk" href="https://storybookexit.com/">StoryBook Exit</a><a class="lnk" href="https://runitliketherich.com/">Articles</a><a class="lnk" href="https://laurapoincot.com/#contact">Contact</a>
-  <a class="btn btn-gold btn-sm" href="https://thehq.online/#join" target="_blank" rel="noopener">Join the HQ Club</a></nav>
+  <a class="btn btn-gold btn-sm" href="https://thehq.online/#join" target="_blank" rel="noopener">Join the waitlist</a></nav>
 </div></header>
 <main><section class="band hero"><div class="wrap hero-grid">
   <div class="stack-lg" style="max-width:740px">
-    <p class="eyebrow">The HQ Club · Early access is open</p>
+    <p class="eyebrow">The HQ Club · Coming soon</p>
     <h1>Get every system built. Then keep it running.</h1>
     <p class="lead">You know the books are behind, the paperwork lives in five places, and nothing works when you step away. The HQ Club fixes the foundation first: Admin, Books and Compliance, built for your business and kept up every month.</p>
     <div class="row">
-      <a class="btn btn-gold" href="https://thehq.online/#join" target="_blank" rel="noopener">Join for $1,500+ then $135/mo</a>
+      <a class="btn btn-gold" href="https://thehq.online/#join" target="_blank" rel="noopener">Join the waitlist</a>
       <a class="btn btn-line" href="https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support" target="_blank" rel="noopener">Book a call</a>
     </div>
   </div>
@@ -437,7 +444,7 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 <section class="sec sec-soft"><div class="wrap">
   <div class="offer on-navy" id="club">
   <div class="stack">
-    <p class="eyebrow">Now open · Early access</p>
+    <p class="eyebrow">Coming soon · Join the waitlist</p>
     <h2>The HQ Club</h2>
     <p class="lead">Your Virtual HQ, set up and customized for your business, with a clear look at your Admin, Books and Compliance. Then the Club keeps it running, with early access to everything new.</p>
     <p class="eyebrow" style="margin-top:6px">Your $1,500 setup includes</p>
@@ -451,216 +458,64 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
     </ul>
   </div>
   <div class="price">
-    <span class="badge">Early access pricing</span>
+    <span class="badge">Founding pricing</span>
     <div class="line"><div><div class="lbl">Setup</div><div class="small muted">one-time, starting at</div></div><div class="amt">$1,500+</div></div>
     <div class="line"><div><div class="lbl">Club membership</div><div class="small muted">after setup</div></div><div class="amt">$135<small> /month</small></div></div>
     <p class="small">Template, Drive and app customization, ABC Review, QBO report, support and full Club access. More entities or locations can add to setup. You'll have the exact number before we start.</p>
-    <a class="btn btn-navy" href="https://thehq.online/#join" target="_blank" rel="noopener">Join the HQ Club</a>
+    <a class="btn btn-navy" href="https://thehq.online/#join" target="_blank" rel="noopener">Join the waitlist</a>
     <a class="btn btn-line" href="https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support" target="_blank" rel="noopener">Book a call first</a>
   </div>
 </div>
 
 </div></section>
 
-<section class="sec" id="join"><div class="wrap" style="max-width:920px">
-  <div class="sec-head">
-    <p class="eyebrow">Join the HQ Club · Step 1 of 2</p>
-    <h2>Tell me about your business.</h2>
-    <p class="lead muted">About 10 minutes. Your answers shape your ABC Review, your QuickBooks Online report and how your Virtual HQ gets customized. Then I'll confirm your setup price and send your invoice.</p>
-  </div>
-
-  <form class="intake" id="intake" novalidate>
-    <input type="hidden" name="form" value="HQ Club intake">
-
-    <fieldset class="isec">
-      <legend><span>1</span>Contact</legend>
-      <div class="f2">
-        <label class="fl" for="i-name">Your name *<input id="i-name" name="name" required autocomplete="name"></label>
-        <label class="fl" for="i-company">Business name *<input id="i-company" name="company" required autocomplete="organization"></label>
-      </div>
-      <div class="f2">
-        <label class="fl" for="i-email">Email *<input id="i-email" name="email" type="email" required autocomplete="email"></label>
-        <label class="fl" for="i-phone">Phone<input id="i-phone" name="phone" type="tel" autocomplete="tel"></label>
-      </div>
-      <label class="fl" for="i-reach">Best way to reach you
-        <select id="i-reach" name="reach"><option>Email</option><option>Text</option><option>Phone call</option></select></label>
-    </fieldset>
-
-    <fieldset class="isec">
-      <legend><span>2</span>Your business</legend>
-      <label class="fl" for="i-industry">Industry and what you do *<input id="i-industry" name="industry" required placeholder="e.g. commercial HVAC, property management, franchise restaurant"></label>
-      <div class="f2">
-        <label class="fl" for="i-entities">How many legal entities (LLCs, corporations)?
-          <select id="i-entities" name="entities"><option>1</option><option>2–3</option><option>4–6</option><option>7+</option><option>Not sure</option></select></label>
-        <label class="fl" for="i-locations">How many locations?
-          <select id="i-locations" name="locations"><option>1</option><option>2–3</option><option>4–6</option><option>7+</option></select></label>
-      </div>
-      <div class="q-block"><p class="ql">How many people may eventually use the Virtual HQ?</p>
-        <div class="chips"><label><input type="radio" name="teamSize" value="1" id="ts1"> 1</label><label><input type="radio" name="teamSize" value="2–5" id="ts2"> 2–5</label><label><input type="radio" name="teamSize" value="6–15" id="ts3"> 6–15</label><label><input type="radio" name="teamSize" value="16–30" id="ts4"> 16–30</label><label><input type="radio" name="teamSize" value="30+" id="ts5"> 30+</label></div></div>
-      <div class="q-block"><p class="ql">How long has the business been operating?</p>
-        <div class="chips"><label><input type="radio" name="yearsOperating" value="Less than 1 year" id="yo1"> Less than 1 year</label><label><input type="radio" name="yearsOperating" value="1–3 years" id="yo2"> 1–3 years</label><label><input type="radio" name="yearsOperating" value="4–7 years" id="yo3"> 4–7 years</label><label><input type="radio" name="yearsOperating" value="8–15 years" id="yo4"> 8–15 years</label><label><input type="radio" name="yearsOperating" value="16+ years" id="yo5"> 16+ years</label></div></div>
-      <label class="fl" for="i-tax">How is the business taxed?
-        <select id="i-tax" name="taxStructure"><option value="">Choose one</option><option>Sole proprietor / Schedule C</option><option>Single-member LLC</option><option>Partnership / LLC taxed as a partnership (1065)</option><option>S corporation (1120-S)</option><option>C corporation (1120)</option><option>Nonprofit</option><option>Not sure</option><option>Other</option></select></label>
-    </fieldset>
-
-    <fieldset class="isec">
-      <legend><span>3</span>Where you're headed</legend>
-      <div class="q-block"><p class="ql">What are your plans for the business? Check all that apply.</p>
-        <div class="checks-grid">
-          <label><input type="checkbox" name="futurePlans" value="Grow the current location or operation" id="fp1"> Grow the current location or operation</label>
-          <label><input type="checkbox" name="futurePlans" value="Add employees" id="fp2"> Add employees</label>
-          <label><input type="checkbox" name="futurePlans" value="Add locations, territories or service areas" id="fp3"> Add locations, territories or service areas</label>
-          <label><input type="checkbox" name="futurePlans" value="Expand services or product lines" id="fp4"> Expand services or product lines</label>
-          <label><input type="checkbox" name="futurePlans" value="Improve margins and owner visibility" id="fp5"> Improve margins and owner visibility</label>
-          <label><input type="checkbox" name="futurePlans" value="Build a business that runs without me" id="fp6"> Build a business that runs without me</label>
-          <label><input type="checkbox" name="futurePlans" value="Prepare for financing or investment" id="fp7"> Prepare for financing or investment</label>
-          <label><input type="checkbox" name="futurePlans" value="Prepare to sell, transition or retire" id="fp8"> Prepare to sell, transition or retire</label>
-          <label><input type="checkbox" name="futurePlans" value="Better control of what's already here" id="fp9"> Better control of what's already here</label>
-        </div></div>
-      <label class="fl" for="i-sell">If selling, transitioning or retiring is part of the plan, when might that happen?
-        <select id="i-sell" name="sellingTimeline"><option value="">Choose one</option><option>Within 1–3 years</option><option>Within 3–5 years</option><option>Within 5–10 years</option><option>More than 10 years away</option><option>Exploring options only</option><option>Not part of the plan</option></select></label>
-    </fieldset>
-
-    <fieldset class="isec">
-      <legend><span>4</span>Your books</legend>
-      <div class="f2">
-        <label class="fl" for="i-acct">Accounting software
-          <select id="i-acct" name="accountingSoftware"><option>QuickBooks Online</option><option>QuickBooks Desktop</option><option>Xero</option><option>Other</option><option>None yet</option></select></label>
-        <label class="fl" for="i-bk">Who keeps the books today?
-          <select id="i-bk" name="bookkeeper"><option>In-house bookkeeper</option><option>Outsourced bookkeeper</option><option>My CPA</option><option>Me (the owner)</option><option>Nobody right now</option></select></label>
-      </div>
-      <div class="q-block"><p class="ql">How current are the books?</p>
-        <div class="chips"><label><input type="radio" name="booksStatus" value="Months behind or cleaned up only for taxes" id="bs1"> Months behind</label><label><input type="radio" name="booksStatus" value="Reconciled but messy" id="bs2"> Reconciled but messy</label><label><input type="radio" name="booksStatus" value="Reconciled and clean" id="bs3"> Reconciled and clean</label><label><input type="radio" name="booksStatus" value="Not sure" id="bs4"> Not sure</label></div></div>
-      <div class="q-block"><p class="ql">Can you give me accountant access to QuickBooks Online for your report?</p>
-        <div class="chips"><label><input type="radio" name="qboAccess" value="Yes" id="qa1"> Yes</label><label><input type="radio" name="qboAccess" value="Need help setting it up" id="qa2"> Need help setting it up</label><label><input type="radio" name="qboAccess" value="Not on QBO" id="qa3"> Not on QBO</label></div></div>
-    </fieldset>
-
-    <fieldset class="isec">
-      <legend><span>5</span>Google Workspace</legend>
-      <div class="q-block"><p class="ql">Do you use Google Workspace today?</p>
-        <div class="chips"><label><input type="radio" name="googleWorkspace" value="Yes" id="gw1"> Yes</label><label><input type="radio" name="googleWorkspace" value="No" id="gw2"> No</label><label><input type="radio" name="googleWorkspace" value="Not sure" id="gw3"> Not sure</label></div></div>
-      <label class="fl" for="i-gwsub">If yes, which plan?
-        <select id="i-gwsub" name="workspacePlan"><option value="">Choose one</option><option>Business Starter</option><option>Business Standard</option><option>Business Plus</option><option>Enterprise</option><option>Google Workspace for Nonprofits</option><option>Not sure</option><option>Other</option></select></label>
-      <div class="q-block"><p class="ql">Which Google tools does your team use?</p>
-        <div class="checks-grid">
-          <label><input type="checkbox" name="googleTools" value="Gmail" id="gt1"> Gmail</label>
-          <label><input type="checkbox" name="googleTools" value="Drive" id="gt2"> Drive</label>
-          <label><input type="checkbox" name="googleTools" value="Calendar" id="gt3"> Calendar</label>
-          <label><input type="checkbox" name="googleTools" value="Sheets" id="gt4"> Sheets</label>
-          <label><input type="checkbox" name="googleTools" value="Docs" id="gt5"> Docs</label>
-          <label><input type="checkbox" name="googleTools" value="Forms" id="gt6"> Forms</label>
-          <label><input type="checkbox" name="googleTools" value="Sites" id="gt7"> Sites</label>
-          <label><input type="checkbox" name="googleTools" value="Chat / Meet" id="gt8"> Chat / Meet</label>
-          <label><input type="checkbox" name="googleTools" value="Gemini / NotebookLM" id="gt9"> Gemini / NotebookLM</label>
-        </div></div>
-    </fieldset>
-
-    <fieldset class="isec">
-      <legend><span>6</span>The systems you use</legend>
-      <p class="small muted">Fill in what applies. Skip the rest.</p>
-      <div class="f2">
-        <label class="fl" for="s-pay">Payroll<input id="s-pay" name="sys_payroll" placeholder="Gusto, ADP, Paychex"></label>
-        <label class="fl" for="s-time">Time tracking / scheduling<input id="s-time" name="sys_scheduling" placeholder="QuickBooks Time, Deputy, When I Work"></label>
-        <label class="fl" for="s-field">Field ops / job management<input id="s-field" name="sys_fieldOps" placeholder="ServiceTitan, Jobber, Housecall Pro"></label>
-        <label class="fl" for="s-inv">Inventory<input id="s-inv" name="sys_inventory" placeholder="Fishbowl, spreadsheets, warehouse log"></label>
-        <label class="fl" for="s-est">Estimates / proposals<input id="s-est" name="sys_estimates" placeholder="PandaDoc, custom template"></label>
-        <label class="fl" for="s-ar">Invoicing / receivables<input id="s-ar" name="sys_invoicing" placeholder="QuickBooks, Stripe, manual"></label>
-        <label class="fl" for="s-crm">Client management / CRM<input id="s-crm" name="sys_crm" placeholder="HubSpot, Pipedrive, spreadsheet"></label>
-        <label class="fl" for="s-pos">POS / card processing<input id="s-pos" name="sys_pos" placeholder="Square, Clover, Toast"></label>
-        <label class="fl" for="s-bank">Bank / bill pay / expenses<input id="s-bank" name="sys_banking" placeholder="Chase, Relay, Ramp, Bill.com"></label>
-        <label class="fl" for="s-hr">HR / onboarding / employee records<input id="s-hr" name="sys_hr" placeholder="BambooHR, shared folder, paper"></label>
-        <label class="fl" for="s-files">File storage / document signing<input id="s-files" name="sys_storage" placeholder="Google Drive, Dropbox, DocuSign"></label>
-        <label class="fl" for="s-other">Other software, portals or spreadsheets<input id="s-other" name="sys_other" placeholder="Industry portal, franchise system"></label>
-      </div>
-    </fieldset>
-
-    <fieldset class="isec">
-      <legend><span>7</span>What to fix first</legend>
-      <div class="q-block"><p class="ql">Which areas need the most help? Check all that apply.</p>
-        <div class="checks-grid">
-          <label><input type="checkbox" name="focusAreas" value="Files" id="fa1"> Files</label>
-          <label><input type="checkbox" name="focusAreas" value="Team / tasks" id="fa2"> Team / tasks</label>
-          <label><input type="checkbox" name="focusAreas" value="Projects" id="fa3"> Projects</label>
-          <label><input type="checkbox" name="focusAreas" value="Compliance" id="fa4"> Compliance</label>
-          <label><input type="checkbox" name="focusAreas" value="Financials / KPIs" id="fa5"> Financials / KPIs</label>
-          <label><input type="checkbox" name="focusAreas" value="HR" id="fa6"> HR</label>
-          <label><input type="checkbox" name="focusAreas" value="Forms / lists" id="fa7"> Forms / lists</label>
-          <label><input type="checkbox" name="focusAreas" value="Daily operations" id="fa8"> Daily operations</label>
-          <label><input type="checkbox" name="focusAreas" value="Something else" id="fa9"> Something else</label>
-        </div></div>
-      <label class="fl" for="i-keep">Which systems are working well and should stay?<textarea id="i-keep" name="systemsWorkingWell" rows="3" placeholder="e.g. QuickBooks is dialed in with our bookkeeper; ServiceTitan stays for dispatch. I just need easier access to invoices and summaries."></textarea></label>
-      <label class="fl" for="i-replace">Is there a system, spreadsheet, manual process or subscription you'd like to reduce or replace? What does it cost, and what's frustrating about it?<textarea id="i-replace" name="systemsToReplace" rows="3" placeholder="e.g. We pay $350/mo for a CRM nobody logs into, and three people track equipment in separate spreadsheets."></textarea></label>
-      <label class="fl" for="i-pain">Anything else I should know?<textarea id="i-pain" name="notes" rows="3"></textarea></label>
-    </fieldset>
-
-    <div class="agree">
-      <label for="i-agree"><input type="checkbox" id="i-agree" name="agree" value="Yes" required> I understand HQ Club setup starts at $1,500 (template, Drive and app customization, ABC Review, QuickBooks Online report, support and full Club access), with membership at $135/month after setup. Laura will confirm my exact setup price before any work starts.</label>
+<section class="sec" id="join"><div class="wrap" style="max-width:860px">
+  <div class="waitlist">
+    <div class="stack" style="gap:10px">
+      <p class="eyebrow">Coming soon · The HQ Club</p>
+      <h2>Join the waitlist.</h2>
+      <p class="lead">The HQ Club isn't open yet. Leave your email and you'll be first to know when it opens, with the founding pricing.</p>
     </div>
-    <button class="btn btn-gold" type="submit" style="justify-self:start">Send my answers</button>
-    <p class="status" id="intake-status" role="status" hidden></p>
-  </form>
-
-  <div class="next on-navy" id="intake-next" hidden>
-    <p class="eyebrow">Step 2 of 2</p>
-    <h3>Got it. Here's what happens next.</h3>
-    <ol class="nlist">
-      <li>I review your answers and confirm your setup price.</li>
-      <li>You pay the setup invoice and we book your kickoff.</li>
-      <li>I start your ABC Review and QuickBooks Online report.</li>
-    </ol>
-    <div class="qbo">
-      <h4>Get a head start: invite me to QuickBooks Online</h4>
-      <ol>
-        <li>Sign in to QuickBooks Online as the primary admin.</li>
-        <li>Click the gear icon, then <b>Manage users</b>.</li>
-        <li>Open the <b>Accounting firms</b> tab and click <b>Invite</b>.</li>
-        <li>Enter my name and this email, then click <b>Send</b>: <span class="val">laurapoincot@gmail.com</span></li>
-      </ol>
-      <p class="small">An accountant user doesn't count against your QuickBooks user limit, and you can remove it any time.</p>
-    </div>
-    <div class="row">
-      <a class="btn btn-gold" data-need="joinUrl" data-fill="joinUrl" href="#" target="_blank" rel="noopener">Pay the $1,500 setup now</a>
-      <a class="btn btn-line" href="https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support" target="_blank" rel="noopener">Book your kickoff call</a>
+    <form class="wl-form" id="waitlist" novalidate>
+      <input type="hidden" name="form" value="HQ Club waitlist">
+      <div class="f2">
+        <label class="fl" for="wl-name">Name<input id="wl-name" name="name" autocomplete="name"></label>
+        <label class="fl" for="wl-email">Email *<input id="wl-email" name="email" type="email" required autocomplete="email" placeholder="you@yourbusiness.com"></label>
+      </div>
+      <label class="fl" for="wl-biz">Business (optional)<input id="wl-biz" name="company" autocomplete="organization"></label>
+      <button class="btn btn-gold" type="submit">Join the waitlist</button>
+      <p class="small muted">You'll also get the Run It Like the Rich newsletter. Unsubscribe anytime.</p>
+    </form>
+    <div class="wl-done" id="waitlist-done" hidden>
+      <p class="eyebrow">You're on the list</p>
+      <h3>Thanks. I'll email you when the HQ Club opens.</h3>
+      <p>Confirm your subscription in the tab that just opened. In the meantime, grab a free checklist or book a call if you want help sooner.</p>
+      <div class="row"><a class="btn btn-navy" href="https://runitliketherich.com/clean-start">Open the Clean Start Checklist</a><a class="btn btn-line" href="https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support" target="_blank" rel="noopener">Book a call</a></div>
     </div>
   </div>
 </div></section>
 
 <script>
 (function(){
-  var f = document.getElementById('intake'); if(!f) return;
-  var C = {"email": "support@thehq.online", "phone": "", "chatUrl": "", "bookingUrl": "https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support", "joinUrl": "", "formEndpoint": "", "qboInviteEmail": "laurapoincot@gmail.com", "intakeEndpoint": "", "substackUrl": "https://runitliketherich.substack.com/", "youtubeUrl": "https://www.youtube.com/@RunItLikeTheRich", "instagramUrl": "https://www.instagram.com/runitliketherich/", "facebookUrl": "https://www.facebook.com/profile.php?id=61583470245237", "linkedinUrl": "https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/", "tiktokUrl": "", "shopUrl": "", "signupEndpoint": ""};
-  var st = document.getElementById('intake-status');
-  function show(m){ st.textContent = m; st.hidden = false; }
-  function collect(){
-    var fd = new FormData(f), o = {};
-    fd.forEach(function(v,k){ o[k] = o[k] ? o[k] + '; ' + v : v; });
-    o.submittedAt = new Date().toISOString();
-    return o;
-  }
-  function asText(o){
-    return Object.keys(o).filter(function(k){ return o[k]; }).map(function(k){ return k + ': ' + o[k]; }).join('\n');
-  }
-  function done(){
-    f.hidden = true;
-    var n = document.getElementById('intake-next'); n.hidden = false;
-    n.scrollIntoView({behavior:'smooth', block:'start'});
-  }
+  var f = document.getElementById('waitlist'); if(!f) return;
+  var C = {"email": "support@thehq.online", "phone": "", "chatUrl": "", "bookingUrl": "https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support", "joinUrl": "", "formEndpoint": "", "qboInviteEmail": "laurapoincot@gmail.com", "waitlistEndpoint": "", "intakeEndpoint": "", "substackUrl": "https://runitliketherich.substack.com/", "youtubeUrl": "https://www.youtube.com/@RunItLikeTheRich", "instagramUrl": "https://www.instagram.com/runitliketherich/", "facebookUrl": "https://www.facebook.com/profile.php?id=61583470245237", "linkedinUrl": "https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/", "tiktokUrl": "", "shopUrl": "", "signupEndpoint": ""};
   f.addEventListener('submit', function(e){
     e.preventDefault();
     if(!f.reportValidity()) return;
-    var o = collect();
-    if(C.intakeEndpoint){
-      show('Sending…');
-      var body = new URLSearchParams(o);
-      var google = C.intakeEndpoint.indexOf('script.google.com') > -1;
-      fetch(C.intakeEndpoint, google ? {method:'POST', mode:'no-cors', body: body} : {method:'POST', body: body, headers:{'Accept':'application/json'}})
-        .then(function(r){ if(!google && !r.ok) throw 0; done(); })
-        .catch(function(){ show('That didn\'t send. Please email ' + C.email + ' and I\'ll take it from there.'); });
-    } else {
-      location.href = 'mailto:' + C.email + '?subject=' + encodeURIComponent('HQ Club intake – ' + o.company) + '&body=' + encodeURIComponent(asText(o));
-      show('Your email app should open with your answers ready to send. If it didn\'t, email ' + C.email + '.');
-      setTimeout(done, 1200);
+    var fd = new FormData(f), o = {};
+    fd.forEach(function(v,k){ o[k] = v; });
+    o.submittedAt = new Date().toISOString();
+    var url = C.waitlistEndpoint || C.intakeEndpoint;
+    if(url){
+      fetch(url, {method:'POST', mode:'no-cors', body: new URLSearchParams(o)}).catch(function(){});
     }
+    if(C.substackUrl){
+      var a = document.createElement('a');
+      a.href = C.substackUrl.replace(/\/$/, '') + '/subscribe?email=' + encodeURIComponent(o.email);
+      a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove();
+    }
+    f.hidden = true;
+    var d = document.getElementById('waitlist-done'); d.hidden = false;
   });
 })();
 </script>
@@ -714,7 +569,7 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
   <div class="sec-head"><p class="eyebrow">Questions</p><h2>Before you join</h2></div>
   <details class="q"><summary>What does the $1,500 cover?</summary><p>The Virtual HQ template, Google Drive and app customization for your business, your ABC Review, a QuickBooks Online report, support while we set up, and full access to the HQ Club. More entities or locations can add to setup; you'll have the exact number before any work starts.</p></details>
   <details class="q"><summary>Will this replace my bookkeeper?</summary><p>No. I work alongside your bookkeeper and admin team and back them up. Often the team doesn't need replacing. The business needs better accounting architecture around them.</p></details>
-  <details class="q"><summary>What does early access mean?</summary><p>The Club is new. Early members get new systems, templates and training first, and more direct support from me while it grows.</p></details>
+  <details class="q"><summary>When does the Club open?</summary><p>Soon. Join the waitlist and you'll be the first to know, with founding pricing. Need help before then? <a class="go" href="https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support" target="_blank" rel="noopener">Book a call</a>.</p></details>
   <details class="q"><summary>I want it all done for me.</summary><p>That's full service. <a class="go" href="https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support" target="_blank" rel="noopener">Book a meeting</a> and we'll scope it together.</p></details>
 </div></section>
 
@@ -739,7 +594,7 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 <footer class="family on-navy"><div class="wrap">
   <p class="eyebrow" style="color:var(--gold)">One system, six front doors</p>
   <h2>Every site leads to the same place: a business that runs without you.</h2>
-  <div class="fam-grid"><a href="https://laurapoincot.com/"><span>laurapoincot.com</span><b>Laura Poincot</b><em>Message, email or book a call. Every program in one place.</em></a><a class="here" href="https://thehq.online/"><span>thehq.online</span><b>The HQ Club</b><em>Early access is open. Build every system, then keep it running.</em></a><a href="https://virtualhq.online/"><span>virtualhq.online</span><b>Virtual HQ</b><em>One operating map that connects the tools you already use.</em></a><a href="https://runitliketherich.com/"><span>runitliketherich.com</span><b>Run It Like the Rich</b><em>The operator mindset: articles, the Reset, and merch.</em></a><a href="https://trainthegaap.com/"><span>trainthegaap.com</span><b>Train the GAAP</b><em>Backup and the why behind the books, for your bookkeeper.</em></a><a href="https://storybookexit.com/"><span>storybookexit.com</span><b>StoryBook Exit</b><em>Build the business you can retire from.</em></a></div>
+  <div class="fam-grid"><a href="https://laurapoincot.com/"><span>laurapoincot.com</span><b>Laura Poincot</b><em>Message, email or book a call. Every program in one place.</em></a><a class="here" href="https://thehq.online/"><span>thehq.online</span><b>The HQ Club</b><em>Coming soon. Join the waitlist for founding pricing.</em></a><a href="https://virtualhq.online/"><span>virtualhq.online</span><b>Virtual HQ</b><em>One operating map that connects the tools you already use.</em></a><a href="https://runitliketherich.com/"><span>runitliketherich.com</span><b>Run It Like the Rich</b><em>The operator mindset: articles, the Reset, and merch.</em></a><a href="https://trainthegaap.com/"><span>trainthegaap.com</span><b>Train the GAAP</b><em>Backup and the why behind the books, for your bookkeeper.</em></a><a href="https://storybookexit.com/"><span>storybookexit.com</span><b>StoryBook Exit</b><em>Build the business you can retire from.</em></a></div>
   <div class="follow">
     <div class="stack" style="gap:8px"><b>Follow along</b><div class="socs"><a class="soc" href="https://runitliketherich.substack.com/" target="_blank" rel="noopener">Substack</a><a class="soc" href="https://www.youtube.com/@RunItLikeTheRich" target="_blank" rel="noopener">YouTube</a><a class="soc" href="https://www.instagram.com/runitliketherich/" target="_blank" rel="noopener">Instagram</a><a class="soc" href="https://www.facebook.com/profile.php?id=61583470245237" target="_blank" rel="noopener">Facebook</a><a class="soc" href="https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/" target="_blank" rel="noopener">LinkedIn</a></div>
     <b style="margin-top:10px">Free checklists</b><div class="socs"><a class="soc" href="https://runitliketherich.com/clean-start">Clean Start</a><a class="soc" href="https://runitliketherich.com/goals-vision">Goals &amp; Vision</a><a class="soc" href="https://trainthegaap.com/qbo-learning">QuickBooks Learning List</a><a class="soc" href="https://storybookexit.com/exit-plan">Exit Plan</a></div></div>
@@ -753,7 +608,7 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 
 <script>
 (function(){
-  var C = {"email": "support@thehq.online", "phone": "", "chatUrl": "", "bookingUrl": "https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support", "joinUrl": "", "formEndpoint": "", "qboInviteEmail": "laurapoincot@gmail.com", "intakeEndpoint": "", "substackUrl": "https://runitliketherich.substack.com/", "youtubeUrl": "https://www.youtube.com/@RunItLikeTheRich", "instagramUrl": "https://www.instagram.com/runitliketherich/", "facebookUrl": "https://www.facebook.com/profile.php?id=61583470245237", "linkedinUrl": "https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/", "tiktokUrl": "", "shopUrl": "", "signupEndpoint": ""};
+  var C = {"email": "support@thehq.online", "phone": "", "chatUrl": "", "bookingUrl": "https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support", "joinUrl": "", "formEndpoint": "", "qboInviteEmail": "laurapoincot@gmail.com", "waitlistEndpoint": "", "intakeEndpoint": "", "substackUrl": "https://runitliketherich.substack.com/", "youtubeUrl": "https://www.youtube.com/@RunItLikeTheRich", "instagramUrl": "https://www.instagram.com/runitliketherich/", "facebookUrl": "https://www.facebook.com/profile.php?id=61583470245237", "linkedinUrl": "https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/", "tiktokUrl": "", "shopUrl": "", "signupEndpoint": ""};
   // hide ways that have no link yet
   document.querySelectorAll('[data-need]').forEach(function(el){
     if(!C[el.getAttribute('data-need')]) el.hidden = true;
@@ -796,7 +651,7 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
   var form = document.getElementById('cf');
   function pick(){
     if(!form) return;
-    var map = {book:'Book a call', join:'Join the HQ Club', fullservice:'Full-service options', message:'Quick question'};
+    var map = {book:'Book a call', join:'HQ Club waitlist', fullservice:'Full-service options', message:'Quick question'};
     var h = (location.hash || '').slice(1), want = map[h];
     if(!want) return;
     var r = form.querySelector('input[name="topic"][value="' + want + '"]');
