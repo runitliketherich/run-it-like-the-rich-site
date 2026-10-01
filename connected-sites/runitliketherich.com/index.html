@@ -365,6 +365,22 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 
 /* Light sections: soft rust instead of light blue */
 :root{--soft:#f6e8e0}
+
+/* Free checklist pages */
+.tool{display:flex;flex-direction:column;gap:clamp(32px,5vw,56px)}
+.tgroup{display:flex;flex-direction:column;gap:12px;max-width:860px}
+.tg-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:2px solid var(--navy);padding-bottom:8px;flex-wrap:wrap}
+.tg-head h2{font-size:clamp(24px,3.5vw,32px)}
+.tg-count{font-size:14px;font-weight:700;color:var(--rust);font-variant-numeric:tabular-nums}
+.titems{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.titems label{display:flex;gap:12px;align-items:flex-start;background:var(--cream);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer}
+.titems input{accent-color:var(--navy);width:20px;height:20px;margin-top:2px;flex:none}
+.titems span{display:flex;flex-direction:column;gap:3px;min-width:0}
+.titems b{font-weight:600;color:var(--navy);line-height:1.4}
+.titems em{font-style:normal;font-size:14.5px;color:var(--muted);line-height:1.45}
+.titems label:has(input:checked){border-color:var(--navy);background:var(--paper)}
+#send form.cf{max-width:860px}
+#ts-sum{font-size:14px;background:var(--paper)}
 </style>
 <link rel="canonical" href="https://runitliketherich.com/">
 <meta property="og:title" content="Run It Like the Rich">
@@ -388,14 +404,10 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
   </div>
 <aside class="freebie" aria-labelledby="fb-title">
   <p class="eyebrow">Free checklist</p>
-  <h3 id="fb-title">The Clean Start Checklist</h3>
-  <p>Every Admin, Books and Compliance setup step for a Florida business, in one place.</p>
-  <ul class="checks small">
-    <li>48 setup steps, from forming the company to the monthly close</li>
-    <li>Sales tax lookup by ZIP code</li>
-    <li>A 12-month compliance calendar</li>
-  </ul>
-  <form class="fb-form" novalidate>
+  <h3 id="fb-title">The Goals &amp; Vision Checklist</h3>
+  <p>Pick the goals that matter to you, then work through the vision steps.</p>
+  <ul class="checks small"><li>Owner and business goals to choose from</li><li>Seven vision steps to check off</li><li>A one-line vision you can share with your team</li></ul>
+  <form class="fb-form" novalidate data-source="The Goals &amp; Vision Checklist">
     <label class="fl" for="fb-email-riltr">Your email
       <input id="fb-email-riltr" name="email" type="email" required autocomplete="email" placeholder="you@yourbusiness.com"></label>
     <button class="btn btn-gold" type="submit">Send me the checklist</button>
@@ -403,7 +415,7 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
   </form>
   <div class="fb-done" hidden>
     <p><b>You're on the list.</b> Confirm your subscription in the tab that just opened, then start here:</p>
-    <a class="btn btn-navy" href="https://runitliketherich.com/clean-start">Open the Clean Start Checklist</a>
+    <a class="btn btn-navy" href="https://runitliketherich.com/goals-vision">Open The Goals &amp; Vision Checklist</a>
   </div>
 </aside>
 </div></section>
@@ -562,7 +574,8 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
   <h2>Every site leads to the same place: a business that runs without you.</h2>
   <div class="fam-grid"><a href="https://laurapoincot.com/"><span>laurapoincot.com</span><b>Laura Poincot</b><em>Message, email or book a call. Every program in one place.</em></a><a href="https://thehq.online/"><span>thehq.online</span><b>The HQ Club</b><em>Early access is open. Build every system, then keep it running.</em></a><a href="https://virtualhq.online/"><span>virtualhq.online</span><b>Virtual HQ</b><em>One operating map that connects the tools you already use.</em></a><a class="here" href="https://runitliketherich.com/"><span>runitliketherich.com</span><b>Run It Like the Rich</b><em>The operator mindset: articles, the Reset, and merch.</em></a><a href="https://trainthegaap.com/"><span>trainthegaap.com</span><b>Train the GAAP</b><em>Backup and the why behind the books, for your bookkeeper.</em></a><a href="https://storybookexit.com/"><span>storybookexit.com</span><b>StoryBook Exit</b><em>Build the business you can retire from.</em></a></div>
   <div class="follow">
-    <div class="stack" style="gap:8px"><b>Follow along</b><div class="socs"><a class="soc" href="https://runitliketherich.substack.com/" target="_blank" rel="noopener">Substack</a><a class="soc" href="https://www.youtube.com/@RunItLikeTheRich" target="_blank" rel="noopener">YouTube</a><a class="soc" href="https://www.instagram.com/runitliketherich/" target="_blank" rel="noopener">Instagram</a><a class="soc" href="https://www.facebook.com/profile.php?id=61583470245237" target="_blank" rel="noopener">Facebook</a><a class="soc" href="https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/" target="_blank" rel="noopener">LinkedIn</a><a class="soc" href="https://runitliketherich.com/clean-start">Free: Clean Start Checklist</a></div></div>
+    <div class="stack" style="gap:8px"><b>Follow along</b><div class="socs"><a class="soc" href="https://runitliketherich.substack.com/" target="_blank" rel="noopener">Substack</a><a class="soc" href="https://www.youtube.com/@RunItLikeTheRich" target="_blank" rel="noopener">YouTube</a><a class="soc" href="https://www.instagram.com/runitliketherich/" target="_blank" rel="noopener">Instagram</a><a class="soc" href="https://www.facebook.com/profile.php?id=61583470245237" target="_blank" rel="noopener">Facebook</a><a class="soc" href="https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/" target="_blank" rel="noopener">LinkedIn</a></div>
+    <b style="margin-top:10px">Free checklists</b><div class="socs"><a class="soc" href="https://runitliketherich.com/clean-start">Clean Start</a><a class="soc" href="https://runitliketherich.com/goals-vision">Goals &amp; Vision</a><a class="soc" href="https://trainthegaap.com/qbo-learning">QuickBooks Learning List</a><a class="soc" href="https://storybookexit.com/exit-plan">Exit Plan</a></div></div>
     <div class="row"><a class="btn btn-gold btn-sm" href="https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support" target="_blank" rel="noopener">Book a call</a><a class="btn btn-line btn-sm" href="https://laurapoincot.com/#message">Send a message</a></div>
   </div>
   <div class="signoff">

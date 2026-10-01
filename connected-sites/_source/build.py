@@ -8,10 +8,12 @@ Edit CONFIG below, run again, re-upload. Blank values fall back safely:
   booking/join links fall back to the contact form on laurapoincot.com,
   phone/chat buttons hide themselves.
 """
-import base64, html, json, pathlib, re, shutil
+import base64, html, json, pathlib, re, shutil, sys
 
 ROOT = pathlib.Path(__file__).parent
 SRC = ROOT / "src"
+sys.path.insert(0, str(SRC))
+from tools import TOOLS, FREEBIE
 
 CONFIG = {
     "email": "support@thehq.online",
@@ -66,6 +68,9 @@ CSS = (SRC / "shared.css").read_text()
 def url_for(key, mode, anchor=""):
     if key == "clean":
         return "https://claude.ai/artifact/Sc7ySwDKDSyn73bFjAPsm3" if mode == "preview" else "https://runitliketherich.com/clean-start"
+    if key in TOOLS:
+        t = TOOLS[key]
+        return f"{t['slug']}.html" if mode == "preview" else f"https://{BY_KEY[t['site']][1]}/{t['slug']}"
     if mode == "preview":
         f = "index.html" if key == "hub" else f"{key}.html"
         return f + (f"#{anchor}" if anchor else "")
@@ -103,7 +108,8 @@ def footer(key, mode):
   <h2>Every site leads to the same place: a business that runs without you.</h2>
   <div class="fam-grid">{"".join(cards)}</div>
   <div class="follow">
-    <div class="stack" style="gap:8px"><b>Follow along</b><div class="socs">{social_links()}<a class="soc" href="{url_for("clean", mode)}">Free: Clean Start Checklist</a></div></div>
+    <div class="stack" style="gap:8px"><b>Follow along</b><div class="socs">{social_links()}</div>
+    <b style="margin-top:10px">Free checklists</b><div class="socs"><a class="soc" href="{url_for("clean", mode)}">Clean Start</a><a class="soc" href="{url_for("goals-vision", mode)}">Goals &amp; Vision</a><a class="soc" href="{url_for("qbo-learning", mode)}">QuickBooks Learning List</a><a class="soc" href="{url_for("exit-plan", mode)}">Exit Plan</a></div></div>
     <div class="row"><a class="btn btn-gold btn-sm" href="{book}"{link_attrs(book)}>Book a call</a><a class="btn btn-line btn-sm" href="{url_for("hub", mode, "message")}">Send a message</a></div>
   </div>
   <div class="signoff">
@@ -208,27 +214,124 @@ def fill(body, key, mode):
     body = re.sub(r"\{\{URL:(\w+)(?:#(\w+))?\}\}", lambda m: url_for(m.group(1), mode, m.group(2) or ""), body)
     return body
 
-def page(key, mode, standalone):
+def page(key, mode, standalone, raw=None, title=None, desc=None, path=""):
     s = BY_KEY[key]
-    raw = (SRC / "pages" / f"{key}.html").read_text()
+    is_tool = raw is not None
+    if raw is None:
+        raw = (SRC / "pages" / f"{key}.html").read_text()
     # hero: two columns, text left, free checklist sign-up right
-    start = raw.index('<section class="band hero"><div class="wrap">')
-    end = raw.index('</div></section>', start)
-    fb = (SRC / "partials" / "freebie.html").read_text().replace("{{FBID}}", key)
-    raw = raw[:start] + raw[start:end].replace('<div class="wrap">', '<div class="wrap hero-grid">', 1) + fb + raw[end:]
+    start = -1 if is_tool else raw.index('<section class="band hero"><div class="wrap">')
+    end = 0 if is_tool else raw.index('</div></section>', start)
+    tk, ft, fd, fbl = FREEBIE[key]
+    if tk in TOOLS:
+        t = TOOLS[tk]; ft, fd, fbl = t["title"], t["lead"].split(". ")[0] + ".", t["bullets"]
+    fb = ((SRC / "partials" / "freebie.html").read_text().replace("{{FBID}}", key)
+          .replace("{{FB_TITLE}}", html.escape(ft)).replace("{{FB_DESC}}", html.escape(fd))
+          .replace("{{FB_BULLETS}}", "".join(f"<li>{html.escape(b)}</li>" for b in fbl))
+          .replace("{{FB_LINK}}", url_for(tk, mode)))
+    if not is_tool: raw = raw[:start] + raw[start:end].replace('<div class="wrap">', '<div class="wrap hero-grid">', 1) + fb + raw[end:]
     body = fill(raw, key, mode)
-    head = f'''<title>{s[4]}</title>
-<meta name="description" content="{html.escape(s[5])}">
+    head = f'''<title>{title or s[4]}</title>
+<meta name="description" content="{html.escape(desc or s[5])}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap">
 <style>{CSS}</style>'''
     if mode == "deploy":
-        head += f'\n<link rel="canonical" href="https://{s[1]}/">\n<meta property="og:title" content="{s[4]}">\n<meta property="og:description" content="{html.escape(s[5])}">'
+        head += f'\n<link rel="canonical" href="https://{s[1]}/{path}">\n<meta property="og:title" content="{s[4]}">\n<meta property="og:description" content="{html.escape(s[5])}">'
     js = JS.replace("__CONFIG__", json.dumps(CONFIG))
     inner = f"{header(key, mode)}\n<main>{body}</main>\n{footer(key, mode)}\n{js}"
     if standalone:
         return f'<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n{head}\n</head><body>\n{inner}\n</body></html>\n'
     return f"{head}\n{inner}\n"
+
+def tool_raw(tk):
+    t = TOOLS[tk]
+    groups = []
+    n = 0
+    for gi, (gt, gintro, items) in enumerate(t["groups"]):
+        lis = []
+        for ii, (txt, why) in enumerate(items):
+            iid = f"{tk}-{gi}-{ii}"; n += 1
+            w = f"<em>{html.escape(why)}</em>" if why else ""
+            lis.append(f'<li><label for="{iid}"><input type="checkbox" id="{iid}" data-g="{gi}" data-t="{html.escape(txt)}"><span><b>{html.escape(txt)}</b>{w}</span></label></li>')
+        groups.append(f'<div class="tgroup" id="g{gi}"><div class="tg-head"><h2>{html.escape(gt)}</h2><span class="tg-count" data-gc="{gi}">0 / {len(items)}</span></div><p class="muted">{html.escape(gintro)}</p><ul class="titems">{"".join(lis)}</ul></div>')
+    notes = "".join(f'<label class="fl" for="n-{tk}-{k}">{html.escape(lbl)}<textarea id="n-{tk}-{k}" data-n="{html.escape(lbl)}" rows="2"></textarea></label>' for k, lbl in t["notes"])
+    return f'''<section class="band"><div class="wrap" style="padding-block:clamp(40px,7vw,80px)">
+  <div class="hero-grid">
+    <div class="stack-lg">
+      <p class="eyebrow">{html.escape(t["eyebrow"])}</p>
+      <h1>{html.escape(t["title"])}</h1>
+      <p class="lead">{html.escape(t["lead"])}</p>
+    </div>
+    <aside class="freebie" aria-live="polite">
+      <p class="eyebrow">Your progress</p>
+      <div class="sc-total"><span id="t-done">0</span><small> / {n} checked</small></div>
+      <div class="bar"><i id="t-bar"></i></div>
+      <p class="small muted">Your checks save in this browser. Send the list to Laura when you're ready.</p>
+      <a class="btn btn-navy" href="#send">Send my list to Laura</a>
+    </aside>
+  </div>
+</div></section>
+<section class="sec"><div class="wrap tool" data-tool="{tk}" data-label="{html.escape(t["check_label"])}">
+  {"".join(groups)}
+  <div class="tgroup" id="send">
+    <div class="tg-head"><h2>Send it to Laura</h2></div>
+    <p class="muted">Add a few notes, then email your list. Laura will reply with where to start.</p>
+    <form class="cf" id="tool-send" novalidate>
+      <div class="f2">
+        <label class="fl" for="ts-name">Name<input id="ts-name" name="name" required autocomplete="name"></label>
+        <label class="fl" for="ts-email">Email<input id="ts-email" name="email" type="email" required autocomplete="email"></label>
+      </div>
+      <label class="fl" for="ts-biz">Business<input id="ts-biz" name="business" autocomplete="organization"></label>
+      {notes}
+      <label class="fl" for="ts-sum">Your list<textarea id="ts-sum" rows="8" readonly></textarea></label>
+      <div class="row"><button class="btn btn-gold" type="submit">Email my list to Laura</button><button class="btn btn-line" type="button" id="ts-copy">Copy my list</button><a class="btn btn-line" href="{{{{BOOK}}}}"{{{{BOOK_ATTR}}}}>Book a call</a></div>
+      <p class="status" id="ts-status" role="status" hidden></p>
+    </form>
+  </div>
+</div></section>
+{{{{CTA}}}}
+<script>
+(function(){{
+  var C = __CONFIG__, root = document.querySelector('[data-tool]'), key = 'riltr-' + root.dataset.tool, st = {{}};
+  try {{ st = JSON.parse(localStorage.getItem(key) || '{{}}'); }} catch(e) {{}}
+  var boxes = root.querySelectorAll('input[type=checkbox]'), notes = root.querySelectorAll('textarea[data-n]');
+  boxes.forEach(function(b){{ b.checked = !!(st.c && st.c[b.id]); }});
+  notes.forEach(function(t){{ t.value = (st.n && st.n[t.id]) || ''; }});
+  function save(){{ var c = {{}}, n = {{}}; boxes.forEach(function(b){{ if(b.checked) c[b.id] = 1; }}); notes.forEach(function(t){{ n[t.id] = t.value; }}); try {{ localStorage.setItem(key, JSON.stringify({{c:c, n:n}})); }} catch(e) {{}} }}
+  function summary(){{
+    var out = [document.querySelector('h1').textContent, ''];
+    root.querySelectorAll('.tgroup[id^=g]').forEach(function(g){{
+      var on = g.querySelectorAll('input:checked'); if(!on.length) return;
+      out.push(g.querySelector('h2').textContent + ' (' + root.dataset.label + '):');
+      on.forEach(function(b){{ out.push('- ' + b.dataset.t); }}); out.push('');
+    }});
+    notes.forEach(function(t){{ if(t.value.trim()) out.push(t.dataset.n + ': ' + t.value.trim()); }});
+    document.getElementById('ts-sum').value = out.join('\\n');
+  }}
+  function update(){{
+    var d = 0; boxes.forEach(function(b){{ if(b.checked) d++; }});
+    document.getElementById('t-done').textContent = d;
+    document.getElementById('t-bar').style.width = (d / boxes.length * 100) + '%';
+    root.querySelectorAll('[data-gc]').forEach(function(s){{ var g = s.dataset.gc, all = root.querySelectorAll('input[data-g="' + g + '"]'), on = root.querySelectorAll('input[data-g="' + g + '"]:checked'); s.textContent = on.length + ' / ' + all.length; }});
+    summary(); save();
+  }}
+  root.addEventListener('change', update); root.addEventListener('input', function(e){{ if(e.target.dataset.n !== undefined) update(); }});
+  update();
+  var f = document.getElementById('tool-send'), msg = document.getElementById('ts-status');
+  document.getElementById('ts-copy').addEventListener('click', function(){{
+    var s = document.getElementById('ts-sum');
+    try {{ navigator.clipboard.writeText(s.value).then(function(){{ msg.textContent = 'Copied.'; msg.hidden = false; }}, function(){{ s.select(); }}); }} catch(e) {{ s.select(); }}
+  }});
+  f.addEventListener('submit', function(e){{
+    e.preventDefault(); if(!f.reportValidity()) return;
+    var name = document.getElementById('ts-name').value, em = document.getElementById('ts-email').value, biz = document.getElementById('ts-biz').value;
+    var body = 'Name: ' + name + '\\nEmail: ' + em + '\\nBusiness: ' + biz + '\\n\\n' + document.getElementById('ts-sum').value;
+    location.href = 'mailto:' + C.email + '?subject=' + encodeURIComponent(document.querySelector('h1').textContent + ' – ' + name) + '&body=' + encodeURIComponent(body);
+    msg.textContent = 'Your email app should open with your list ready to send. If it didn\\'t, copy your list and email ' + C.email + '.'; msg.hidden = false;
+  }});
+}})();
+</script>'''.replace("__CONFIG__", json.dumps(CONFIG))
 
 def main():
     for d in ("preview", "deploy"):
@@ -243,6 +346,11 @@ def main():
         (out / "index.html").write_text(page(key, "deploy", standalone=True))
         if key == "riltr":
             shutil.copy(SRC / "clean-start.html", out / "clean-start.html")
+    for tk, t in TOOLS.items():
+        raw = tool_raw(tk)
+        kw = dict(raw=raw, title=t["title"], desc=t["lead"], path=t["slug"])
+        (ROOT / "preview" / f"{t['slug']}.html").write_text(page(t["site"], "preview", True, **kw))
+        (ROOT / "deploy" / BY_KEY[t["site"]][1] / f"{t['slug']}.html").write_text(page(t["site"], "deploy", True, **kw))
     print("built", [p.name for p in (ROOT / "preview").iterdir()])
 
 if __name__ == "__main__":

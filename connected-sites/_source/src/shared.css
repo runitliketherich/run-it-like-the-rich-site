@@ -359,3 +359,19 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 
 /* Light sections: soft rust instead of light blue */
 :root{--soft:#f6e8e0}
+
+/* Free checklist pages */
+.tool{display:flex;flex-direction:column;gap:clamp(32px,5vw,56px)}
+.tgroup{display:flex;flex-direction:column;gap:12px;max-width:860px}
+.tg-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:2px solid var(--navy);padding-bottom:8px;flex-wrap:wrap}
+.tg-head h2{font-size:clamp(24px,3.5vw,32px)}
+.tg-count{font-size:14px;font-weight:700;color:var(--rust);font-variant-numeric:tabular-nums}
+.titems{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.titems label{display:flex;gap:12px;align-items:flex-start;background:var(--cream);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer}
+.titems input{accent-color:var(--navy);width:20px;height:20px;margin-top:2px;flex:none}
+.titems span{display:flex;flex-direction:column;gap:3px;min-width:0}
+.titems b{font-weight:600;color:var(--navy);line-height:1.4}
+.titems em{font-style:normal;font-size:14.5px;color:var(--muted);line-height:1.45}
+.titems label:has(input:checked){border-color:var(--navy);background:var(--paper)}
+#send form.cf{max-width:860px}
+#ts-sum{font-size:14px;background:var(--paper)}
