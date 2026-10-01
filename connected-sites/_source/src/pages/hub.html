@@ -1,0 +1,115 @@
+<section class="band hero"><div class="wrap">
+  <div class="stack-lg" style="max-width:720px">
+    <img class="mark" src="{{MARK_GOLD}}" alt="Run it like the Rich">
+    <p class="eyebrow">Laura Poincot · Accounting &amp; Business Systems</p>
+    <h1>Talk to Laura.</h1>
+    <p class="lead">Twenty-plus years inside real businesses: the books, the paperwork, the cleanup, the systems. Send a message, email, or book a time. Every program is explained below.</p>
+    <div class="row">
+      <a class="btn btn-gold" href="#message">Send a message</a>
+      <a class="btn btn-line" href="{{BOOK}}"{{BOOK_ATTR}}>Book a call</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" id="contact"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Reach me</p>
+    <h2>Pick the way that suits you.</h2>
+  </div>
+  <div class="contact-grid">
+    <div class="ways">
+      <div class="way" id="book">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+        <div><h3>Book a call</h3><p class="small muted">Pick a time on my calendar. Good for HQ Club questions or full-service options.</p>
+          <div class="row"><a class="btn btn-navy btn-sm" href="{{BOOK}}"{{BOOK_ATTR}}>See open times</a></div></div>
+      </div>
+      <div class="way" data-need="phone">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg></div>
+        <div><h3>Text me</h3><p class="val" data-fill="phone"></p>
+          <div class="row"><a class="btn btn-navy btn-sm" data-fill="phone" href="#">Send a text</a><button class="btn btn-line btn-sm" type="button" data-copy="phone">Copy number</button></div></div>
+      </div>
+      <div class="way" data-need="chatUrl">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></div>
+        <div><h3>Chat now</h3><p class="small muted">Instant message, straight to my phone.</p>
+          <div class="row"><a class="btn btn-navy btn-sm" data-fill="chatUrl" href="#" target="_blank" rel="noopener">Open chat</a></div></div>
+      </div>
+      <div class="way">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+        <div><h3>Email</h3><p class="val">{{EMAIL}}</p>
+          <div class="row"><button class="btn btn-line btn-sm" type="button" data-copy="email">Copy address</button></div></div>
+      </div>
+      <div class="way">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+        <div><h3>Follow along</h3><p class="small muted">Articles, videos and behind-the-scenes builds.</p>
+          <div class="socs" style="margin-top:10px">{{SOCIAL}}</div></div>
+      </div>
+    </div>
+
+    <form class="cf" id="cf" novalidate>
+      <div class="stack" style="gap:6px" id="message"><span id="join"></span><h3>Send a message</h3><p class="small muted">It goes straight to my inbox.</p></div>
+      <div class="chips" role="radiogroup" aria-label="What's this about?">
+        <label><input type="radio" name="topic" value="Join the HQ Club" id="t-join" checked> Join the HQ Club</label>
+        <label><input type="radio" name="topic" value="Full-service options" id="t-full"> Full-service options</label>
+        <label><input type="radio" name="topic" value="Book a call" id="t-call"> Book a call</label>
+        <label><input type="radio" name="topic" value="Quick question" id="t-q"> Quick question</label>
+      </div>
+      <div class="f2">
+        <label class="fl" for="f-name">Name<input id="f-name" name="name" required autocomplete="name"></label>
+        <label class="fl" for="f-email">Email<input id="f-email" name="email" type="email" required autocomplete="email"></label>
+      </div>
+      <div class="f2">
+        <label class="fl" for="f-phone">Phone (optional)<input id="f-phone" name="phone" type="tel" autocomplete="tel"></label>
+        <label class="fl" for="f-biz">Business<input id="f-biz" name="business" autocomplete="organization"></label>
+      </div>
+      <label class="fl" for="f-reach">Best way to reach you
+        <select id="f-reach" name="reach"><option>Email</option><option>Text</option><option>Phone call</option></select></label>
+      <label class="fl" for="f-msg">Message<textarea id="f-msg" name="message" required placeholder="What's going on in the business, and what would you like fixed first?"></textarea></label>
+      <button class="btn btn-gold" type="submit">Send message</button>
+      <p class="status" id="cf-status" role="status" hidden></p>
+    </form>
+  </div>
+</div></section>
+
+<section class="sec sec-soft"><div class="wrap">
+  {{OFFER}}
+</div></section>
+
+<section class="sec" id="programs"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">Every program, in order</p>
+    <h2>Four steps from messy to sellable.</h2>
+    <p class="lead muted">Each one builds on the last. The HQ Club covers the foundation. Full service covers the whole path.</p>
+  </div>
+  <ol class="steps">
+    <li><div><h3>ABC Review</h3><p>A full look at Admin, Books and Compliance. You get what's wrong, what's missing, what's profitable and what's quietly costing you money. Every HQ Club build starts here.</p></div></li>
+    <li><div><h3>Virtual HQ</h3><p>One controlled operating environment. Not another app: an operating map that connects the tools you already use, with the controls automation stripped out put back in. <a class="go" href="{{URL:vhq}}">virtualhq.online</a></p></div></li>
+    <li><div><h3>Train the GAAP</h3><p>Your bookkeeper is often the most unsupported person in the business: self-taught, with no accounting ladder above them. This gives them the why behind the work (the core GAAP principles) and an ally with accounting and systems experience to call. <a class="go" href="{{URL:gaap}}">trainthegaap.com</a></p></div></li>
+    <li><div><h3>StoryBook Exit</h3><p>Your operations, financials and systems turned into a story a buyer can confidently acquire. A 24–30 month program for owners planning their exit. <a class="go" href="{{URL:exit}}">storybookexit.com</a></p></div></li>
+  </ol>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card"><span class="tag">Start here</span><h3>The HQ Club</h3><p>$1,500 setup: your customized Virtual HQ, ABC Review, QBO report and support. Then $135 a month for full Club access.</p><div class="foot"><a class="go" href="{{URL:hq}}">thehq.online</a></div></div>
+    <div class="card"><span class="tag">Read &amp; follow</span><h3>Run It Like the Rich</h3><p>The articles, the Business Reset, the operator mindset and the merch.</p><div class="foot"><a class="go" href="{{URL:riltr}}">runitliketherich.com</a></div></div>
+  </div>
+</div></section>
+
+{{FULLSERVICE}}
+
+<section class="sec sec-soft"><div class="wrap">
+  <div class="grid g2" style="gap:clamp(24px,4vw,56px);align-items:start">
+    <div class="stack">
+      <p class="eyebrow">About Laura</p>
+      <h2>In-house, alongside your team.</h2>
+    </div>
+    <div class="stack">
+      <p>I started in accounting at 19 while studying at UCF, and within two years I was running financial operations and reporting for a food-distribution facility. Since then I've worked alongside more than a dozen self-made multimillionaire owners, stepped into businesses after the mess had piled up, and kept books and reporting clean across 18 entities at once.</p>
+      <p>I don't replace your bookkeeper or your admin support. I train them, give them systems, and back them up.</p>
+      <div class="facts">
+        <div><b>20+</b><span>years inside real businesses</span></div>
+        <div><b>18</b><span>entities kept clean at once</span></div>
+        <div><b>12+</b><span>self-made multimillionaire owners worked alongside</span></div>
+      </div>
+      <p class="small muted">Industries: automotive, aviation, commercial real estate, food service and hospitality, parking, staffing, professional trades and home services.</p>
+      <p class="pull">“Build every system as though the business could be sold tomorrow, even if you plan to keep it forever.”</p>
+    </div>
+  </div>
+</div></section>
