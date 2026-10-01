@@ -58,7 +58,7 @@ BY_KEY = {s[0]: s for s in SITES}
 def b64(p):
     return "data:image/png;base64," + base64.b64encode((SRC / p).read_bytes()).decode()
 
-MARK_GOLD = b64("mark-gold.png")
+MARK_GOLD = b64("mark-navy.png")  # light look: navy script on cream
 MARK_NAVY = b64("mark-navy.png")
 CSS = (SRC / "shared.css").read_text()
 

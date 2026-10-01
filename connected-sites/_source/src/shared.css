@@ -284,3 +284,61 @@ fieldset.isec>*:not(legend){clear:both}
 .next .qbo ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;color:var(--mist)}
 .next .qbo b,.next .qbo .val{color:var(--cream)}
 .next .qbo .val{font-weight:700;user-select:all;word-break:break-all}
+
+/* ===== Light look (Laura, Oct 1): no dark blue backgrounds ===== */
+:root{--light:#fbf7ef;--tint:#eaf0f4}
+.top{background:var(--cream);color:var(--navy);border-bottom:1px solid var(--line)}
+.top .home span{color:var(--muted)}
+.top nav a.lnk{color:var(--ink)}
+.top nav a.lnk:hover{color:var(--navy)}
+.strip{background:var(--paper);color:var(--muted);border-bottom:1px solid var(--line)}
+.strip span{color:var(--rust)}
+.strip a{color:var(--muted)}
+.strip a:hover{color:var(--navy);background:var(--soft)}
+.band{background:var(--light);color:var(--ink);border-bottom:1px solid var(--line)}
+.band::before{background:var(--tint)}
+.band h1,.band h2,.band h3{color:var(--navy)}
+.band .eyebrow{color:var(--rust)}
+.band .lead{color:var(--ink)}
+.band .muted{color:var(--muted)}
+.band .pull{color:var(--navy)}
+.band .checks li{color:var(--ink)}
+.band .checks li::before{border-color:var(--rust)}
+.on-navy .btn-line,.band .btn-line{color:var(--navy);border-color:var(--navy)}
+.offer{background:var(--cream);color:var(--ink);border:1.5px solid var(--navy)}
+.offer h2,.offer h3{color:var(--navy)}
+.offer .eyebrow{color:var(--rust)}
+.offer p{color:var(--ink)}
+.on-navy .checks li::before{border-color:var(--rust)}
+.offer .price{background:var(--soft)}
+.family{background:var(--soft);color:var(--ink);border-top:1px solid var(--line)}
+.family h2{color:var(--navy)}
+.family .eyebrow{color:var(--rust)!important}
+.fam-grid{background:var(--line);border-color:var(--line)}
+.fam-grid a{background:var(--cream)}
+.fam-grid a:hover{background:var(--paper)}
+.fam-grid a b{color:var(--navy)}
+.fam-grid a span{color:var(--rust)}
+.fam-grid a em{color:var(--muted)}
+.fam-grid a.here{background:var(--light);box-shadow:inset 0 0 0 2px var(--gold)}
+.follow b,.signoff b{color:var(--navy)}
+a.soc{border-color:var(--line);color:var(--navy);background:var(--cream)}
+a.soc:hover{border-color:var(--navy);color:var(--navy)}
+.signoff{border-top-color:var(--line)}
+.next{background:var(--cream);color:var(--ink);border:1.5px solid var(--navy)}
+.next h3{color:var(--navy)}
+.next .eyebrow{color:var(--rust)}
+.nlist{color:var(--ink)}
+.next .qbo{background:var(--soft)}
+.next .qbo h4,.next .qbo b,.next .qbo .val{color:var(--navy)}
+.next .qbo ol{color:var(--ink)}
+.sc-res{background:var(--cream);color:var(--ink);border:1.5px solid var(--navy)}
+.sc-res .eyebrow{color:var(--rust)}
+.sc-total{color:var(--navy)}
+.sc-total small{color:var(--muted)}
+.sc-prof b,.bl b{color:var(--navy)}
+.bar{background:var(--line)}
+.sc-tip{color:var(--ink);border-top-color:var(--line)}
+.card-navy{background:var(--light);border:1.5px solid var(--gold);color:var(--ink)}
+.card-navy h3{color:var(--navy)}
+.card-navy .tag{color:var(--rust);border-color:var(--line)}

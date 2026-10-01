@@ -11,7 +11,7 @@
   --cream:#f7f2e7; --paper:#fffdf8;
   --ink:#1b2231; --muted:#5d6577; --line:#e3dccb;
   --bg:var(--cream); --surface:var(--paper); --fg:var(--ink);
-  --plate:var(--navy); --plate-fg:#f7f2e7;
+  --plate:#fbf7ef; --plate-fg:#13233f;
   --ok:#2f7a55; --warn:#a4661a;
   --tagA:#2d4f8a; --tagB:#2f7a55; --tagC:#9a4a2a;
   --display:"DM Serif Display",Georgia,"Times New Roman",serif;
@@ -42,6 +42,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;l
 
 /* Header plate */
 .plate{background:var(--plate);color:var(--plate-fg);padding-block:44px 36px;border-bottom:3px solid var(--gold)}
+.plate .brandline,.close .brandline,.plate h1 em,.signoff{color:#8f4c34}
 .brandline{font-family:var(--mono);color:var(--gold);font-size:13px;letter-spacing:.28em;text-transform:uppercase;line-height:1.4}
 .plate h1{font-size:clamp(40px,8vw,72px);margin-top:6px}
 .plate h1 em{color:var(--gold);font-style:italic}
@@ -86,7 +87,7 @@ section.drawer{padding-block:34px 6px;scroll-margin-top:64px}
 ul.items{list-style:none;margin:0;padding:0}
 li.item{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
 li.item input[type=checkbox]{appearance:none;-webkit-appearance:none;width:22px;height:22px;border:1.5px solid var(--muted);border-radius:3px;margin:2px 0 0;padding:0;cursor:pointer;background:var(--surface);display:grid;place-content:center}
-li.item input[type=checkbox]::after{content:"";width:11px;height:6px;border-left:2.5px solid var(--plate-fg);border-bottom:2.5px solid var(--plate-fg);transform:rotate(-45deg) translate(1px,-1px);opacity:0}
+li.item input[type=checkbox]::after{content:"";width:11px;height:6px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px);opacity:0}
 li.item input[type=checkbox]:checked{background:var(--ok);border-color:var(--ok)}
 li.item input[type=checkbox]:checked::after{opacity:1}
 li.item.checked .t{text-decoration:line-through;text-decoration-color:var(--muted);color:var(--muted)}
