@@ -384,3 +384,5 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 .wl-form .btn{align-self:flex-start}
 .wl-done{display:flex;flex-direction:column;gap:12px}
 .wl-done h3{font-size:26px}
+
+.offer .price{align-self:start}

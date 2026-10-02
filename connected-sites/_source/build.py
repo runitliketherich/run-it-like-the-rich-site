@@ -46,7 +46,7 @@ SITES = [
     # key, domain, name, one-liner, title, description
     ("hub", "laurapoincot.com", "Laura Poincot", "Message, email or book a call. Every program in one place.",
      "Laura Poincot", "Contact Laura Poincot and see every Run It Like the Rich program in one place."),
-    ("hq", "thehq.online", "The HQ Club", "Coming soon. Join the waitlist for founding pricing.",
+    ("hq", "thehq.online", "The HQ Club", "Coming soon. Join the waitlist to hear first.",
      "The HQ Club", "Early access to the HQ Club: every Admin, Books and Compliance system built for your business."),
     ("vhq", "virtualhq.online", "Virtual HQ", "One operating map that connects the tools you already use.",
      "Virtual HQ", "Virtual HQ: one controlled operating environment for your business."),
