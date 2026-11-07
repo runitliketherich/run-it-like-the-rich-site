@@ -388,6 +388,8 @@ def main():
         (out / "index.html").write_text(page(key, "deploy", standalone=True))
         if key == "riltr":
             shutil.copy(SRC / "clean-start.html", out / "clean-start.html")
+            for f in ("new-year.html", "proactive-bookkeeper-checklist.pdf"):
+                shutil.copy(SRC / f, out / f)
         if key == "vhq":
             for m in ("virtual-hq-tour.mp4", "virtual-hq-tour.jpg"):
                 src = SRC / "media" / m

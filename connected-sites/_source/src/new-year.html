@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Fixed by New Year's: limited November and December spots to get your Admin, Books and Compliance in order with Laura Poincot.">
+<meta property="og:title" content="Fixed by New Year's | Run It Like the Rich">
+<meta property="og:description" content="Limited November and December spots. Get your Admin, Books and Compliance in order and start the new year back in control.">
+<meta property="og:url" content="https://runitliketherich.com/new-year">
+<title>Fixed by New Year's | Run It Like the Rich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Layout: an owner's booking ledger. Light cream page, navy type, gold rules; offers set as ledger entries with a November–December spot board up top. */
+:root{
+  --bg:#f8f4ec; --surface:#fffdf8; --sunk:#efe7d8; --fg:#13243b; --muted:#5b6977; --line:#e1d7c4;
+  --navy:#13243b; --gold:#c89a45; --goldsoft:#f1e3c4; --rust:#9a4f33; --ok:#2f7a4f;
+  --onbtn:#fffdf8;
+  --serif:"Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --sans:"Figtree","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.55}
+h1,h2,h3{font-family:var(--serif);font-weight:700;margin:0;line-height:1.15;text-wrap:balance;color:var(--navy)}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--rust)}
+.muted{color:var(--muted)}
+section{padding-block:56px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:700;font-size:16px;border-radius:8px;padding:13px 20px;border:1.5px solid var(--navy);color:var(--navy);background:transparent;cursor:pointer;text-align:center}
+.btn.solid{background:var(--navy);color:var(--onbtn)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#13243b}
+.btn:hover{filter:brightness(1.06)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+/* hero */
+.hero{padding-block:64px 40px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:end}
+.hero h1{font-size:clamp(36px,6vw,60px);margin-top:14px}
+.hero h1 em{font-style:italic;color:var(--rust);font-weight:400}
+.hero .lede{font-size:19px;margin-top:18px;max-width:58ch}
+.hero .who{margin-top:22px;font-size:15px;color:var(--muted);border-left:3px solid var(--gold);padding-left:12px;max-width:52ch}
+
+/* spot board */
+.board{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.board h2{font-size:22px}
+.board .sub{font-size:14px;color:var(--muted);margin-top:4px}
+.spots{list-style:none;margin:14px 0 0;padding:0}
+.spots li{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:11px 0;border-top:1px dashed var(--line)}
+.spots b{font-weight:700}
+.spots small{display:block;color:var(--muted);font-size:13px}
+.pips{display:flex;gap:5px}
+.pips i{width:14px;height:14px;border-radius:50%;border:2px solid var(--gold)}
+.pips i.open{background:var(--gold)}
+.board .note{font-size:13px;color:var(--muted);margin-top:12px}
+
+/* offers ledger */
+.ledger{display:flex;flex-direction:column;margin-top:26px;border-top:2px solid var(--navy)}
+.entry{display:grid;grid-template-columns:220px minmax(0,1fr) 280px;gap:28px;padding-block:30px;border-bottom:1px solid var(--line)}
+.entry .tag{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--rust)}
+.entry h3{font-size:28px;margin-top:6px}
+.entry .for{margin-top:8px;font-family:var(--serif);font-style:italic;color:var(--muted)}
+.entry ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.price{display:flex;flex-direction:column;gap:12px}
+.amt{font-family:var(--serif);font-size:34px;font-weight:700;line-height:1;color:var(--navy);font-variant-numeric:tabular-nums}
+.amt small{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--muted)}
+.alt{font-size:14px;color:var(--muted)}
+.limit{display:inline-block;align-self:flex-start;font-size:13px;font-weight:700;background:var(--goldsoft);color:var(--fg);border-radius:99px;padding:4px 11px}
+.entry.feature{background:var(--surface);border:1px solid var(--line);border-top:0;padding-inline:22px;margin-inline:-22px;border-radius:0 0 14px 14px}
+
+.extra{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+.extra div{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:var(--surface)}
+.extra h3{font-size:20px}
+.extra p{font-size:15px;color:var(--muted);margin-top:6px}
+
+/* why now */
+.why{background:var(--sunk)}
+.why-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:40px}
+.why h2{font-size:clamp(28px,4vw,40px)}
+.months{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.month{background:var(--surface);border-radius:12px;padding:16px;border-top:4px solid var(--gold)}
+.month b{display:block;font-family:var(--serif);font-size:20px;color:var(--navy)}
+.month p{font-size:14.5px;color:var(--muted);margin-top:6px}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:22px}
+.step .n{font-family:var(--serif);font-size:40px;color:var(--gold);line-height:1}
+.step h3{font-size:21px;margin-top:6px}
+.step p{font-size:15.5px;color:var(--muted);margin-top:6px}
+
+/* faq */
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px;margin-top:20px}
+details{border-bottom:1px solid var(--line);padding-block:14px}
+summary{cursor:pointer;font-weight:700;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:right;color:var(--gold);font-weight:800}
+details[open] summary::after{content:"–"}
+details p{margin-top:8px;color:var(--muted);font-size:15.5px}
+
+/* close */
+.close{border-top:2px solid var(--navy);text-align:left}
+.close h2{font-size:clamp(30px,4.6vw,46px);max-width:20ch}
+.close p{max-width:60ch;margin-top:14px}
+.contact{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:18px;font-size:15px}
+.contact code{font-family:var(--sans);font-weight:700;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+.copy{font:inherit;font-size:14px;font-weight:700;border:1px solid var(--line);background:transparent;color:var(--fg);border-radius:6px;padding:6px 10px;cursor:pointer}
+.sign{font-family:var(--serif);font-style:italic;color:var(--rust);font-size:22px;margin-top:30px}
+footer{padding-block:24px 44px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+
+@media (max-width:860px){
+  .hero-grid,.why-grid{grid-template-columns:1fr}
+  .entry{grid-template-columns:1fr;gap:14px}
+  .entry.feature{margin-inline:0;padding-inline:16px}
+  .months,.steps{grid-template-columns:1fr}
+  .extra,.faq{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* site bar + free download */
+.sitebar{background:var(--navy);color:var(--onbtn);font-size:14px}
+.sitebar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:10px;flex-wrap:wrap}
+.sitebar a{color:var(--onbtn);text-decoration:none;font-weight:700}
+.sitebar a.home{font-family:var(--serif);font-size:17px}
+.free{background:var(--sunk)}
+.free-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:center}
+.free ul{margin:14px 0 0;padding-left:20px}
+.free li{margin:6px 0}
+.free .card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:12px;padding:22px}
+.free .card b{display:block;font-family:var(--serif);font-size:22px;color:var(--navy)}
+@media (max-width:860px){.free-grid{grid-template-columns:1fr}}
+</style>
+
+<body>
+<div class="sitebar"><div class="wrap"><a class="home" href="/">Run It Like the Rich</a><a href="https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support" target="_blank" rel="noopener">Book a free call</a></div></div>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div style="min-width:0">
+      <p class="eyebrow">Just opened · Fixed by New Year's spots for November and December</p>
+      <h1>Start the new year back in control of <em>your business.</em></h1>
+      <p class="lede">The best Christmas present you can give yourself as an owner. Use the next two months to get your Admin, Books and Compliance in order, and walk into January knowing your numbers, where everything is, and what comes next.</p>
+      <div class="row" style="margin-top:26px">
+        <a class="btn solid" data-link="call" href="#book">Book a free 30-minute call</a>
+        <a class="btn" href="#options">See the options</a>
+      </div>
+      <p class="who">I'm Laura Poincot. For 25 years I've worked behind the scenes as the right hand to self-made millionaire business owners. I work for business owners.</p>
+    </div>
+    <aside class="board" aria-label="Fixed by New Year's spots open">
+      <h2>Fixed by New Year's spots</h2>
+      <p class="sub">I work hands-on with every owner, so I only opened a few for November and December.</p>
+      <ul class="spots" id="spots"></ul>
+      <p class="note">Once these are gone, the next start is after the new year. Book now to hold your place.</p>
+    </aside>
+  </div>
+</header>
+
+<main>
+<section id="options">
+  <div class="wrap">
+    <p class="eyebrow">Three ways to work with me</p>
+    <h2 style="font-size:clamp(28px,4vw,40px);margin-top:8px">Pick the help that fits how you want to do it.</h2>
+    <div class="ledger">
+      <article class="entry">
+        <div><p class="tag">Support Blocks</p><h3>Back up the person you already trust</h3><p class="for">For owners with a bookkeeper or office person who needs a pro to call.</p></div>
+        <ul>
+          <li>Month-end review so your books close clean</li>
+          <li>Find and fix QuickBooks problems, like duplicate entries and bank rules</li>
+          <li>Train your bookkeeper on the why, not just the clicks</li>
+          <li>Real answers to "is this right?" by call and screen share</li>
+        </ul>
+        <div class="price">
+          <p class="amt">$495 <small>/ month · 5 hours</small></p>
+          <p class="alt">or $950 / month for 10 hours</p>
+          <span class="limit" data-limit="blocks"></span>
+          <a class="btn gold" data-link="block5" href="#book">Book 5 hours</a>
+          <a class="btn" data-link="block10" href="#book">Book 10 hours</a>
+        </div>
+      </article>
+      <article class="entry feature">
+        <div><p class="tag">ABC Starter</p><h3>Your plan, your HQ, and a year of support</h3><p class="for">For owners who want to do the work with their team, with me guiding it.</p></div>
+        <ul>
+          <li>Your step-by-step plan built from your ABC workbook answers</li>
+          <li>The Virtual HQ Google Sites template, ready to go</li>
+          <li>Your file system built in your Google Drive from the names you choose</li>
+          <li>A standard chart of accounts for your industry</li>
+          <li>A starter compliance calendar for your industry</li>
+          <li>A review call with me, plus 12 months of support and the full video library</li>
+        </ul>
+        <div class="price">
+          <p class="amt">$1,500 <small>to start</small></p>
+          <p class="alt">then $150 / month for 12 months, or <b>$3,000 paid in full</b> (save $300)</p>
+          <span class="limit" data-limit="starter"></span>
+          <a class="btn gold" data-link="starter" href="#book">Start with monthly</a>
+          <a class="btn" data-link="starterFull" href="#book">Pay in full</a>
+        </div>
+      </article>
+      <article class="entry">
+        <div><p class="tag">Done-for-You Reset</p><h3>I work with you and your team to do it</h3><p class="for">For owners who want it done right, without doing it alone.</p></div>
+        <ul>
+          <li>A full review of your Admin, Books and Compliance</li>
+          <li>Books cleaned up, caught up and tied to your tax returns</li>
+          <li>Your Virtual HQ built and set up for your business</li>
+          <li>SOPs written with your team, and your team trained</li>
+          <li>Books a buyer, a bank or your CPA can trust</li>
+        </ul>
+        <div class="price">
+          <p class="amt">From $5,000</p>
+          <p class="alt">Quoted after a free call. Reserve a November or December start with a $2,500 deposit, applied to your project. Pay in full or split into payments.</p>
+          <span class="limit" data-limit="dfy"></span>
+          <a class="btn gold" data-link="call" href="#book">Book a call for a quote</a>
+          <a class="btn" data-link="deposit" href="#book">Reserve with deposit</a>
+        </div>
+      </article>
+    </div>
+    <div class="extra">
+      <div><h3>More than one business?</h3><p>Every company gets its own hub. Smaller ones, like a rental property, get a lighter, lower-cost hub, and all of them tie into one owner master Virtual HQ. Custom quote based on how many you have.</p></div>
+      <div><h3>Just want the template?</h3><p>The Virtual HQ Google Sites template on its own is $250, one business per license. Upgrade to the Starter within 30 days and the $250 counts toward it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap why-grid">
+    <div><p class="eyebrow">Why now</p><h2 style="margin-top:8px">There's no reason to wait until January.</h2>
+      <p class="muted" style="margin-top:14px">A buyer, a bank or a successor wants years of clean history. That history starts the day you start. Two months from now, you can either still be looking for things, or be done looking.</p></div>
+    <div class="months">
+      <div class="month"><b>November</b><p>We find out what's really there and start the catch-up.</p></div>
+      <div class="month"><b>December</b><p>Books closed, files in one place, year-end ready for your CPA.</p></div>
+      <div class="month"><b>January</b><p>You start the year in control, with your first clean month to compare against.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <div class="steps">
+      <div class="step"><p class="n">1</p><h3>Book a free call</h3><p>Thirty minutes. Tell me what's going on, and I'll tell you straight which option fits, or if you don't need me at all.</p></div>
+      <div class="step"><p class="n">2</p><h3>Reserve your spot</h3><p>Pick your option and pay or put down your deposit. That holds your place in the month you choose.</p></div>
+      <div class="step"><p class="n">3</p><h3>We start</h3><p>Kickoff within a week, so we're working in November and December and you're fixed by New Year's.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Questions owners ask</p>
+    <div class="faq">
+      <details><summary>Do I have to change my CPA or bookkeeper?</summary><p>No. I back up the people you trust and help your bookkeeper get better. If something's not right, I'll tell you plainly.</p></details>
+      <details><summary>Do I have to be planning to sell?</summary><p>No. The same work that makes a business sellable makes it easier to run, borrow against, hand off or step back from. It gives you options.</p></details>
+      <details><summary>Can my bookkeeper or office manager join?</summary><p>Yes, and I'd like them to. They're the ones who keep it running after we're done.</p></details>
+      <details><summary>What if the November–December spots are full?</summary><p>You'll start in the next open month after the new year. Book the free call and I'll tell you exactly when.</p></details>
+      <details><summary>How do I pay?</summary><p>Card or bank transfer. The Starter can be monthly or paid in full, and Done-for-You projects can be split into payments.</p></details>
+      <details><summary>Is this all done remotely?</summary><p>Yes, by call and screen share, with your team on site where they belong.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="free" id="free">
+  <div class="wrap free-grid">
+    <div style="min-width:0">
+      <p class="eyebrow">Free download</p>
+      <h2 style="margin-top:8px">The Proactive Bookkeeper Checklist</h2>
+      <p style="margin-top:12px">A good bookkeeper doesn't cost you money. They find it, save it, and multiply it. Hand this to your bookkeeper or office manager and go through it together. Anything left unchecked is where money and time are leaking.</p>
+      <ul>
+        <li>How smart owners view their bookkeeper and admin</li>
+        <li>Where businesses leak money, and how to stop it</li>
+        <li>50 checkboxes across 10 areas, from banking to payroll to owner perks</li>
+      </ul>
+    </div>
+    <div class="card">
+      <b>Free PDF · 6 pages</b>
+      <p class="muted" style="margin:8px 0 16px">Check the boxes right on your screen or print it.</p>
+      <a class="btn gold" href="/proactive-bookkeeper-checklist.pdf" download>Download the checklist</a>
+    </div>
+  </div>
+</section>
+
+<section class="close" id="book">
+  <div class="wrap">
+    <p class="eyebrow">Book your spot</p>
+    <h2 style="margin-top:8px">Give yourself the new year back.</h2>
+    <p>If you're an owner who wants help with your build, book a call with me below. If you already know what you want, pick an option above and reserve your spot. Spots are limited, and I'd rather you get one than wait.</p>
+    <div class="row" style="margin-top:22px">
+      <a class="btn solid" data-link="call" href="#book">Book a free 30-minute call</a>
+    </div>
+    <div class="contact"><span>Or email me:</span><code id="email">support@thehq.online</code><button class="copy" id="copy" type="button">Copy</button><span id="copied" class="muted" aria-live="polite"></span></div>
+    <p class="sign">Keep it lean. Keep it clean. Run it like the rich.</p>
+  </div>
+</section>
+</main>
+<footer><div class="wrap">Run It Like the Rich · runitliketherich.com · Educational guidance, not legal, tax or financial advice.</div></footer>
+
+<script>
+(function(){
+  // Paste each payment or booking link here. Empty links go to the booking section.
+  var LINKS = { call:"https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support", block5:"https://whop.com/run-it-like-the-rich/support-blocks-back-up-your-bookkeeper/", block10:"https://whop.com/run-it-like-the-rich/support-blocks-back-up-your-bookkeeper/", starter:"https://whop.com/run-it-like-the-rich/abc-starter-1-year-of-support/", starterFull:"mailto:support@thehq.online?subject=ABC%20Starter%20-%20pay%20in%20full%20invoice", deposit:"https://whop.com/run-it-like-the-rich/done-for-you-reset-deposit/" };
+  // Fixed by New Year's spots (November–December): [open, total]
+  var SPOTS = { dfy:[2,2], starter:[5,5], blocks:[6,6] };
+  var NAMES = { dfy:["Done-for-You Reset","Full projects with your team"], starter:["ABC Starter","Plans I review myself"], blocks:["Support Blocks","Teams I back up"] };
+
+  document.querySelectorAll("[data-link]").forEach(function(a){
+    var u = LINKS[a.getAttribute("data-link")];
+    if(u){ a.href = u; a.target = "_blank"; a.rel = "noopener"; }
+  });
+  var ul = document.getElementById("spots");
+  ["dfy","starter","blocks"].forEach(function(k){
+    var li = document.createElement("li");
+    li.innerHTML = "<div><b>"+NAMES[k][0]+"</b><small>"+NAMES[k][1]+"</small></div><div style=\"text-align:right\"><small>Limited</small></div>";
+    ul.appendChild(li);
+  });
+  document.querySelectorAll("[data-limit]").forEach(function(el){
+    el.textContent = "Limited spots for Nov–Dec";
+  });
+  var btn = document.getElementById("copy"), out = document.getElementById("copied");
+  btn.addEventListener("click", function(){
+    var t = document.getElementById("email").textContent;
+    function sel(){ var r=document.createRange(); r.selectNodeContents(document.getElementById("email")); var s=getSelection(); s.removeAllRanges(); s.addRange(r); out.textContent="Selected. Press copy."; }
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(function(){ out.textContent="Copied"; }, sel); } else sel();
+  });
+})();
+</script>
+</body>
+</html>
