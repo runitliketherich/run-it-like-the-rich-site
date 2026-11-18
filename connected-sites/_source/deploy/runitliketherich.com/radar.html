@@ -1,0 +1,1250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 120 — Run It Like the Rich</title>
+<meta name="description" content="The back-office routines that find money and stop fines — on a calendar that actually repeats.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0C1F33; --navy2:#16324f; --gold:#C9A227; --gold-lt:#F2C73D;
+  --ink:#14283C; --muted:#5b6b7c; --line:#dde5ed; --bg:#eef2f6; --card:#fff;
+  --ok:#1d7a4c; --warn:#b4601a; --red:#c0392b;
+  --rad:12px; --shadow:0 1px 2px rgba(12,31,51,.06),0 6px 18px rgba(12,31,51,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:'Poppins',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.5;font-size:15px}
+.wrap{max-width:1060px;margin:0 auto;padding:0 16px 80px}
+
+/* header */
+header{background:var(--navy);color:#fff;padding:26px 0 22px;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:44px 44px}
+header .wrap{padding-bottom:0}
+.brand{font-size:12px;letter-spacing:3px;font-weight:600;color:var(--gold-lt);text-transform:uppercase}
+h1{font-size:clamp(23px,4.6vw,33px);font-weight:700;line-height:1.15;margin:8px 0 6px;letter-spacing:-.4px}
+header p{color:#c3d2e0;font-size:14.5px;max-width:62ch}
+
+/* steps */
+.step{background:var(--card);border-radius:var(--rad);box-shadow:var(--shadow);margin-top:18px;overflow:hidden}
+.step>h2{display:flex;align-items:center;gap:11px;font-size:17px;font-weight:600;
+  padding:15px 18px;border-bottom:1px solid var(--line)}
+.num{flex:0 0 27px;height:27px;border-radius:50%;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+.body{padding:16px 18px}
+.hint{color:var(--muted);font-size:13.5px;margin-bottom:13px}
+
+/* forms */
+input,select,textarea,button{font:inherit;color:inherit}
+input[type=text],input[type=date],select,textarea{
+  width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:14px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:-1px;border-color:var(--gold)}
+label.fld{display:block;font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:4px}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:0;
+  padding:10px 16px;border-radius:9px;font-weight:600;font-size:14px;cursor:pointer}
+.btn:hover{background:var(--navy2)}
+.btn.gold{background:var(--gold);color:var(--navy)}
+.btn.gold:hover{background:var(--gold-lt)}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{background:#f3f6f9}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.sm{padding:6px 11px;font-size:13px}
+
+/* entities + team */
+.rowlist{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.rowitem{display:grid;grid-template-columns:1fr 150px 150px 38px;gap:8px;align-items:center}
+.rowitem .x{background:none;border:1px solid var(--line);border-radius:8px;height:36px;cursor:pointer;color:var(--muted);font-size:17px;line-height:1}
+.rowitem .x:hover{border-color:var(--red);color:var(--red)}
+.teamrow{display:grid;grid-template-columns:1fr 38px;gap:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+
+/* controls */
+.controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-bottom:12px}
+.controls input[type=text]{flex:1;min-width:190px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;font-size:12.5px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.chip .n{opacity:.6;margin-left:5px;font-size:11px}
+
+/* routines */
+.cat{margin-top:16px}
+.cat h3{font-size:12.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);
+  padding:0 0 7px;border-bottom:2px solid var(--line);margin-bottom:9px}
+.r{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:#fff}
+.r.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
+.rhead{display:flex;gap:11px;padding:11px 13px;cursor:pointer;align-items:flex-start}
+.rhead input[type=checkbox]{flex:0 0 19px;width:19px;height:19px;margin-top:1px;accent-color:var(--gold);cursor:pointer}
+.rtext{flex:1;min-width:0}
+.rtitle{font-size:14.5px;font-weight:500}
+.rwhy{font-size:13px;color:var(--muted);margin-top:3px}
+.pri{flex:0 0 auto;font-size:10.5px;font-weight:700;letter-spacing:.7px;padding:2px 7px;border-radius:5px;text-transform:uppercase;margin-top:2px}
+.pri.High{background:#fdeaea;color:var(--red)}
+.pri.Medium{background:#fdf3e2;color:var(--warn)}
+.det{display:none;padding:0 13px 13px;border-top:1px dashed var(--line);margin-top:2px;padding-top:12px}
+.r.on .det{display:block}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.grid4 .full{grid-column:1/-1}
+.addcal{display:flex;align-items:center;gap:8px;margin-top:10px;font-size:13.5px}
+.addcal input{width:17px;height:17px;accent-color:var(--gold);cursor:pointer}
+.need{font-size:12.5px;color:var(--warn);margin-top:7px;font-weight:500}
+
+/* score */
+.scorewrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-bottom:14px}
+.sc{background:#f7fafc;border:1px solid var(--line);border-radius:10px;padding:11px 13px}
+.sc .v{font-size:25px;font-weight:700;line-height:1.1}
+.sc .l{font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-top:2px}
+.bars{display:flex;flex-direction:column;gap:7px}
+.bar{display:grid;grid-template-columns:1fr 74px 44px;gap:10px;align-items:center;font-size:13px}
+.track{display:block;height:8px;background:#e4ebf2;border-radius:99px;overflow:hidden}
+.fill{display:block;height:100%;min-width:0;background:var(--gold);border-radius:99px;transition:width .25s}
+.bar .cnt{text-align:right;color:var(--muted);font-size:12.5px;font-variant-numeric:tabular-nums}
+
+/* sticky bar */
+.sticky{position:sticky;bottom:0;z-index:20;background:rgba(255,255,255,.97);
+  border-top:1px solid var(--line);box-shadow:0 -4px 18px rgba(12,31,51,.09);
+  padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  backdrop-filter:blur(6px)}
+.sticky .n{font-size:13.5px;color:var(--muted);flex:1;min-width:120px}
+.shortonly{display:none}
+@media (max-width:560px){
+  .long{display:none}
+  .shortonly{display:inline}
+  .sticky{padding:9px 12px;gap:7px}
+  .sticky .n{font-size:12.5px}
+}
+.sticky .n b{color:var(--ink)}
+
+/* qualification form */
+.qgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:16px}
+.qgrid .full{grid-column:1/-1}
+.q{margin-bottom:17px}
+.q>p{font-size:14.5px;font-weight:500;margin-bottom:8px}
+.opts{display:flex;flex-wrap:wrap;gap:7px}
+.opts label{position:relative;cursor:pointer}
+.opts input{position:absolute;opacity:0;width:0;height:0}
+.opts span{display:inline-block;border:1px solid var(--line);background:#fff;border-radius:999px;
+  padding:7px 14px;font-size:13.5px;transition:.12s}
+.opts input:checked+span{background:var(--navy);color:#fff;border-color:var(--navy)}
+.opts input:focus-visible+span{outline:2px solid var(--gold);outline-offset:2px}
+.sub{margin-top:11px;padding-left:13px;border-left:3px solid var(--gold);display:none}
+.sub.show{display:block}
+.consent{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--muted);margin:4px 0 14px}
+.consent input{flex:0 0 17px;width:17px;height:17px;margin-top:2px;accent-color:var(--gold);cursor:pointer}
+.err{color:var(--red);font-size:13px;font-weight:500;margin-top:9px;display:none}
+.err.show{display:block}
+.readout{background:var(--navy);color:#fff;border-radius:11px;padding:17px 19px;display:none}
+.readout.show{display:block}
+.readout h4{font-size:16.5px;font-weight:600;margin-bottom:9px;color:var(--gold-lt)}
+.readout p{font-size:14px;color:#d6e2ee;margin-bottom:9px}
+.readout p:last-child{margin-bottom:0}
+.readout a{color:var(--gold-lt);font-weight:600}
+@media (max-width:620px){.qgrid{grid-template-columns:1fr}}
+
+/* sign-up gate */
+#gate{position:fixed;inset:0;z-index:90;background:var(--navy);overflow-y:auto;
+  background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:44px 44px;display:none}
+#gate.show{display:block}
+.gbox{max-width:560px;margin:0 auto;padding:46px 20px 60px}
+.gbox .brand{font-size:12px;letter-spacing:3px;font-weight:600;color:var(--gold-lt);text-transform:uppercase}
+.gbox h1{color:#fff;font-size:clamp(25px,5.4vw,36px);line-height:1.13;margin:10px 0 12px;letter-spacing:-.5px}
+.gbox .lede{color:#c3d2e0;font-size:15px;margin-bottom:22px}
+.gcard{background:#fff;border-radius:14px;padding:22px;box-shadow:0 18px 50px rgba(0,0,0,.3)}
+.gcard h2{font-size:17.5px;font-weight:600;margin-bottom:5px}
+.gcard .sm{font-size:13.5px;color:var(--muted);margin-bottom:17px}
+.gf{margin-bottom:13px}
+.tip{font-size:13px;color:var(--warn);margin-top:6px;display:none}
+.tip.show{display:block}
+.tip b{cursor:pointer;text-decoration:underline}
+.glist{list-style:none;margin:20px 0 0;padding:0}
+.glist li{color:#c3d2e0;font-size:14px;padding-left:25px;position:relative;margin-bottom:9px}
+.glist li::before{content:"✓";position:absolute;left:0;color:var(--gold-lt);font-weight:700}
+.gfoot{color:#8ea4b8;font-size:12.5px;margin-top:20px;line-height:1.55}
+.gback{background:none;border:0;color:var(--gold-lt);font-size:13.5px;text-decoration:underline;cursor:pointer;padding:0;margin-top:14px}
+
+.note{background:#fffbef;border:1px solid #f0e2b4;border-radius:10px;padding:11px 13px;font-size:13.5px;margin-top:12px}
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:26px 16px 0;line-height:1.6}
+footer a{color:var(--navy)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:76px;background:var(--navy);color:#fff;
+  padding:10px 18px;border-radius:9px;font-size:14px;z-index:60;opacity:0;pointer-events:none;transition:opacity .25s}
+.toast.show{opacity:1}
+
+@media (max-width:760px){
+  .rowitem{grid-template-columns:1fr 1fr;grid-template-areas:"a a" "b c" "d d"}
+  .rowitem>:nth-child(1){grid-area:a}.rowitem>:nth-child(2){grid-area:b}
+  .rowitem>:nth-child(3){grid-area:c}.rowitem>:nth-child(4){grid-area:d}
+  .grid4{grid-template-columns:1fr 1fr}
+  .two{grid-template-columns:1fr}
+}
+
+/* print = the action list */
+#printout{display:none}
+@media print{
+  body{background:#fff;font-size:11pt}
+  header,.step,.sticky,.toast,footer{display:none !important}
+  #printout{display:block}
+  .pcat{page-break-inside:avoid;margin-bottom:14pt}
+  .pcat h3{font-size:11pt;border-bottom:1.5pt solid #000;padding-bottom:3pt;margin-bottom:6pt}
+  .pitem{margin-bottom:8pt;page-break-inside:avoid}
+  .pitem .t{font-weight:600}
+  .pitem .m{font-size:9pt;color:#444}
+  .phead{border-bottom:2.5pt solid #000;padding-bottom:7pt;margin-bottom:12pt}
+  .phead h1{font-size:16pt;color:#000}
+  .phead .s{font-size:9.5pt;color:#444}
+}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="gbox">
+    <div class="brand">Run It Like the Rich</div>
+    <h1>The 120</h1>
+    <p class="lede">The back-office routines that find money and stop fines &mdash; on a calendar that actually repeats.</p>
+
+    <div class="gcard">
+      <h2>Where should I send your link?</h2>
+      <p class="sm">So you can come back to it later, on any device.</p>
+      <form id="gform" novalidate>
+        <div class="gf"><label class="fld" for="gName">Your name</label>
+          <input type="text" id="gName" autocomplete="name"></div>
+        <div class="gf"><label class="fld" for="gEmail">Email</label>
+          <input type="text" id="gEmail" inputmode="email" autocomplete="email">
+          <div class="tip" id="gTip"></div></div>
+        <div class="gf"><label class="fld" for="gBiz">Business name</label>
+          <input type="text" id="gBiz" autocomplete="organization"></div>
+        <label class="consent"><input type="checkbox" id="gConsent">
+          <span>Email me my link and occasional notes from Run It Like the Rich. Unsubscribe any time. Your answers are never sold or shared.</span></label>
+        <button type="submit" class="btn gold" id="gSubmit" style="width:100%;justify-content:center">Open The 120</button>
+        <div class="err" id="gErr"></div>
+      </form>
+      <button class="gback" id="gRestore" style="color:var(--navy)">Been here before? Upload your saved CSV instead</button>
+      <input type="file" id="gFile" accept=".csv,text/csv" style="display:none">
+    </div>
+
+    <ul class="glist">
+      <li>120 routines across admin, books, compliance, payroll, software and debt</li>
+      <li>Tick what applies, assign an owner, set a frequency</li>
+      <li>Download a calendar file where the reminders actually repeat</li>
+      <li>Nothing you tick leaves your own browser</li>
+    </ul>
+
+    <p class="gfoot">Free. No card, no trial, nothing to install. This is a review and planning tool, not tax, legal or financial advice.</p>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <div class="brand">Run It Like the Rich</div>
+    <h1>The 120</h1>
+    <p>A field-tested checklist of rarely reviewed risks, records, routines and revenue leaks most owners do not know to check. Tick what applies, assign it, and export a calendar that keeps checking for you.</p>
+    <p id="gateNote" style="display:none;margin-top:9px;font-size:13px;color:#9fb3c6">Free to use. Five quick questions at step 4 before your downloads &mdash; about a minute.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- STEP 1 -->
+  <section class="step">
+    <h2><span class="num">1</span> Your businesses and your team</h2>
+    <div class="body">
+      <div class="two">
+        <div>
+          <div class="hint">List every company, property, division or owner area you want to review.</div>
+          <div class="rowlist" id="entList"></div>
+          <button class="btn ghost sm" id="addEnt">+ Add a business</button>
+        </div>
+        <div>
+          <div class="hint">Who can be assigned work? Owner, bookkeeper, manager, outside pro.</div>
+          <div class="rowlist" id="teamList"></div>
+          <button class="btn ghost sm" id="addTeam">+ Add a person</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step">
+    <h2><span class="num">2</span> Mark what applies to you</h2>
+    <div class="body">
+      <div class="hint">Do not tick everything just because it sounds responsible. Tick what actually applies today, then say who owns it and when it starts.</div>
+      <div class="controls">
+        <input type="text" id="search" placeholder="Search the 120 routines…" aria-label="Search routines">
+        <button class="btn ghost sm" id="onlySel" aria-pressed="false">Show only ticked</button>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div id="list"></div>
+      <p class="hint" id="noneMsg" style="display:none;padding:22px 0;text-align:center">Nothing matches that filter.</p>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="step">
+    <h2><span class="num">3</span> Where your risk sits</h2>
+    <div class="body">
+      <div class="scorewrap" id="scorecards"></div>
+      <div class="bars" id="bars"></div>
+      <p class="hint" style="margin-top:12px;margin-bottom:0">A bar fills as the routines you ticked get an owner and a start date. An empty bar is an area nobody is watching.</p>
+    </div>
+  </section>
+
+  <!-- STEP 4: qualification -->
+  <section class="step" id="qstep">
+    <h2><span class="num">4</span> Where you stand as an owner</h2>
+    <div class="body">
+      <div class="hint">The checklist finds the leaks. These five questions tell you whether the business could stand on its own without you &mdash; which is the part that decides what it is worth.</div>
+
+      <form id="qform" novalidate>
+        <div class="q">
+          <p>How long have you been in business?</p>
+          <div class="opts" data-name="years">
+            <label><input type="radio" name="years" value="Under 2 years"><span>Under 2 years</span></label>
+            <label><input type="radio" name="years" value="2–5 years"><span>2&ndash;5 years</span></label>
+            <label><input type="radio" name="years" value="6–10 years"><span>6&ndash;10 years</span></label>
+            <label><input type="radio" name="years" value="11–20 years"><span>11&ndash;20 years</span></label>
+            <label><input type="radio" name="years" value="Over 20 years"><span>Over 20 years</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>Are you thinking about selling the business?</p>
+          <div class="opts" data-name="sell">
+            <label><input type="radio" name="sell" value="Yes"><span>Yes</span></label>
+            <label><input type="radio" name="sell" value="No"><span>No</span></label>
+            <label><input type="radio" name="sell" value="Not sure"><span>Not sure yet</span></label>
+          </div>
+          <div class="sub" id="sellWhen">
+            <p style="font-size:13.5px;font-weight:500;margin-bottom:7px">When would you want that to happen?</p>
+            <div class="opts" data-name="sellWhen">
+              <label><input type="radio" name="sellWhen" value="Within 12 months"><span>Within 12 months</span></label>
+              <label><input type="radio" name="sellWhen" value="1–2 years"><span>1&ndash;2 years</span></label>
+              <label><input type="radio" name="sellWhen" value="3–5 years"><span>3&ndash;5 years</span></label>
+              <label><input type="radio" name="sellWhen" value="5–10 years"><span>5&ndash;10 years</span></label>
+              <label><input type="radio" name="sellWhen" value="Someday, no date"><span>Someday, no date</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>Are you planning to expand &mdash; another location, another entity, an acquisition?</p>
+          <div class="opts" data-name="expand">
+            <label><input type="radio" name="expand" value="Yes"><span>Yes</span></label>
+            <label><input type="radio" name="expand" value="No"><span>No</span></label>
+            <label><input type="radio" name="expand" value="Not sure"><span>Not sure yet</span></label>
+          </div>
+          <div class="sub" id="expandWhen">
+            <p style="font-size:13.5px;font-weight:500;margin-bottom:7px">On what timeline?</p>
+            <div class="opts" data-name="expandWhen">
+              <label><input type="radio" name="expandWhen" value="Within 12 months"><span>Within 12 months</span></label>
+              <label><input type="radio" name="expandWhen" value="1–2 years"><span>1&ndash;2 years</span></label>
+              <label><input type="radio" name="expandWhen" value="3–5 years"><span>3&ndash;5 years</span></label>
+              <label><input type="radio" name="expandWhen" value="5–10 years"><span>5&ndash;10 years</span></label>
+              <label><input type="radio" name="expandWhen" value="Someday, no date"><span>Someday, no date</span></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>If a buyer or a lender asked tomorrow, could you prove what the business is worth?</p>
+          <div class="opts" data-name="prove">
+            <label><input type="radio" name="prove" value="Yes — books and records would hold up"><span>Yes, the books would hold up</span></label>
+            <label><input type="radio" name="prove" value="Partly"><span>Partly</span></label>
+            <label><input type="radio" name="prove" value="No"><span>No</span></label>
+            <label><input type="radio" name="prove" value="Don't know"><span>I don't know</span></label>
+          </div>
+        </div>
+
+        <div class="q">
+          <p>Could the business run for 30 days without you?</p>
+          <div class="opts" data-name="documented">
+            <label><input type="radio" name="documented" value="Yes — it is documented"><span>Yes, it's documented</span></label>
+            <label><input type="radio" name="documented" value="Some of it is documented"><span>Some of it is</span></label>
+            <label><input type="radio" name="documented" value="No — it lives in my head"><span>No, it lives in my head</span></label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn gold" id="qSubmit">Get my results</button>
+        <div class="err" id="qErr"></div>
+      </form>
+
+      <div class="readout" id="qRead"></div>
+    </div>
+  </section>
+
+  <!-- STEP 5 -->
+  <section class="step">
+    <h2><span class="num">5</span> Take it with you</h2>
+    <div class="body">
+      <div class="hint">Everything below is built from what you ticked. Your checklist stays in your own browser &mdash; only the step 4 answers are sent, and only if you fill them in.</div>
+      <p class="need" id="lockMsg" style="display:none;margin-bottom:12px">Answer the five questions in step 4 and your downloads unlock. It takes about a minute.</p>
+      <div class="controls">
+        <button class="btn gold" id="dlIcs">Download calendar file (.ics)</button>
+        <button class="btn ghost" id="dlCsv">Download spreadsheet (.csv)</button>
+        <button class="btn ghost" id="doPrint">Print / save as PDF</button>
+      </div>
+      <div class="note">
+        <b>How to load the calendar file:</b> Google Calendar &rarr; Settings &rarr; Import &amp; export &rarr; Import, pick the .ics file and choose which calendar it goes into.
+        Outlook and Apple Calendar open .ics directly. Recurring reminders come through intact &mdash; a CSV cannot carry repeats, which is why this uses .ics.
+      </div>
+      <div class="note" style="background:#f4f8fc;border-color:#d8e4ef">
+        <b>Keep your work.</b> Everything you tick lives in this browser only, so clearing your history or switching to another device loses it.
+        Download the CSV and it doubles as your save file &mdash; upload it here any time to pick up where you left off.
+        <div class="controls" style="margin-top:11px;margin-bottom:0">
+          <button class="btn ghost sm" id="sRestore">Restore from a saved CSV</button>
+          <input type="file" id="sFile" accept=".csv,text/csv" style="display:none">
+        </div>
+      </div>
+      <div class="controls" style="margin-top:14px;margin-bottom:0">
+        <button class="btn ghost sm" id="reset">Clear everything and start over</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><b>Run It Like the Rich</b> &mdash; Simple systems. Clear numbers. Confident owners.</p>
+    <p style="margin-top:9px;max-width:70ch;margin-left:auto;margin-right:auto">This free list is a review and planning tool. It is not tax, legal, payroll, insurance or financial advice. Have a qualified professional review anything that affects filings, contracts, payroll, lending, insurance, tax returns or compliance obligations.</p>
+  </footer>
+</div>
+
+<div class="sticky">
+  <div class="n"><b id="selN">0</b> ticked &middot; <b id="readyN">0</b> ready<span class="long"> for the calendar</span><span class="long"> &middot; <b id="needN">0</b> need an owner or date</span><span class="shortonly" aria-hidden="true"> &middot; <b id="needN2">0</b> need info</span></div>
+  <button class="btn gold sm" id="dlIcs2">Download .ics</button>
+  <button class="btn ghost sm" id="doPrint2">Print</button>
+</div>
+
+<div id="printout"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ===================================================================
+   SETTINGS — the only part you need to touch
+   =================================================================== */
+const CONFIG = {
+  // Paste the web app URL you get from the Google Apps Script set-up.
+  // While this is empty everything still works, but nothing is sent anywhere.
+  LEAD_ENDPOINT: "https://script.google.com/macros/s/AKfycbx5KL4TPVBKPqiPIPQvIVYM-Ri819CEbT5kloJ3_enwWXv9SxBVECrlfzzIlWyu6rboAA/exec",
+
+  // The address of THIS page. It gets emailed to people so they can come back.
+  APP_URL: "https://runitliketherich.com/radar",
+
+  // true  = name and email required before the tool opens
+  REQUIRE_SIGNUP: true,
+
+  // true  = the five questions in step 4 are required before the downloads unlock
+  REQUIRE_FORM: true,
+
+  // Where "book a call" points.
+  CONSULT_URL: "https://runitliketherich.com"
+};
+/* =================================================================== */
+
+const ROUTINES = [
+["Admin & Subscriptions","Audit software subscriptions and remove inactive users or duplicate tools.","Unused seats are one of the easiest money leaks to fix.","Monthly","High"],
+["Admin & Subscriptions","Review Google Workspace, Microsoft, Zoom, Dropbox, Canva, and similar admin tools.","Most businesses keep paying for old tools because nobody owns the list.","Quarterly","Medium"],
+["Admin & Subscriptions","Update password manager access and remove former employees or vendors.","Access cleanup protects money, data, and client records.","Quarterly","High"],
+["Admin & Subscriptions","Review business email aliases and forwarding rules for old staff or missed leads.","Old forwarding rules can leak data or sales opportunities.","Quarterly","Medium"],
+["Admin & Subscriptions","Clean Drive folders and confirm key documents are stored in the correct company folder.","Files should be findable before someone needs them at 11 PM.","Monthly","Medium"],
+["Admin & Subscriptions","Review vendor list and mark inactive vendors.","A clean vendor list reduces duplicate payments and reporting errors.","Quarterly","Medium"],
+
+["AI & Automation","List every paid task repeated weekly and flag which ones AI could draft, summarize, sort, or prepare first.","Repeated labor is where payroll leaks hide. AI should handle the first draft before a person polishes.","Quarterly","High"],
+["AI & Automation","Create AI prompts for monthly bank review, transaction descriptions, and unusual spending summaries.","A good prompt can turn raw activity into review notes before the accountant starts digging.","Monthly","High"],
+["AI & Automation","Use AI to summarize long vendor contracts, renewal terms, cancellation windows, and fee increases.","Owners often miss renewal traps because nobody reads the fine print until it costs money.","Quarterly","High"],
+["AI & Automation","Use AI to review recurring software subscriptions and categorize each as keep, cancel, consolidate, or investigate.","AI can speed up subscription audits and expose stacked tools doing the same job.","Monthly","High"],
+["AI & Automation","Build a simple AI-assisted weekly owner recap from sales, cash, receivables, payables, and upcoming deadlines.","A weekly summary saves meeting time and keeps owners out of spreadsheet scavenger hunts.","Weekly","High"],
+
+["AI for Sales & Marketing","Use AI to review lost leads, unanswered inquiries, and stale estimates for follow-up opportunities.","Sales leakage is often a follow-up problem, not a demand problem.","Weekly","High"],
+["AI for Sales & Marketing","Use AI to turn customer reviews, FAQs, and service notes into social posts, email campaigns, and sales scripts.","Existing business knowledge can be repackaged into marketing without starting from a blank page.","Monthly","Medium"],
+["AI for Sales & Marketing","Use AI to compare ad spend, leads, booked jobs, and closed sales to find weak campaigns.","Marketing should produce measurable leads, not just pretty invoices from ad platforms.","Monthly","High"],
+["AI for Sales & Marketing","Build AI-assisted follow-up scripts for quotes, abandoned carts, past customers, and referral asks.","Consistent follow-up increases sales without adding another full-time person.","Monthly","High"],
+["AI for Sales & Marketing","Use AI to review website pages for unclear offers, missing calls-to-action, and common customer objections.","Small website fixes can improve sales without increasing ad spend.","Quarterly","Medium"],
+
+["Bookkeeping Cleanup","Create a monthly close checklist with bank recs, credit card recs, loan checks, AR/AP review, payroll review, and sales tie-out.","A repeatable close process reduces cleanup fees and owner confusion.","Monthly","High"],
+["Bookkeeping Cleanup","Review uncleared checks, old deposits, open credits, duplicate payments, and stale A/R monthly.","Old items hide cash problems and create year-end cleanup bills.","Monthly","High"],
+["Bookkeeping Cleanup","Clean duplicate vendors, customers, products, services, and chart of accounts names quarterly.","Duplicate lists cause coding errors, messy reports, and wasted review time.","Quarterly","Medium"],
+["Bookkeeping Cleanup","Review uncategorized, ask-my-accountant, suspense, and miscellaneous accounts monthly.","These accounts are cleanup parking lots, not financial strategy.","Monthly","High"],
+["Bookkeeping Cleanup","Tie loan balances to lender statements and maintain an interest/principal schedule.","Loan balances are commonly wrong when payments are booked only to expense.","Quarterly","High"],
+["Bookkeeping Cleanup","Review owner draws, distributions, contributions, reimbursements, and personal expenses monthly.","Owner activity becomes expensive when it is cleaned up once a year.","Monthly","High"],
+["Bookkeeping Cleanup","Use classes, locations, projects, or entity tags consistently for multi-entity or multi-property reporting.","Bad tagging makes profitable and unprofitable entities look the same.","Monthly","High"],
+["Bookkeeping Cleanup","Compare P&L categories to tax return categories before year-end.","Cleaner mapping reduces tax-prep time and prevents missed deductions.","Annually","Medium"],
+["Bookkeeping Cleanup","Review billable expenses, reimbursable costs, and client pass-through costs before invoices go out.","Unbilled reimbursables are easy money leaks.","Monthly","High"],
+["Bookkeeping Cleanup","Run a monthly variance review against prior month, prior year, or budget.","Unusual changes catch fraud, duplicate charges, pricing issues, and missing income.","Monthly","Medium"],
+
+["Books & Reports","Review Profit & Loss monthly and flag odd expense spikes.","Early review catches coding errors and waste before tax season.","Monthly","High"],
+["Books & Reports","Review Balance Sheet monthly for old receivables, old payables, loans, and owner balances.","The Balance Sheet tells the truth after the P&L stops performing.","Monthly","High"],
+["Books & Reports","Review negative asset, liability, income, or expense balances that do not make sense.","Negative balances usually mean posting or cleanup issues.","Monthly","Medium"],
+["Books & Reports","Update fixed asset and equipment list for purchases, disposals, and financing.","Missing assets and disposals distort depreciation and insurance records.","Quarterly","High"],
+["Books & Reports","Compare current year numbers to last year and investigate major swings.","Trends catch errors faster than staring at one report.","Quarterly","Medium"],
+
+["Email & Communication AI","Use AI to summarize important email threads before meetings, disputes, renewals, or collections calls.","Summaries reduce time spent rereading old threads and help avoid missed commitments.","Weekly","Medium"],
+["Email & Communication AI","Create canned AI-assisted replies for common customer questions, invoice follow-ups, estimate requests, and vendor requests.","Template replies save admin time and make communication more consistent.","Quarterly","Medium"],
+["Email & Communication AI","Set rules or labels for invoices, receipts, tax notices, insurance notices, and renewal emails.","A clean inbox can prevent missed bills, missed renewals, and late fees.","Monthly","High"],
+["Email & Communication AI","Use AI to turn messy email requests into task lists with owner, due date, priority, and next step.","Email is not a project management system, no matter how hard it tries to wear a clipboard.","Weekly","High"],
+["Email & Communication AI","Create a monthly email search routine for forgotten refunds, credits, rebates, warranties, and vendor disputes.","Money often sits inside inboxes disguised as boring follow-up.","Monthly","Medium"],
+
+["Fees & Vendor Charges","Review bank fees, overdraft fees, wire fees, statement fees, check fees, and account analysis fees monthly.","Fees become invisible when they are coded to bank charges without review.","Monthly","High"],
+["Fees & Vendor Charges","Review merchant fees by processor, card type, chargeback, platform, and batch timing.","Processing cost can often be reduced by changing settings, pricing, or providers.","Monthly","High"],
+["Fees & Vendor Charges","Review payroll service fees, per-employee charges, off-cycle payroll charges, and tax notice support fees.","Payroll platforms often add fees as headcount and corrections grow.","Quarterly","Medium"],
+["Fees & Vendor Charges","If you rent commercial property, check the sales tax line on your rent invoice. Florida's commercial rent sales tax went to zero on October 1, 2025.","Florida repealed the business rent tax, state rate and local surtax, for occupancy periods starting October 1, 2025. A tenant still being charged is paying a tax that no longer exists.","Annually","High"],
+
+["Insurance & Risk","Track insurance renewals, premiums, coverage limits, and payment dates.","Insurance should be reviewed before the renewal invoice becomes a hostage note.","Annually","High"],
+["Insurance & Risk","Rebid commercial insurance or at least compare coverage annually.","Loyalty rarely gets rewarded on premiums.","Annually","Medium"],
+["Insurance & Risk","Review workers' comp class codes and payroll estimates.","Wrong class codes or estimates can create audit bills.","Annually","High"],
+["Insurance & Risk","Collect vendor certificates of insurance before work starts.","Vendor risk should not become owner risk.","Quarterly","Medium"],
+["Insurance & Risk","Review claims, incidents, chargebacks, disputes, and customer complaints for patterns.","Patterns show where the business is bleeding.","Quarterly","Medium"],
+["Insurance & Risk","Confirm key equipment, vehicles, inventory, and locations are properly insured.","Coverage needs to match what the business actually owns and uses.","Annually","High"],
+
+["Interest & Debt","List every loan, credit card, line of credit, lease, merchant advance, and financing agreement with rate, payment, maturity, and fees.","You cannot reduce interest you cannot see clearly.","Quarterly","High"],
+["Interest & Debt","Rank debts by interest rate and fee burden before deciding what to pay down first.","Paying the loudest bill is not always the smartest bill.","Monthly","High"],
+["Interest & Debt","Call credit card issuers and lenders to request lower rates, fee waivers, or hardship options when needed.","A 15-minute call can sometimes save more than a week of cutting tiny expenses.","Quarterly","Medium"],
+["Interest & Debt","Review refinance, consolidation, balance transfer, or line-of-credit options before cash gets tight.","The best financing terms usually exist before the emergency.","Quarterly","Medium"],
+["Interest & Debt","Calculate the true annualized cost of merchant cash advances, factoring, and daily-payment loans.","Fast money can become the most expensive vendor in the business.","Quarterly","High"],
+
+["Labor Replacement / Admin Support","Identify admin work that can be batched into one AI-assisted weekly review instead of daily interruptions.","Interruptions are invisible payroll costs.","Weekly","Medium"],
+["Labor Replacement / Admin Support","Use AI to draft SOPs from screen recordings, Loom videos, or rough owner instructions.","SOPs reduce repeated training costs and stop knowledge from living in one person's head.","Monthly","High"],
+["Labor Replacement / Admin Support","Use AI to summarize meetings into decisions, assigned tasks, deadlines, and unresolved questions.","Meeting notes are only useful if they become action.","Weekly","Medium"],
+["Labor Replacement / Admin Support","Review whether AI can pre-sort receipts, invoices, statements, and support documents before bookkeeping review.","Pre-sorting documents saves billable cleanup time and reduces missing support.","Monthly","High"],
+["Labor Replacement / Admin Support","Use AI to create job descriptions, onboarding checklists, training outlines, and role scorecards.","Better onboarding reduces rework, confusion, and owner babysitting.","Quarterly","Medium"],
+
+["Legal & Entity","Review active entities, inactive LLCs, annual filings, and registered agent info.","Dead entities should not keep billing you.","Annually","High"],
+["Legal & Entity","Maintain a central contract list for leases, loans, vendors, subscriptions, and service agreements.","You cannot manage terms you cannot find.","Quarterly","High"],
+["Legal & Entity","Review leases, rent increases, renewal dates, and cancellation windows.","Missed renewal windows are expensive.","Quarterly","High"],
+["Legal & Entity","Renew the annual report and state corporation filings yourself, or have the bookkeeper do it. You do not need to pay a professional unless you are changing entity ownership or type.","Late fines run two to four times the renewal fee and are almost never waived. This is one of the few filings an owner or bookkeeper can handle without professional fees.","Annually","High"],
+
+["Marketing & Sales","Review ad spend, leads, conversions, and actual sales by campaign.","Marketing without tracking is a donation program.","Monthly","High"],
+["Marketing & Sales","Review domains, website tools, hosting, and unused marketing subscriptions.","Old domains and tools create quiet annual charges.","Quarterly","Medium"],
+["Marketing & Sales","Track coupons, referral bonuses, discounts, and promotion results.","Discounts should produce data, not just lower profit.","Monthly","Medium"],
+["Marketing & Sales","Review customer credits, refunds, open estimates, and stale invoices.","Old sales cleanup protects cash and reporting.","Monthly","High"],
+
+["Money & Banking","Reconcile every bank and credit card account monthly within 7 days of statement close.","Missed reconciliations hide duplicate charges, fraud, and tax cleanup costs.","Monthly","High"],
+["Money & Banking","Review open bank accounts and close unused accounts with monthly fees.","Small fees add up and old accounts create compliance clutter.","Quarterly","Medium"],
+["Money & Banking","Set bank alerts for low balance, large withdrawals, overdraft risk, and unusual activity.","Alerts prevent overdrafts, fraud surprises, and owner panic.","Quarterly","High"],
+["Money & Banking","Review credit card interest rates and move balances away from high-interest debt when possible.","Interest is a silent profit leak.","Quarterly","High"],
+["Money & Banking","Compare merchant processing fees and review chargeback activity.","Processing fees are often ignored because they are deducted before deposits land.","Quarterly","High"],
+["Money & Banking","Match deposits to sales reports so income is not underreported or double-counted.","Sales deposits must tie to POS, invoices, Stripe, Square, or merchant batches.","Monthly","High"],
+["Money & Banking","Review recurring ACH drafts and autopays for vendors no longer used.","Autopays are where old vendors go to retire on your money.","Monthly","High"],
+["Money & Banking","Review uncashed vendor, payroll, and refund checks each year and report anything past your state's dormancy period as unclaimed property.","Stale checks sitting in your bank balance are not yours to keep. States audit for this and assess penalties and interest, and where nothing was ever reported there is generally no time limit running in your favor.","Annually","Medium"],
+
+["Owner Review","Review owner benefits, reimbursements, home office, auto, phone, meals, and travel support.","Owner expenses need documentation before they become tax questions.","Quarterly","High"],
+
+["Payroll & People","Review payroll reports for duplicate employees, wrong rates, and old active profiles.","Payroll mistakes are expensive and personal.","Monthly","High"],
+["Payroll & People","Audit timecards for overtime, missed punches, ghost hours, and manager approval.","Time leaks become payroll leaks fast.","Weekly","High"],
+["Payroll & People","Review worker classification: W-2 employee, 1099 contractor, officer, or owner.","Misclassification can create tax and labor problems.","Quarterly","High"],
+["Payroll & People","Confirm onboarding documents are complete: I-9, W-4, direct deposit, handbook, emergency contact.","Missing HR paperwork becomes a problem during audits or disputes.","Quarterly","Medium"],
+["Payroll & People","Review PTO, bonuses, reimbursements, and benefits deductions for accuracy.","Payroll add-ons are where small mistakes hide.","Monthly","Medium"],
+["Payroll & People","Confirm payroll tax payments and filings were accepted, not just submitted.","Submitted is not the same as accepted.","Quarterly","High"],
+
+["Professional Services","Shop bookkeeping, tax, payroll, insurance, legal, HR, and advisory fees annually against scope and value.","Professional fees should be managed like any other vendor cost.","Annually","Medium"],
+["Professional Services","Ask each professional provider for a written scope so you are not paying twice for overlapping work.","Owners often pay multiple providers to review the same mess from different angles.","Annually","Medium"],
+["Professional Services","Compare fixed-fee, hourly, and package pricing before renewing professional services.","The wrong pricing model can turn routine questions into surprise bills.","Annually","Medium"],
+["Professional Services","Prepare organized source documents before sending work to attorneys, CPAs, bookkeepers, lenders, or insurance agents.","Messy handoffs create professional rework charges.","Quarterly","Medium"],
+["Professional Services","Track consultant deliverables, renewal dates, and unused retainers.","Unused retainers and vague deliverables are quiet cash drains.","Quarterly","Medium"],
+
+["Reporting & Decision Support","Use AI to explain monthly financial reports in plain English for the owner before review meetings.","Owners make better decisions when the numbers are translated instead of dumped on them.","Monthly","High"],
+["Reporting & Decision Support","Use AI to flag unusual changes in sales, expenses, margins, payroll, inventory, or receivables.","Variance review catches problems before they become \"how did this happen?\" moments.","Monthly","High"],
+["Reporting & Decision Support","Use AI to prepare simple cash-flow talking points from upcoming bills, payroll, receivables, and expected deposits.","Cash problems usually give warnings. The issue is nobody packages the warning clearly.","Weekly","High"],
+["Reporting & Decision Support","Create a quarterly AI opportunity review listing which paid tasks were automated, reduced, or still need human review.","AI savings should be measured like any other business improvement.","Quarterly","Medium"],
+
+["Software & Subscriptions","Create a software register with owner, login admin, monthly cost, renewal date, user count, and business purpose.","Software costs leak through forgotten seats, duplicate apps, and unclear ownership.","Monthly","High"],
+["Software & Subscriptions","Compare monthly vs annual pricing only after confirming the tool is actually used.","Annual discounts are not savings when the tool sits unused.","Quarterly","Medium"],
+["Software & Subscriptions","Audit paid user seats in QBO, payroll, CRM, email, Canva, Adobe, AI tools, phone, POS, and project apps.","Unused seats are tiny payroll checks to software companies.","Monthly","High"],
+["Software & Subscriptions","Eliminate duplicate tools doing the same job, such as multiple meeting, storage, e-signature, AI, or scheduling platforms.","Tool overlap creates both cost waste and process confusion.","Quarterly","High"],
+["Software & Subscriptions","Review downgrade options when a tool is being used below its paid tier.","Many businesses pay enterprise prices for basic use.","Quarterly","Medium"],
+["Software & Subscriptions","Set renewal alerts 30 to 60 days before annual software renewals.","Renewal alerts prevent surprise charges and give time to negotiate.","Monthly","Medium"],
+["Software & Subscriptions","Ask vendors for small-business, nonprofit, annual, bundle, partner, or loyalty discounts before renewing.","Vendors rarely volunteer discounts you do not request.","Annually","Medium"],
+
+["Systems Sync & Data Flow","Map every place the same customer, vendor, product, job, or employee data is entered more than once.","Duplicate entry creates payroll waste, errors, and cleanup bills.","Quarterly","High"],
+["Systems Sync & Data Flow","Review whether POS, CRM, payroll, scheduling, invoicing, and accounting systems are syncing correctly.","Broken syncs force humans to become copy-and-paste bridges. That is expensive duct tape.","Monthly","High"],
+["Systems Sync & Data Flow","Identify manual spreadsheet trackers that could be replaced by forms, linked sheets, Zapier, Make, or built-in integrations.","Manual trackers often become shadow systems that nobody reconciles.","Quarterly","Medium"],
+["Systems Sync & Data Flow","Audit integrations to make sure failed syncs are caught weekly instead of discovered at tax time.","Integration errors compound quietly and become expensive cleanup projects.","Weekly","High"],
+["Systems Sync & Data Flow","Use forms to collect W-9s, vendor info, customer intake, job details, and reimbursement requests instead of email threads.","Structured intake reduces admin chasing and missing information.","Monthly","Medium"],
+
+["Taxes & Compliance","Review sales tax, tourist tax, payroll tax, and state filing requirements by entity.","Multi-entity businesses miss filings when nobody owns the map.","Quarterly","High"],
+["Taxes & Compliance","Review prior year tax return against books for beginning balance and classification issues.","Books should start where the tax return ended.","Annually","High"],
+["Taxes & Compliance","Track annual report, registered agent, business tax receipt, and license renewals.","Missed renewals can create fees, dissolved entities, or blocked filings.","Annually","High"],
+["Taxes & Compliance","Review owner draws, distributions, reimbursements, and shareholder loans for documentation.","Owner activity needs clean support before tax planning.","Quarterly","High"],
+["Taxes & Compliance","Create one master tax deadline calendar for income tax, payroll tax, sales tax, 1099s, annual reports, licenses, and estimated taxes.","Missed deadlines create penalties, rush fees, and preventable stress.","Quarterly","High"],
+["Taxes & Compliance","Review quarterly estimated tax needs before cash is spent elsewhere.","Owners often spend available cash before tax obligations are funded.","Quarterly","High"],
+["Taxes & Compliance","Set aside a tax reserve percentage from owner draws, distributions, or large deposits.","A separate reserve prevents tax payments from becoming emergency debt.","Monthly","High"],
+["Taxes & Compliance","Review sales tax settings, taxable products/services, exemptions, and filing frequency.","Small sales tax setup errors can compound into large liabilities.","Quarterly","High"],
+["Taxes & Compliance","Collect W-9s before paying vendors and flag missing 1099 information monthly.","Chasing vendors in January costs payroll/admin time and increases filing mistakes.","Monthly","High"],
+["Taxes & Compliance","Hold subcontractor payments automatically until they upload their W-9, insurance certificate, and license. Release payment only when the file is complete.","Makes 1099s a breeze at year end and saves thousands if you are ever found not in compliance. Chasing documents after you have already paid someone almost never works.","Monthly","High"],
+["Taxes & Compliance","Collect and refresh sales tax exemption certificates from every customer you do not charge tax to.","On audit, a missing or expired certificate means you owe the tax you never collected, plus penalty and interest. The customer is long gone. The bill is yours.","Quarterly","High"],
+["Taxes & Compliance","Review prior-year tax returns for missed deductions, credits, or items that should be fixed going forward.","Old returns often reveal repeated bookkeeping or deduction gaps.","Annually","Medium"],
+["Taxes & Compliance","Review fixed assets, repairs, improvements, depreciation, and disposals before tax prep starts.","Misclassified assets can distort profit and create tax-prep rework.","Annually","High"],
+["Taxes & Compliance","Check entity structure and owner compensation strategy with a tax professional annually.","The wrong structure or pay method can quietly raise payroll and income tax costs.","Annually","High"],
+["Taxes & Compliance","Create a clean tax-prep packet checklist before sending anything to the preparer.","Organized tax packets reduce professional fees and avoid back-and-forth cleanup.","Annually","High"],
+
+["Vehicles & Equipment","Review vehicle fuel cards, mileage, tolls, repairs, and personal-use patterns.","Vehicle costs are common business leaks.","Monthly","High"],
+["Vehicles & Equipment","Maintain equipment assignment logs for laptops, tools, phones, keys, and cards.","Untracked equipment quietly disappears.","Quarterly","Medium"],
+["Vehicles & Equipment","Review maintenance schedules for vehicles, equipment, HVAC, and critical assets.","Deferred maintenance is just a future invoice with attitude.","Quarterly","Medium"],
+["Vehicles & Equipment","Identify unused vehicles, tools, equipment, or storage units that can be sold or cancelled.","Idle assets still cost money.","Quarterly","Medium"],
+["Vehicles & Equipment","File the tangible personal property return for every location by April 1, even if you think you are under the threshold.","In Florida the first $25,000 of assessed value is exempt, but you generally have to file a return to get it. Skip it and the penalty is 25% of the tax for every year no return was filed.","Annually","High"]
+];
+const FREQS = ["Single Event","Weekly","Monthly","Quarterly","Annually"];
+const KEY = "rilr_risk_radar_v1";
+const LKEY = "rilr_lead_v1";
+
+/* ---------- state ---------- */
+const blank = () => ({
+  ents: [{name:"Main Company", type:"Operating Company", lead:""}],
+  team: [{name:"Owner"}],
+  sel: {},            // idx -> {owner, ent, freq, start, notes, cal}
+  filter: "All",
+  onlySel: false,
+  q: ""
+});
+let S = blank();
+
+function save(){
+  try{ localStorage.setItem(KEY, JSON.stringify({ents:S.ents, team:S.team, sel:S.sel})); }catch(e){}
+}
+function load(){
+  try{
+    const raw = localStorage.getItem(KEY);
+    if(!raw) return;
+    const d = JSON.parse(raw);
+    if(d && typeof d === "object"){
+      if(Array.isArray(d.ents) && d.ents.length) S.ents = d.ents;
+      if(Array.isArray(d.team) && d.team.length) S.team = d.team;
+      if(d.sel && typeof d.sel === "object") S.sel = d.sel;
+    }
+  }catch(e){}
+}
+
+/* ---------- helpers ---------- */
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const cats = [...new Set(ROUTINES.map(r => r[0]))];
+const toast = (() => {
+  const el = document.getElementById("toast"); let t;
+  return msg => { el.textContent = msg; el.classList.add("show"); clearTimeout(t); t = setTimeout(()=>el.classList.remove("show"), 2400); };
+})();
+const isReady = v => !!(v && v.cal && v.owner && v.start);
+
+/* ---------- step 1 ---------- */
+function drawEnts(){
+  const w = document.getElementById("entList");
+  w.innerHTML = S.ents.map((e,i)=>`
+    <div class="rowitem">
+      <input type="text" data-e="${i}" data-f="name"  value="${esc(e.name)}"  placeholder="Business, property or division" aria-label="Business name">
+      <input type="text" data-e="${i}" data-f="type"  value="${esc(e.type||"")}" placeholder="Type" aria-label="Type">
+      <input type="text" data-e="${i}" data-f="lead"  value="${esc(e.lead||"")}" placeholder="Lead" aria-label="Assigned lead">
+      <button class="x" data-del-e="${i}" aria-label="Remove">&times;</button>
+    </div>`).join("");
+}
+function drawTeam(){
+  const w = document.getElementById("teamList");
+  w.innerHTML = S.team.map((p,i)=>`
+    <div class="teamrow">
+      <input type="text" data-t="${i}" value="${esc(p.name)}" placeholder="Name or role" aria-label="Team member">
+      <button class="x" data-del-t="${i}" aria-label="Remove">&times;</button>
+    </div>`).join("");
+}
+document.getElementById("addEnt").onclick = () => { S.ents.push({name:"",type:"",lead:""}); drawEnts(); save(); };
+document.getElementById("addTeam").onclick = () => { S.team.push({name:""}); drawTeam(); save(); };
+
+document.getElementById("entList").addEventListener("input", e => {
+  const t = e.target; if(t.dataset.e === undefined) return;
+  S.ents[+t.dataset.e][t.dataset.f] = t.value; save(); drawList();
+});
+document.getElementById("entList").addEventListener("click", e => {
+  const b = e.target.closest("[data-del-e]"); if(!b) return;
+  if(S.ents.length <= 1){ toast("Keep at least one business"); return; }
+  S.ents.splice(+b.dataset.delE,1); drawEnts(); drawList(); save();
+});
+document.getElementById("teamList").addEventListener("input", e => {
+  const t = e.target; if(t.dataset.t === undefined) return;
+  S.team[+t.dataset.t].name = t.value; save(); drawList();
+});
+document.getElementById("teamList").addEventListener("click", e => {
+  const b = e.target.closest("[data-del-t]"); if(!b) return;
+  if(S.team.length <= 1){ toast("Keep at least one person"); return; }
+  S.team.splice(+b.dataset.delT,1); drawTeam(); drawList(); save();
+});
+
+/* ---------- step 2 ---------- */
+function drawChips(){
+  const counts = {};
+  ROUTINES.forEach((r,i)=>{ if(S.sel[i]) counts[r[0]] = (counts[r[0]]||0)+1; });
+  const all = Object.keys(S.sel).length;
+  const mk = (label, n) =>
+    `<button class="chip" data-cat="${esc(label)}" aria-pressed="${S.filter===label}">${esc(label)}${n?`<span class="n">${n}</span>`:""}</button>`;
+  document.getElementById("chips").innerHTML =
+    mk("All", all) + cats.map(c => mk(c, counts[c]||0)).join("");
+}
+
+function optionList(items, val){
+  return `<option value=""${!val?" selected":""}>— choose —</option>` +
+    items.map(x => `<option${x===val?" selected":""}>${esc(x)}</option>`).join("");
+}
+
+function drawList(){
+  const q = S.q.trim().toLowerCase();
+  const host = document.getElementById("list");
+  let html = "", shown = 0;
+
+  cats.forEach(cat => {
+    if(S.filter !== "All" && S.filter !== cat) return;
+    const rows = ROUTINES.map((r,i)=>({r,i})).filter(({r,i}) => {
+      if(r[0] !== cat) return false;
+      if(S.onlySel && !S.sel[i]) return false;
+      if(q && !(r[1]+" "+r[2]).toLowerCase().includes(q)) return false;
+      return true;
+    });
+    if(!rows.length) return;
+    shown += rows.length;
+    html += `<div class="cat"><h3>${esc(cat)} <span style="float:right;font-weight:600;color:#9bacbd">${rows.length}</span></h3>`;
+    rows.forEach(({r,i}) => {
+      const v = S.sel[i];
+      const on = !!v;
+      const missing = on && v.cal && (!v.owner || !v.start);
+      html += `
+      <div class="r ${on?"on":""}" data-i="${i}">
+        <div class="rhead" data-toggle="${i}">
+          <input type="checkbox" ${on?"checked":""} data-chk="${i}" aria-label="This applies to my business">
+          <div class="rtext">
+            <div class="rtitle">${esc(r[1])}</div>
+            <div class="rwhy">${esc(r[2])}</div>
+          </div>
+          <span class="pri ${r[4]}">${r[4]}</span>
+        </div>
+        <div class="det">
+          <div class="grid4">
+            <div><label class="fld" for="o${i}">Assigned to</label>
+              <select id="o${i}" data-f="owner" data-i="${i}">${optionList(S.team.map(t=>t.name).filter(Boolean), v&&v.owner)}</select></div>
+            <div><label class="fld" for="e${i}">Business</label>
+              <select id="e${i}" data-f="ent" data-i="${i}">${optionList(S.ents.map(t=>t.name).filter(Boolean), v&&v.ent)}</select></div>
+            <div><label class="fld" for="f${i}">Frequency</label>
+              <select id="f${i}" data-f="freq" data-i="${i}">${FREQS.map(f=>`<option${v&&v.freq===f?" selected":""}>${f}</option>`).join("")}</select></div>
+            <div><label class="fld" for="d${i}">Start date</label>
+              <input id="d${i}" type="date" data-f="start" data-i="${i}" value="${v&&v.start?v.start:""}"></div>
+            <div class="full"><label class="fld" for="n${i}">Notes</label>
+              <input id="n${i}" type="text" data-f="notes" data-i="${i}" value="${v&&v.notes?esc(v.notes):""}" placeholder="Anything the person doing this needs to know"></div>
+          </div>
+          <label class="addcal"><input type="checkbox" data-f="cal" data-i="${i}" ${v&&v.cal?"checked":""}> Put this on the calendar as a reminder</label>
+          ${missing?`<div class="need">Needs an owner and a start date before it can go on the calendar.</div>`:""}
+        </div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+
+  host.innerHTML = html;
+  document.getElementById("noneMsg").style.display = shown ? "none" : "block";
+  drawChips(); drawScore(); drawTotals();
+}
+
+document.getElementById("list").addEventListener("click", e => {
+  const chk = e.target.closest("[data-chk]");
+  if(chk){
+    const i = +chk.dataset.chk;
+    if(chk.checked){
+      S.sel[i] = { owner:"", ent:S.ents[0]?S.ents[0].name:"", freq:ROUTINES[i][3], start:"", notes:"", cal:true };
+    } else delete S.sel[i];
+    save(); drawList();
+    return;
+  }
+  const head = e.target.closest("[data-toggle]");
+  if(head && !e.target.closest("input,select,label")){
+    const i = +head.dataset.toggle;
+    const box = head.querySelector("[data-chk]");
+    if(box){ box.checked = !box.checked; box.dispatchEvent(new Event("click",{bubbles:true})); }
+  }
+});
+document.getElementById("list").addEventListener("change", e => {
+  const t = e.target; if(t.dataset.i === undefined || !t.dataset.f) return;
+  const i = +t.dataset.i; if(!S.sel[i]) return;
+  S.sel[i][t.dataset.f] = (t.type === "checkbox") ? t.checked : t.value;
+  save();
+  if(t.dataset.f === "cal" || t.dataset.f === "owner" || t.dataset.f === "start"){ drawList(); }
+  else { drawScore(); drawTotals(); }
+});
+document.getElementById("list").addEventListener("input", e => {
+  const t = e.target;
+  if(t.dataset.f === "notes" && t.dataset.i !== undefined && S.sel[+t.dataset.i]){
+    S.sel[+t.dataset.i].notes = t.value; save();
+  }
+});
+document.getElementById("chips").addEventListener("click", e => {
+  const c = e.target.closest("[data-cat]"); if(!c) return;
+  S.filter = c.dataset.cat; drawList();
+  document.getElementById("list").scrollIntoView({behavior:"smooth", block:"start"});
+});
+document.getElementById("search").addEventListener("input", e => { S.q = e.target.value; drawList(); });
+document.getElementById("onlySel").onclick = function(){
+  S.onlySel = !S.onlySel; this.setAttribute("aria-pressed", S.onlySel);
+  this.textContent = S.onlySel ? "Show all 120" : "Show only ticked";
+  drawList();
+};
+
+/* ---------- step 3: the score ---------- */
+function drawScore(){
+  const sel = Object.keys(S.sel).map(Number);
+  const ready = sel.filter(i => isReady(S.sel[i])).length;
+  const pct = sel.length ? Math.round(ready/sel.length*100) : 0;
+  document.getElementById("scorecards").innerHTML = `
+    <div class="sc"><div class="v">${sel.length}</div><div class="l">Routines that apply</div></div>
+    <div class="sc"><div class="v">${ready}</div><div class="l">Owned &amp; scheduled</div></div>
+    <div class="sc"><div class="v">${sel.length-ready}</div><div class="l">Still unassigned</div></div>
+    <div class="sc"><div class="v">${pct}%</div><div class="l">Covered</div></div>`;
+
+  const rows = cats.map(c => {
+    const idx = ROUTINES.map((r,i)=>i).filter(i => ROUTINES[i][0]===c && S.sel[i]);
+    const rd = idx.filter(i => isReady(S.sel[i])).length;
+    return {c, n:idx.length, rd, p: idx.length ? rd/idx.length*100 : 0};
+  }).filter(x => x.n > 0).sort((a,b) => a.p - b.p);
+
+  document.getElementById("bars").innerHTML = rows.length
+    ? rows.map(x => `<div class="bar"><span>${esc(x.c)}</span>
+        <span class="track"><span class="fill" style="width:${x.p}%"></span></span>
+        <span class="cnt">${x.rd}/${x.n}</span></div>`).join("")
+    : `<p class="hint" style="margin:0">Tick some routines in step 2 and your weakest areas will show up here, worst first.</p>`;
+}
+function drawTotals(){
+  const sel = Object.keys(S.sel).map(Number);
+  const ready = sel.filter(i => isReady(S.sel[i])).length;
+  const need = sel.filter(i => S.sel[i].cal && !isReady(S.sel[i])).length;
+  document.getElementById("selN").textContent = sel.length;
+  document.getElementById("readyN").textContent = ready;
+  document.getElementById("needN").textContent = need;
+  document.getElementById("needN2").textContent = need;
+  const locked = CONFIG.REQUIRE_FORM && !(LEAD && LEAD.qualified);
+  [document.getElementById("dlIcs"), document.getElementById("dlIcs2")].forEach(b => b.disabled = ready === 0 || locked);
+  document.getElementById("dlCsv").disabled = sel.length === 0 || locked;
+  // the printed action list is gated with the rest so the rule is consistent
+  [document.getElementById("doPrint"), document.getElementById("doPrint2")].forEach(b => b.disabled = locked);
+  const lk = document.getElementById("lockMsg");
+  if(lk) lk.style.display = locked ? "block" : "none";
+}
+
+/* ---------- exports ---------- */
+function download(name, mime, text){
+  const blob = new Blob([text], {type:mime});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url), 1500);
+}
+const icsEsc = s => String(s||"").replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\r?\n/g,"\\n");
+function fold(line){
+  const b = []; let s = line;
+  while(s.length > 73){ b.push(s.slice(0,73)); s = " " + s.slice(73); }
+  b.push(s); return b.join("\r\n");
+}
+const RRULE = {
+  "Weekly":"FREQ=WEEKLY",
+  "Monthly":"FREQ=MONTHLY",
+  "Quarterly":"FREQ=MONTHLY;INTERVAL=3",
+  "Annually":"FREQ=YEARLY"
+};
+function ymd(d){ return String(d||"").replace(/-/g,""); }
+function plusDay(iso){
+  const d = new Date(iso + "T00:00:00Z");
+  d.setUTCDate(d.getUTCDate()+1);
+  return d.toISOString().slice(0,10).replace(/-/g,"");
+}
+function buildIcs(){
+  const stamp = new Date().toISOString().replace(/[-:]/g,"").split(".")[0] + "Z";
+  const L = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Run It Like the Rich//The 120//EN",
+             "CALSCALE:GREGORIAN","METHOD:PUBLISH","X-WR-CALNAME:The 120"];
+  let n = 0;
+  Object.keys(S.sel).map(Number).forEach(i => {
+    const v = S.sel[i]; if(!isReady(v)) return;
+    const r = ROUTINES[i];
+    const desc = [
+      v.ent ? "Business: " + v.ent : "",
+      v.owner ? "Assigned to: " + v.owner : "",
+      "Priority: " + r[4],
+      "Area: " + r[0],
+      "",
+      "Why it matters: " + r[2],
+      v.notes ? "" : null, v.notes ? "Notes: " + v.notes : null,
+      "",
+      /Tax|Payroll|Legal|Insurance|Interest|Compliance/i.test(r[0]) ? "Professional review may be required." : null,
+      /^AI |AI &|AI for/i.test(r[0]) ? "AI-assisted review — human approval required." : null
+    ].filter(x => x !== null && x !== undefined).join("\n");
+
+    L.push("BEGIN:VEVENT");
+    L.push("UID:rilr-" + i + "-" + Date.now() + "-" + Math.random().toString(36).slice(2,8) + "@runitliketherich.com");
+    L.push("DTSTAMP:" + stamp);
+    L.push("DTSTART;VALUE=DATE:" + ymd(v.start));
+    L.push("DTEND;VALUE=DATE:" + plusDay(v.start));
+    L.push(fold("SUMMARY:" + icsEsc((v.ent ? v.ent + " — " : "") + r[1])));
+    L.push(fold("DESCRIPTION:" + icsEsc(desc)));
+    L.push(fold("CATEGORIES:" + icsEsc(r[0])));
+    if(RRULE[v.freq]) L.push("RRULE:" + RRULE[v.freq]);
+    L.push("BEGIN:VALARM","TRIGGER:-P1D","ACTION:DISPLAY",
+           fold("DESCRIPTION:" + icsEsc(r[1])),"END:VALARM");
+    L.push("END:VEVENT");
+    n++;
+  });
+  L.push("END:VCALENDAR");
+  return {text:L.join("\r\n"), n};
+}
+function buildCsv(){
+  const head = ["Area","Routine","Why it matters","Business","Assigned To","Frequency","Start Date","On Calendar","Priority","Notes"];
+  const q = s => '"' + String(s||"").replace(/"/g,'""') + '"';
+  const lines = [head.map(q).join(",")];
+  Object.keys(S.sel).map(Number).sort((a,b)=>a-b).forEach(i => {
+    const v = S.sel[i], r = ROUTINES[i];
+    lines.push([r[0], r[1], r[2], v.ent, v.owner, v.freq, v.start, v.cal?"Yes":"No", r[4], v.notes].map(q).join(","));
+  });
+  return "\uFEFF" + lines.join("\r\n");
+}
+function buildPrint(){
+  const sel = Object.keys(S.sel).map(Number).sort((a,b)=>a-b);
+  const byEnt = {};
+  sel.forEach(i => { const e = S.sel[i].ent || "Unassigned business"; (byEnt[e] = byEnt[e] || []).push(i); });
+  const today = new Date().toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"});
+  let h = `<div class="phead"><h1>The 120 — Action List</h1>
+    <div class="s">Run It Like the Rich &middot; ${sel.length} routines selected &middot; ${esc(today)}</div></div>`;
+  if(!sel.length) h += `<p>Nothing selected yet.</p>`;
+  Object.keys(byEnt).sort().forEach(e => {
+    h += `<div class="pcat"><h3>${esc(e)}</h3>`;
+    byEnt[e].forEach(i => {
+      const v = S.sel[i], r = ROUTINES[i];
+      h += `<div class="pitem"><div class="t">${esc(r[1])}</div>
+        <div class="m">${esc(r[0])} &middot; ${esc(v.owner||"no owner yet")} &middot; ${esc(v.freq)} &middot; starts ${esc(v.start||"not set")} &middot; ${esc(r[4])} priority</div>
+        ${v.notes?`<div class="m">Notes: ${esc(v.notes)}</div>`:""}</div>`;
+    });
+    h += `</div>`;
+  });
+  document.getElementById("printout").innerHTML = h;
+}
+
+function doIcs(){
+  const {text, n} = buildIcs();
+  if(!n){ toast("Nothing is ready for the calendar yet"); return; }
+  download("back-office-risk-radar.ics","text/calendar;charset=utf-8",text);
+  toast(n + " reminder" + (n>1?"s":"") + " downloaded");
+}
+document.getElementById("dlIcs").onclick = doIcs;
+document.getElementById("dlIcs2").onclick = doIcs;
+document.getElementById("dlCsv").onclick = () => {
+  download("back-office-risk-radar.csv","text/csv;charset=utf-8",buildCsv());
+  toast("Spreadsheet downloaded");
+};
+const doPrint = () => { buildPrint(); window.print(); };
+document.getElementById("doPrint").onclick = doPrint;
+document.getElementById("doPrint2").onclick = doPrint;
+document.getElementById("reset").onclick = () => {
+  if(!confirm("This clears every business, person and tick on this page. Continue?")) return;
+  S = blank(); LEAD = null;
+  try{ localStorage.removeItem(KEY); localStorage.removeItem(LKEY); }catch(e){}
+  const f = document.getElementById("qform");
+  f.reset(); f.style.display = "";
+  document.getElementById("gform").reset();
+  document.getElementById("qRead").classList.remove("show");
+  document.getElementById("sellWhen").classList.remove("show");
+  document.getElementById("expandWhen").classList.remove("show");
+  drawEnts(); drawTeam(); drawList();
+  document.getElementById("search").value = "";
+  if(CONFIG.REQUIRE_SIGNUP) showGate(true);
+  toast("Cleared");
+};
+
+/* ---------- lead state ---------- */
+let LEAD = null;
+try{ const r = localStorage.getItem(LKEY); if(r) LEAD = JSON.parse(r); }catch(e){}
+
+const q = id => document.getElementById(id);
+const picked = name => { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : ""; };
+
+/* ---------- email checking ---------- */
+const DISPOSABLE = ["mailinator.com","guerrillamail.com","10minutemail.com","tempmail.com","temp-mail.org",
+  "throwawaymail.com","yopmail.com","sharklasers.com","trashmail.com","getnada.com","maildrop.cc",
+  "fakeinbox.com","dispostable.com","mailnesia.com","spamgourmet.com","moakt.com","emailondeck.com"];
+
+const COMMON = ["gmail.com","yahoo.com","hotmail.com","outlook.com","aol.com","icloud.com","comcast.net",
+  "att.net","verizon.net","msn.com","live.com","bellsouth.net","sbcglobal.net","cox.net","me.com",
+  "protonmail.com","charter.net","earthlink.net","mac.com","ymail.com"];
+
+function editDistance(a,b){
+  const m = a.length, n = b.length;
+  if(Math.abs(m-n) > 2) return 9;
+  let prev = Array.from({length:n+1}, (_,j)=>j);
+  for(let i=1;i<=m;i++){
+    const cur = [i];
+    for(let j=1;j<=n;j++){
+      cur[j] = Math.min(prev[j]+1, cur[j-1]+1, prev[j-1] + (a[i-1]===b[j-1]?0:1));
+    }
+    prev = cur;
+  }
+  return prev[n];
+}
+
+/** Returns {ok, reason, suggest} — suggest is a corrected address worth offering. */
+function checkEmail(raw){
+  const v = String(raw||"").trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return {ok:false, reason:"format"};
+  const dom = v.split("@")[1].toLowerCase();
+  if(DISPOSABLE.indexOf(dom) > -1) return {ok:false, reason:"disposable"};
+  if(COMMON.indexOf(dom) > -1) return {ok:true};
+  for(const c of COMMON){
+    if(editDistance(dom, c) <= 2) return {ok:true, suggest: v.split("@")[0] + "@" + c};
+  }
+  return {ok:true};
+}
+
+function wireEmailTip(inputId, tipId){
+  const inp = q(inputId), tip = q(tipId);
+  inp.addEventListener("blur", () => {
+    const r = checkEmail(inp.value);
+    if(r.suggest){
+      tip.innerHTML = 'Did you mean <b data-fix="' + r.suggest.replace(/"/g,"&quot;") + '">' + r.suggest + '</b>?';
+      tip.classList.add("show");
+    } else tip.classList.remove("show");
+  });
+  tip.addEventListener("click", e => {
+    const b = e.target.closest("[data-fix]"); if(!b) return;
+    inp.value = b.dataset.fix; tip.classList.remove("show");
+  });
+}
+
+// show the "when" follow-ups only when the answer is Yes
+document.getElementById("qform").addEventListener("change", e => {
+  if(e.target.name === "sell")   q("sellWhen").classList.toggle("show", e.target.value === "Yes");
+  if(e.target.name === "expand") q("expandWhen").classList.toggle("show", e.target.value === "Yes");
+});
+
+function readout(d){
+  const weak = d.documented.startsWith("No") || d.prove === "No" || d.prove === "Don't know";
+  const soon = /12 months|1–2 years/.test(d.sellWhen || d.expandWhen || "");
+  const sel = Object.keys(S.sel).length;
+  const ready = Object.keys(S.sel).map(Number).filter(i => isReady(S.sel[i])).length;
+
+  let head, body;
+  if(weak && soon){
+    head = "You are on a short clock with a long list.";
+    body = `You are looking at a move inside two years, and the business cannot yet prove its value or run without you. Those two things take the longest to fix and they are the two a buyer or lender checks first. Starting now is the difference between setting your own price and taking what you are offered.`;
+  } else if(weak){
+    head = "The foundation is the gap, not the time.";
+    body = `There is no deadline pressing on you yet, which is the good news, because what is missing is the slowest thing to build. Documented systems and books that hold up are not weekend jobs. Owners who start this with years in hand are the ones who end up with options.`;
+  } else if(soon){
+    head = "You are closer than most owners at this stage.";
+    body = `Records that hold up and a business that runs without you are the two things most owners are missing when they decide to move. You have them. From here it is about tightening the leaks so the numbers show the business at its best.`;
+  } else {
+    head = "You are building the right way round.";
+    body = `Most owners fix the back office only when something forces them to. Doing it while nothing is on fire is how the business ends up worth something later.`;
+  }
+
+  const tally = sel
+    ? `You marked <b>${sel}</b> ${sel===1?"routine":"routines"} as applying to your business and <b>${ready}</b> ${ready===1?"is":"are"} assigned with a start date. Your downloads are in step 5.`
+    : `You have not marked any routines yet &mdash; step 2 is where the leaks show up.`;
+
+  q("qRead").innerHTML = `<h4>${head}</h4><p>${body}</p><p>${tally}</p>
+    <p style="margin-top:13px">If you want someone to look at it with you, the owner consultation is free and takes 30 minutes &mdash;
+    <a href="${CONFIG.CONSULT_URL}" target="_blank" rel="noopener">book a time here</a>.</p>`;
+  q("qRead").classList.add("show");
+}
+
+async function sendLead(d){
+  if(!CONFIG.LEAD_ENDPOINT) return;
+  try{
+    await fetch(CONFIG.LEAD_ENDPOINT, {
+      method:"POST", mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body: JSON.stringify(d)
+    });
+  }catch(e){ /* never block the user on a failed send */ }
+}
+
+/* ---------- the sign-up gate ---------- */
+function showGate(on){
+  q("gate").classList.toggle("show", on);
+  document.body.style.overflow = on ? "hidden" : "";
+}
+wireEmailTip("gEmail","gTip");
+
+q("gform").addEventListener("submit", async e => {
+  e.preventDefault();
+  const err = q("gErr");
+  const name = q("gName").value.trim();
+  const email = q("gEmail").value.trim();
+  const biz = q("gBiz").value.trim();
+  const chk = checkEmail(email);
+
+  if(!name){ err.textContent = "Your name, so I know who I'm talking to."; err.classList.add("show"); return; }
+  if(chk.reason === "format"){ err.textContent = "That email doesn't look right — check it over."; err.classList.add("show"); return; }
+  if(chk.reason === "disposable"){ err.textContent = "That's a temporary address. Use one you actually read, or you won't get your link."; err.classList.add("show"); return; }
+  if(!q("gConsent").checked){ err.textContent = "Tick the box so I'm allowed to send your link."; err.classList.add("show"); return; }
+  err.classList.remove("show");
+
+  const btn = q("gSubmit");
+  btn.disabled = true; btn.textContent = "Opening…";
+
+  LEAD = { stage:"signup", name, email, business:biz, consent:true,
+           qualified:false, appUrl: CONFIG.APP_URL,
+           submittedAt: new Date().toISOString(), source:"The 120" };
+  await sendLead(LEAD);
+  try{ localStorage.setItem(LKEY, JSON.stringify(LEAD)); }catch(e2){}
+
+  btn.disabled = false; btn.textContent = "Open The 120";
+  showGate(false);
+  drawTotals();
+  toast("Your link is on its way to " + email);
+});
+
+/* restore a previous session from the CSV they downloaded */
+function parseCsv(text){
+  const rows = []; let row = [], cell = "", inQ = false;
+  text = text.replace(/^﻿/, "");
+  for(let i=0;i<text.length;i++){
+    const c = text[i];
+    if(inQ){
+      if(c === '"'){ if(text[i+1] === '"'){ cell += '"'; i++; } else inQ = false; }
+      else cell += c;
+    } else if(c === '"') inQ = true;
+    else if(c === ","){ row.push(cell); cell = ""; }
+    else if(c === "\n"){ row.push(cell); rows.push(row); row = []; cell = ""; }
+    else if(c !== "\r") cell += c;
+  }
+  if(cell.length || row.length){ row.push(cell); rows.push(row); }
+  return rows.filter(r => r.length > 1);
+}
+
+function restoreFromCsv(text){
+  const rows = parseCsv(text);
+  if(!rows.length) return 0;
+  const head = rows[0].map(h => h.trim().toLowerCase());
+  const col = n => head.indexOf(n);
+  const iRoutine = col("routine"), iBiz = col("business"), iOwner = col("assigned to"),
+        iFreq = col("frequency"), iStart = col("start date"), iCal = col("on calendar"), iNotes = col("notes");
+  if(iRoutine < 0) return 0;
+
+  const byText = {};
+  ROUTINES.forEach((r,i) => { byText[r[1].trim()] = i; });
+
+  let n = 0; const ents = new Set();
+  rows.slice(1).forEach(r => {
+    const idx = byText[(r[iRoutine]||"").trim()];
+    if(idx === undefined) return;
+    const ent = iBiz > -1 ? (r[iBiz]||"").trim() : "";
+    if(ent) ents.add(ent);
+    S.sel[idx] = {
+      owner: iOwner > -1 ? (r[iOwner]||"").trim() : "",
+      ent: ent,
+      freq: (iFreq > -1 && FREQS.indexOf((r[iFreq]||"").trim()) > -1) ? (r[iFreq]||"").trim() : ROUTINES[idx][3],
+      start: iStart > -1 ? (r[iStart]||"").trim() : "",
+      notes: iNotes > -1 ? (r[iNotes]||"").trim() : "",
+      cal: iCal > -1 ? /^y/i.test((r[iCal]||"").trim()) : true
+    };
+    n++;
+  });
+  if(ents.size){
+    const have = new Set(S.ents.map(x => x.name));
+    ents.forEach(e => { if(!have.has(e)) S.ents.push({name:e, type:"", lead:""}); });
+    S.ents = S.ents.filter(x => x.name);
+  }
+  save(); drawEnts(); drawList();
+  return n;
+}
+
+function wireRestore(btnId, fileId){
+  q(btnId).onclick = () => q(fileId).click();
+  q(fileId).onchange = e => {
+    const f = e.target.files && e.target.files[0]; if(!f) return;
+    const rd = new FileReader();
+    rd.onload = () => {
+      let n = 0;
+      try{ n = restoreFromCsv(String(rd.result)); }catch(err){ n = 0; }
+      if(n){
+        showGate(false);
+        toast(n + " routine" + (n>1?"s":"") + " restored");
+      } else {
+        toast("Couldn't read that file — is it the CSV from this page?");
+      }
+      e.target.value = "";
+    };
+    rd.readAsText(f);
+  };
+}
+wireRestore("gRestore","gFile");
+
+document.getElementById("qform").addEventListener("submit", async e => {
+  e.preventDefault();
+  const err = q("qErr");
+  const d = {
+    stage: "qualify",
+    name: (LEAD && LEAD.name) || "",
+    email: (LEAD && LEAD.email) || "",
+    business: (LEAD && LEAD.business) || "",
+    consent: true,
+    qualified: true,
+    years: picked("years"),
+    sell: picked("sell"),
+    sellWhen: picked("sell") === "Yes" ? picked("sellWhen") : "",
+    expand: picked("expand"),
+    expandWhen: picked("expand") === "Yes" ? picked("expandWhen") : "",
+    prove: picked("prove"),
+    documented: picked("documented")
+  };
+
+  const missing = [];
+  if(!d.years) missing.push("years in business");
+  if(!d.sell) missing.push("whether you are thinking about selling");
+  if(!d.expand) missing.push("whether you are planning to expand");
+  if(!d.prove) missing.push("whether you could prove the value");
+  if(!d.documented) missing.push("whether it could run without you");
+
+  if(missing.length){
+    err.textContent = "Still need " + (missing.length > 1
+      ? missing.slice(0,-1).join(", ") + " and " + missing.slice(-1)
+      : missing[0]) + ".";
+    err.classList.add("show");
+    return;
+  }
+  err.classList.remove("show");
+
+  const sel = Object.keys(S.sel).map(Number);
+  d.routinesSelected = sel.length;
+  d.routinesScheduled = sel.filter(i => isReady(S.sel[i])).length;
+  d.weakestAreas = cats.map(c => {
+    const idx = sel.filter(i => ROUTINES[i][0] === c);
+    if(!idx.length) return null;
+    const rd = idx.filter(i => isReady(S.sel[i])).length;
+    return {c, p: rd/idx.length};
+  }).filter(Boolean).sort((a,b)=>a.p-b.p).slice(0,3).map(x=>x.c).join(", ");
+  d.businesses = S.ents.map(x=>x.name).filter(Boolean).join(", ");
+  d.submittedAt = new Date().toISOString();
+  d.source = "The 120";
+
+  const btn = q("qSubmit");
+  btn.disabled = true; btn.textContent = "Sending…";
+  await sendLead(d);
+  btn.disabled = false; btn.textContent = "Get my results";
+
+  LEAD = d;
+  try{ localStorage.setItem(LKEY, JSON.stringify(d)); }catch(e2){}
+  document.getElementById("qform").style.display = "none";
+  readout(d);
+  drawTotals();
+  q("qRead").scrollIntoView({behavior:"smooth", block:"center"});
+});
+
+function restoreLead(){
+  if(LEAD && LEAD.qualified){
+    document.getElementById("qform").style.display = "none";
+    readout(LEAD);
+  }
+}
+
+/* ---------- step 5: save / restore ---------- */
+wireRestore("sRestore","sFile");
+q("dlCsv").addEventListener("click", () => {
+  setTimeout(() => toast("Keep that file — it's also how you pick up where you left off"), 900);
+});
+
+/* ---------- go ---------- */
+if(CONFIG.REQUIRE_FORM) document.getElementById("gateNote").style.display = "block";
+load(); drawEnts(); drawTeam(); drawList(); restoreLead();
+if(CONFIG.REQUIRE_SIGNUP && !LEAD) showGate(true);
+</script>
+</body>
+</html>

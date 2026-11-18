@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What should I cover first? — Run It Like the Rich</title>
+<meta name="description" content="Tell me where you're stuck and what you'd want covered first. Takes about thirty seconds.">
+<style>
+  :root{
+    --navy:#0C1F33; --navy2:#14283C; --gold:#C9A227; --gold2:#F2C73D;
+    --ink:#E8F0F7; --mute:#9FB3C6; --line:rgba(255,255,255,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--navy); color:var(--ink); min-height:100vh;
+    font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:54px 54px;
+  }
+  .glow{position:fixed;right:-240px;top:-240px;width:860px;height:860px;border-radius:50%;
+    background:radial-gradient(circle,rgba(201,162,39,.22) 0%,transparent 65%);pointer-events:none}
+  .wrap{position:relative;max-width:660px;margin:0 auto;padding:48px 16px 72px}
+  .brand{font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold2)}
+  h1{font-size:clamp(28px,6vw,42px);line-height:1.12;letter-spacing:-.6px;margin:18px 0 14px;font-weight:700}
+  .lede{color:var(--mute);font-size:17px;max-width:54ch}
+  form{margin-top:34px}
+  fieldset{border:0;margin:0 0 30px}
+  legend{font-weight:700;font-size:17px;margin-bottom:6px;padding:0}
+  .hint{color:var(--mute);font-size:14px;margin-bottom:14px}
+  label.opt{
+    display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.045);
+    border:1px solid var(--line);border-radius:11px;padding:14px 16px;margin-bottom:9px;
+    cursor:pointer;transition:border-color .14s,background .14s;
+  }
+  label.opt:hover{background:rgba(255,255,255,.075);border-color:rgba(242,199,61,.45)}
+  label.opt input{margin-top:4px;accent-color:var(--gold2);width:17px;height:17px;flex:none}
+  label.opt span{font-size:16px}
+  label.opt:has(input:checked){background:rgba(242,199,61,.11);border-color:var(--gold2)}
+  .fld{margin-bottom:20px}
+  .fld label{display:block;font-weight:700;margin-bottom:6px}
+  textarea,input[type=text],input[type=email]{
+    width:100%;background:rgba(255,255,255,.055);border:1px solid var(--line);
+    border-radius:11px;padding:13px 15px;color:var(--ink);font:inherit;
+  }
+  textarea{min-height:92px;resize:vertical}
+  textarea:focus,input:focus{outline:none;border-color:var(--gold2);background:rgba(255,255,255,.085)}
+  .big{border-left:3px solid var(--gold2);padding-left:18px;margin:34px 0}
+  .big .q{font-size:20px;font-weight:700;line-height:1.3;margin-bottom:5px}
+  .big .why{color:var(--mute);font-size:14px;margin-bottom:12px}
+  button{
+    background:var(--gold2);color:var(--navy);border:0;border-radius:11px;
+    padding:15px 30px;font:700 17px/1 inherit;cursor:pointer;width:100%;
+  }
+  button:hover{background:var(--gold)}
+  button:disabled{opacity:.55;cursor:default}
+  .fine{color:var(--mute);font-size:13px;margin-top:14px;text-align:center}
+  .done{display:none;text-align:center;padding:52px 10px}
+  .done h2{font-size:30px;margin-bottom:12px;letter-spacing:-.4px}
+  .done p{color:var(--mute);max-width:44ch;margin:0 auto 10px}
+  .sig{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);
+    color:var(--mute);font-size:14px}
+  .sig b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+
+  <div id="formView">
+    <div class="brand">Run It Like the Rich</div>
+    <h1>What should I cover first?</h1>
+    <p class="lede">I'm about to start making a lot of this, and I'd rather not guess. Tell me
+      where you're actually stuck. Thirty seconds, and it genuinely changes what I build next.</p>
+
+    <form id="f">
+      <fieldset>
+        <legend>Which of these sounds like you?</legend>
+        <p class="hint">Tick as many as apply. No wrong answers, and nobody sees this but me.</p>
+
+        <label class="opt"><input type="checkbox" name="pain" value="Books are a mess, don't know where to start">
+          <span>My books are a mess and I don't know where to start</span></label>
+        <label class="opt"><input type="checkbox" name="pain" value="Can't tell if actually making money">
+          <span>I can't tell if I'm actually making money</span></label>
+        <label class="opt"><input type="checkbox" name="pain" value="Can't find anything">
+          <span>I can't find anything when I need it</span></label>
+        <label class="opt"><input type="checkbox" name="pain" value="Doesn't know filing requirements">
+          <span>I don't know what I'm supposed to file, or when</span></label>
+        <label class="opt"><input type="checkbox" name="pain" value="Everything runs through me">
+          <span>Everything runs through me and I can't step away</span></label>
+        <label class="opt"><input type="checkbox" name="pain" value="Wants to sell or step back eventually">
+          <span>I'd like to sell or step back one day and I don't know if I could</span></label>
+        <label class="opt"><input type="checkbox" name="pain" value="Bookkeeper needs support">
+          <span>My bookkeeper needs help and I can't give it to them</span></label>
+        <label class="opt"><input type="checkbox" name="pain" value="Too many systems in too many places">
+          <span>My stuff is scattered across too many apps and logins</span></label>
+      </fieldset>
+
+      <div class="big">
+        <div class="q">What's the one thing you'd pay to never think about again?</div>
+        <div class="why">Be blunt. This is the question I'm most interested in.</div>
+        <textarea name="payToAvoid" placeholder="Honestly, anything. Chasing receipts. Sales tax. Not knowing if I can afford to hire."></textarea>
+      </div>
+
+      <div class="fld">
+        <label for="cover">Anything specific you want covered?</label>
+        <textarea id="cover" name="cover" placeholder="A walkthrough, a template, a question you've never got a straight answer to."></textarea>
+      </div>
+
+      <div class="fld">
+        <label for="biz">What kind of business, and roughly how many people?</label>
+        <input id="biz" type="text" name="business" placeholder="e.g. landscaping, 6 people — helps me pitch it right">
+      </div>
+
+      <div class="fld">
+        <label for="email">Email, only if you want a reply</label>
+        <input id="email" type="email" name="email" placeholder="Optional. Leave it blank and stay anonymous.">
+      </div>
+
+      <button type="submit" id="go">Send it</button>
+      <p class="fine">No list signup. No pitch. I just want to know what to build.</p>
+    </form>
+
+    <div class="sig">
+      <b>Laura Leopardi</b> — 25 years in the back offices of small businesses.<br>
+      Keep it lean. Keep it clean. Run it like the rich.
+    </div>
+  </div>
+
+  <div class="done" id="doneView">
+    <h2>Got it — thank you.</h2>
+    <p>That genuinely helps. If you left an email I'll come back to you; if not, you'll
+      probably see your answer turn up as a video.</p>
+    <p style="margin-top:22px"><b>Stay ready, not get ready.</b></p>
+  </div>
+
+</div>
+
+<script>
+/* =================================================================== */
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbx5KL4TPVBKPqiPIPQvIVYM-Ri819CEbT5kloJ3_enwWXv9SxBVECrlfzzIlWyu6rboAA/exec";
+/* =================================================================== */
+
+document.getElementById('f').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const btn = document.getElementById('go');
+  btn.disabled = true; btn.textContent = 'Sending…';
+
+  const fd = new FormData(e.target);
+  const payload = {
+    stage: 'ask',
+    source: 'Ask page',
+    pain: fd.getAll('pain').join(' · '),
+    payToAvoid: (fd.get('payToAvoid') || '').trim(),
+    cover: (fd.get('cover') || '').trim(),
+    business: (fd.get('business') || '').trim(),
+    email: (fd.get('email') || '').trim(),
+    submittedAt: new Date().toISOString()
+  };
+
+  try {
+    await fetch(ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+  } catch (err) {
+    /* no-cors gives us no response either way — never block the thank-you */
+  }
+
+  document.getElementById('formView').style.display = 'none';
+  document.getElementById('doneView').style.display = 'block';
+  window.scrollTo(0, 0);
+});
+</script>
+</body>
+</html>
