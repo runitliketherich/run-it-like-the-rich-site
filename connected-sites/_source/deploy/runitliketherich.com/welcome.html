@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Welcome — Run It Like the Rich</title>
+<meta name="description" content="Three quick questions so the weekly letter is actually useful to you.">
+<style>
+  :root{
+    --navy:#0C1F33; --gold:#C9A227; --gold2:#F2C73D;
+    --ink:#E8F0F7; --mute:#9FB3C6; --line:rgba(255,255,255,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--navy); color:var(--ink); min-height:100vh;
+    font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+    background-size:54px 54px;
+  }
+  .glow{position:fixed;right:-240px;top:-240px;width:860px;height:860px;border-radius:50%;
+    background:radial-gradient(circle,rgba(201,162,39,.22) 0%,transparent 65%);pointer-events:none}
+  .wrap{position:relative;max-width:620px;margin:0 auto;padding:48px 16px 72px}
+  .brand{font-size:12px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold2)}
+  h1{font-size:clamp(28px,6vw,40px);line-height:1.14;letter-spacing:-.6px;margin:18px 0 14px;font-weight:700}
+  .lede{color:var(--mute);font-size:17px;max-width:52ch}
+  form{margin-top:34px}
+  fieldset{border:0;margin:0 0 28px}
+  legend{font-weight:700;font-size:17px;margin-bottom:12px;padding:0}
+  label.opt{
+    display:flex;gap:13px;align-items:flex-start;background:rgba(255,255,255,.045);
+    border:1px solid var(--line);border-radius:11px;padding:13px 16px;margin-bottom:9px;
+    cursor:pointer;transition:border-color .14s,background .14s;
+  }
+  label.opt:hover{background:rgba(255,255,255,.075);border-color:rgba(242,199,61,.45)}
+  label.opt input{margin-top:3px;accent-color:var(--gold2);width:17px;height:17px;flex:none}
+  label.opt:has(input:checked){background:rgba(242,199,61,.11);border-color:var(--gold2)}
+  .fld{margin-bottom:22px}
+  .fld label{display:block;font-weight:700;margin-bottom:6px}
+  .fld .why{color:var(--mute);font-size:13.5px;font-weight:400;margin-bottom:8px}
+  textarea,input[type=email]{
+    width:100%;background:rgba(255,255,255,.055);border:1px solid var(--line);
+    border-radius:11px;padding:13px 15px;color:var(--ink);font:inherit;
+  }
+  textarea{min-height:96px;resize:vertical}
+  textarea:focus,input:focus{outline:none;border-color:var(--gold2);background:rgba(255,255,255,.085)}
+  .big{border-left:3px solid var(--gold2);padding-left:18px;margin:30px 0}
+  .big .q{font-size:19px;font-weight:700;line-height:1.3;margin-bottom:5px}
+  .big .why{color:var(--mute);font-size:14px;margin-bottom:12px}
+  button{
+    background:var(--gold2);color:var(--navy);border:0;border-radius:11px;
+    padding:15px 30px;font:700 17px/1 inherit;cursor:pointer;width:100%;
+  }
+  button:hover{background:var(--gold)}
+  button:disabled{opacity:.55;cursor:default}
+  .fine{color:var(--mute);font-size:13px;margin-top:14px;text-align:center}
+  .done{display:none;text-align:center;padding:54px 10px}
+  .done h2{font-size:30px;margin-bottom:12px;letter-spacing:-.4px}
+  .done p{color:var(--mute);max-width:46ch;margin:0 auto 10px}
+  .done .row{margin-top:28px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .done a{display:inline-block;text-decoration:none;border-radius:10px;padding:12px 20px;font-weight:700}
+  .done a.g{background:var(--gold2);color:var(--navy)}
+  .done a.l{border:1px solid var(--line);color:var(--ink)}
+  .sig{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);
+    color:var(--mute);font-size:14px}
+  .sig b{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+
+  <div id="formView">
+    <div class="brand">Run It Like the Rich</div>
+    <h1>You're in. Three quick questions.</h1>
+    <p class="lede">So the letter is actually about your situation instead of everybody's.
+      Thirty seconds, and you can skip any of it.</p>
+
+    <form id="f">
+      <fieldset>
+        <legend>Which one are you?</legend>
+        <label class="opt"><input type="radio" name="role" value="Owner">
+          <span>I own the business</span></label>
+        <label class="opt"><input type="radio" name="role" value="Bookkeeper or office staff">
+          <span>I keep the books, or run the office, for someone else</span></label>
+        <label class="opt"><input type="radio" name="role" value="Accountant or CPA">
+          <span>I'm an accountant or CPA</span></label>
+        <label class="opt"><input type="radio" name="role" value="Something else">
+          <span>None of those</span></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>How many people, including you?</legend>
+        <label class="opt"><input type="radio" name="size" value="Just me"><span>Just me</span></label>
+        <label class="opt"><input type="radio" name="size" value="2-5"><span>2 to 5</span></label>
+        <label class="opt"><input type="radio" name="size" value="6-20"><span>6 to 20</span></label>
+        <label class="opt"><input type="radio" name="size" value="20+"><span>More than 20</span></label>
+      </fieldset>
+
+      <div class="big">
+        <div class="q">What made you subscribe?</div>
+        <div class="why">Whatever was going through your head. This is the one I read every time.</div>
+        <textarea name="why" placeholder="Something you're stuck on, something you saw, something you're dreading in January."></textarea>
+      </div>
+
+      <div class="fld">
+        <label for="email">Your email</label>
+        <p class="why">The one you just subscribed with, so I can match this up. Nothing new gets added.</p>
+        <input id="email" type="email" name="email" required autocomplete="email" placeholder="you@yourbusiness.com">
+      </div>
+
+      <button type="submit" id="go">Send it</button>
+      <p class="fine">No pitch. I don't sell or share your address.</p>
+    </form>
+
+    <div class="sig">
+      <b>Laura Leopardi</b> — 25 years in the back offices of small businesses.<br>
+      Keep it lean. Keep it clean. Run it like the rich.
+    </div>
+  </div>
+
+  <div class="done" id="doneView">
+    <h2>Got it — thank you.</h2>
+    <p>That shapes what I write next. Your first letter lands this week.</p>
+    <p>While you're here, the two free things most people start with:</p>
+    <div class="row">
+      <a class="g" href="/radar">Open The 120</a>
+      <a class="l" href="/proactive-bookkeeper-checklist.pdf" data-gated="Proactive Bookkeeper Checklist" download>The Proactive Bookkeeper Checklist</a>
+    </div>
+    <p style="margin-top:30px"><b>Stay ready, not get ready.</b></p>
+  </div>
+
+</div>
+
+<script>window.RILTR_FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbx5KL4TPVBKPqiPIPQvIVYM-Ri819CEbT5kloJ3_enwWXv9SxBVECrlfzzIlWyu6rboAA/exec";</script>
+<script src="/gate.js" defer></script>
+<script>
+document.getElementById('f').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  if (!this.reportValidity()) return;
+  const btn = document.getElementById('go');
+  btn.disabled = true; btn.textContent = 'Sending…';
+
+  const fd = new FormData(e.target);
+  const payload = {
+    form: 'subscriber',
+    role:  fd.get('role')  || '',
+    size:  fd.get('size')  || '',
+    why:  (fd.get('why')   || '').trim(),
+    email:(fd.get('email') || '').trim(),
+    site: location.hostname,
+    source: 'Welcome page',
+    submittedAt: new Date().toISOString()
+  };
+
+  try {
+    await fetch(window.RILTR_FORM_ENDPOINT, {
+      method: 'POST', mode: 'no-cors',
+      body: new URLSearchParams(payload)
+    });
+  } catch (err) {
+    /* no-cors gives us no response either way - never block the thank-you */
+  }
+
+  document.getElementById('formView').style.display = 'none';
+  document.getElementById('doneView').style.display = 'block';
+  window.scrollTo(0, 0);
+});
+</script>
+</body>
+</html>

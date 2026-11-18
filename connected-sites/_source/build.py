@@ -395,6 +395,11 @@ def main():
             shutil.copy(SRC / "clean-start.html", out / "clean-start.html")
             for f in ("proactive-bookkeeper-checklist.pdf", "radar.html", "ask.html"):
                 shutil.copy(SRC / f, out / f)
+            # Linked from the Substack welcome email. Standalone, so the
+            # endpoint is injected here rather than hardcoded in the file.
+            (out / "welcome.html").write_text(
+                (SRC / "welcome.html").read_text()
+                .replace("__ENDPOINT__", CONFIG["formCatcher"]))
             # new-year.html is its own standalone document, so it never passes
             # through page(); inject the download gate on the way out.
             ny = (SRC / "new-year.html").read_text()
