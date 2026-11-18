@@ -59,6 +59,14 @@ SITES = [
 ]
 BY_KEY = {s[0]: s for s in SITES}
 
+# Sites that still build and stay reachable at their own domain, but are not
+# promoted in the "Our sites" strip, the footer grid or the nav.
+#   hub — keeps Laura's name off every page of the network
+#   hq  — HQ Club has no checkout yet, so every link to it dead-ends
+HIDDEN = {"hub", "hq"}
+SHOWN = [s for s in SITES if s[0] not in HIDDEN]
+NUMWORD = {2: "two", 3: "three", 4: "four", 5: "five", 6: "six"}
+
 def b64(p):
     return "data:image/png;base64," + base64.b64encode((SRC / p).read_bytes()).decode()
 
@@ -82,11 +90,11 @@ def link_attrs(href):
 
 def header(key, mode):
     s = BY_KEY[key]
-    join = url_for("hq", mode, "join")
+    join = CONFIG["substackUrl"]
     cur = ' aria-current="page"'
     strip = "".join(
-        f'<a href="{url_for(k, mode)}"{cur if k == key else ""}>{dom}</a>' for k, dom, *_ in SITES)
-    links = [("hq", "HQ Club"), ("vhq", "Virtual HQ"), ("gaap", "Train the GAAP"), ("exit", "StoryBook Exit"), ("riltr", "Articles")]
+        f'<a href="{url_for(k, mode)}"{cur if k == key else ""}>{dom}</a>' for k, dom, *_ in SHOWN)
+    links = [("vhq", "Virtual HQ"), ("gaap", "Train the GAAP"), ("exit", "StoryBook Exit"), ("riltr", "Articles")]
     nav = "".join(
         f'<a class="lnk" href="{url_for(k, mode)}">{t}</a>' for k, t in links if k != key)
     contact = url_for("hub", mode, "contact")
@@ -95,17 +103,17 @@ def header(key, mode):
 <header class="top"><div class="wrap">
   <a class="home" href="{url_for(key, mode)}"><b>{home_name}</b><span>Run It Like the Rich</span></a>
   <nav aria-label="Sites">{nav}<a class="lnk" href="{contact}">Contact</a>
-  <a class="btn btn-gold btn-sm" href="{join}"{link_attrs(join)}>Join the waitlist</a></nav>
+  <a class="btn btn-gold btn-sm" href="{join}"{link_attrs(join)}>Free weekly letter</a></nav>
 </div></header>'''
 
 def footer(key, mode):
     cards = []
-    for k, dom, name, line, *_ in SITES:
+    for k, dom, name, line, *_ in SHOWN:
         cls = ' class="here"' if k == key else ""
         cards.append(f'<a{cls} href="{url_for(k, mode)}"><span>{dom}</span><b>{name}</b><em>{line}</em></a>')
     book = CONFIG["bookingUrl"] or url_for("hub", mode, "book")
     return f'''<footer class="family on-navy"><div class="wrap">
-  <p class="eyebrow" style="color:var(--gold)">One system, six front doors</p>
+  <p class="eyebrow" style="color:var(--gold)">One system, {NUMWORD.get(len(SHOWN), len(SHOWN))} front doors</p>
   <h2>Every site leads to the same place: a business that runs without you.</h2>
   <div class="fam-grid">{"".join(cards)}</div>
   <div class="follow">
@@ -115,7 +123,7 @@ def footer(key, mode):
   </div>
   <div class="signoff">
     <img class="mk" src="{MARK_GOLD}" alt="Run it like the Rich">
-    <p><b>Keep it lean. Keep it clean. Run it like the rich.</b><br>{CONFIG["email"]} · Orlando, Florida · © 2026 Laura Poincot</p>
+    <p><b>Keep it lean. Keep it clean. Run it like the rich.</b><br>{CONFIG["email"]} · Orlando, Florida · © 2026 Laura Leopardi</p>
   </div>
 </div></footer>'''
 
@@ -349,8 +357,12 @@ def main():
             shutil.copy(SRC / "clean-start.html", out / "clean-start.html")
         if key == "vhq":
             for m in ("virtual-hq-tour.mp4", "virtual-hq-tour.jpg"):
-                shutil.copy(SRC / "media" / m, out / m)
-                shutil.copy(SRC / "media" / m, ROOT / "preview" / m)
+                src = SRC / "media" / m
+                if not src.exists():          # media is not committed; skip rather than die
+                    print(f"  note: {m} not in _source/src/media, leaving the published copy alone")
+                    continue
+                shutil.copy(src, out / m)
+                shutil.copy(src, ROOT / "preview" / m)
     for tk, t in TOOLS.items():
         raw = tool_raw(tk)
         kw = dict(raw=raw, title=t["title"], desc=t["lead"], path=t["slug"])
