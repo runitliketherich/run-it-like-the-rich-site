@@ -6,7 +6,7 @@
       <p class="lead">The HQ Club isn't open yet. Leave your email and you'll be first to know when it opens.</p>
     </div>
     <form class="wl-form" id="waitlist" novalidate>
-      <input type="hidden" name="form" value="HQ Club waitlist">
+      <input type="hidden" name="topic" value="HQ Club waitlist">
       <div class="f2">
         <label class="fl" for="wl-name">Name<input id="wl-name" name="name" autocomplete="name"></label>
         <label class="fl" for="wl-email">Email *<input id="wl-email" name="email" type="email" required autocomplete="email" placeholder="you@yourbusiness.com"></label>
@@ -34,7 +34,11 @@
     var fd = new FormData(f), o = {};
     fd.forEach(function(v,k){ o[k] = v; });
     o.submittedAt = new Date().toISOString();
-    var url = C.waitlistEndpoint || C.intakeEndpoint;
+    o.form = 'waitlist';
+    o.business = o.company || '';
+    o.site = location.hostname;
+    o.source = 'Waitlist';
+    var url = C.formCatcher || C.waitlistEndpoint || C.intakeEndpoint;
     if(url){
       fetch(url, {method:'POST', mode:'no-cors', body: new URLSearchParams(o)}).catch(function(){});
     }

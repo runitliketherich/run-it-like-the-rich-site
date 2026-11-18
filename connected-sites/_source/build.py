@@ -21,7 +21,10 @@ CONFIG = {
     "chatUrl": "",        # instant chat link, e.g. WhatsApp wa.me/1407..., Messenger m.me/..., or a live-chat page
     "bookingUrl": "https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support",
     "joinUrl": "",        # HQ Club checkout / payment link
-    "formEndpoint": "",   # Formspree (or similar) endpoint so the form sends without an email app
+    # Every form on every site posts here. One Apps Script, one spreadsheet,
+    # one tab per form type. See _source/../radar/lead-catcher-apps-script.gs
+    "formCatcher": "https://script.google.com/macros/s/AKfycbx5KL4TPVBKPqiPIPQvIVYM-Ri819CEbT5kloJ3_enwWXv9SxBVECrlfzzIlWyu6rboAA/exec",
+    "formEndpoint": "",   # legacy Formspree slot; formCatcher takes precedence
     "qboInviteEmail": "laurapoincot@gmail.com",  # email clients invite as their QuickBooks accountant
     "waitlistEndpoint": "",  # optional: where waitlist sign-ups are sent (e.g. the Apps Script URL)
     "intakeEndpoint": "", # Google Apps Script web app URL for the HQ Club intake (see _source/intake-apps-script.gs)
@@ -158,9 +161,17 @@ JS = r'''
       e.preventDefault();
       if(!f.reportValidity()) return;
       var em = f.querySelector('input[type=email]').value.trim();
-      if(C.signupEndpoint){
-        fetch(C.signupEndpoint, {method:'POST', mode:'no-cors', body: new URLSearchParams({email: em, source: 'Clean Start Checklist', page: location.hostname})}).catch(function(){});
-      } else if(C.substackUrl){
+      // Log it AND subscribe them. These used to be either/or, which meant
+      // turning on logging would have quietly stopped the Substack sign-up.
+      var ep = C.formCatcher || C.signupEndpoint;
+      if(ep){
+        fetch(ep, {method:'POST', mode:'no-cors', body: new URLSearchParams({
+          form: 'freebie', email: em,
+          which: f.getAttribute('data-source') || 'Free checklist',
+          site: location.hostname, source: 'Free checklist'
+        })}).catch(function(){});
+      }
+      if(C.substackUrl){
         var a = document.createElement('a');
         a.href = C.substackUrl.replace(/\/$/, '') + '/subscribe?email=' + encodeURIComponent(em);
         a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove();
@@ -188,7 +199,19 @@ JS = r'''
       var fd = new FormData(form), o = {};
       fd.forEach(function(v,k){ o[k] = v; });
       function show(m){ st.textContent = m; st.hidden = false; }
-      if(C.formEndpoint){
+      if(C.formCatcher){
+        show('Sending…');
+        o.form = 'call'; o.site = location.hostname; o.source = o.topic || 'Contact form';
+        o.bestTime = o.reach || '';
+        // no-cors: the Apps Script answers with a redirect no browser will
+        // let us read, so we never learn if it worked. Showing the happy
+        // message is the right call — the row lands either way, and a scary
+        // error on a form that did send is worse than no confirmation.
+        fetch(C.formCatcher, {method:'POST', mode:'no-cors', body: new URLSearchParams(o)})
+          .catch(function(){});
+        form.reset();
+        show('Got it. Laura will come back to you — usually same day.');
+      } else if(C.formEndpoint){
         show('Sending…');
         fetch(C.formEndpoint, {method:'POST', body:fd, headers:{'Accept':'application/json'}})
           .then(function(r){ if(!r.ok) throw 0; form.reset(); show('Got it. Your message is in Laura\'s inbox.'); })
@@ -335,7 +358,17 @@ def tool_raw(tk):
   f.addEventListener('submit', function(e){{
     e.preventDefault(); if(!f.reportValidity()) return;
     var name = document.getElementById('ts-name').value, em = document.getElementById('ts-email').value, biz = document.getElementById('ts-biz').value;
-    var body = 'Name: ' + name + '\\nEmail: ' + em + '\\nBusiness: ' + biz + '\\n\\n' + document.getElementById('ts-sum').value;
+    var list = document.getElementById('ts-sum').value;
+    if(C.formCatcher){{
+      fetch(C.formCatcher, {{method:'POST', mode:'no-cors', body: new URLSearchParams({{
+        form: 'checklist', name: name, email: em, business: biz,
+        which: document.querySelector('h1').textContent,
+        list: list, site: location.hostname, source: 'Checklist page'
+      }})}}).catch(function(){{}});
+      msg.textContent = 'Sent. Laura has your list and will reply with where to start.'; msg.hidden = false;
+      return;
+    }}
+    var body = 'Name: ' + name + '\\nEmail: ' + em + '\\nBusiness: ' + biz + '\\n\\n' + list;
     location.href = 'mailto:' + C.email + '?subject=' + encodeURIComponent(document.querySelector('h1').textContent + ' – ' + name) + '&body=' + encodeURIComponent(body);
     msg.textContent = 'Your email app should open with your list ready to send. If it didn\\'t, copy your list and email ' + C.email + '.'; msg.hidden = false;
   }});

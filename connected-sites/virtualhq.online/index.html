@@ -557,7 +557,7 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 
 <script>
 (function(){
-  var C = {"email": "support@thehq.online", "phone": "", "chatUrl": "", "bookingUrl": "https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support", "joinUrl": "", "formEndpoint": "", "qboInviteEmail": "laurapoincot@gmail.com", "waitlistEndpoint": "", "intakeEndpoint": "", "substackUrl": "https://runitliketherich.substack.com/", "youtubeUrl": "https://www.youtube.com/@RunItLikeTheRich", "instagramUrl": "https://www.instagram.com/runitliketherich/", "facebookUrl": "https://www.facebook.com/profile.php?id=61583470245237", "linkedinUrl": "https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/", "tiktokUrl": "", "shopUrl": "", "signupEndpoint": ""};
+  var C = {"email": "support@thehq.online", "phone": "", "chatUrl": "", "bookingUrl": "https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support", "joinUrl": "", "formCatcher": "https://script.google.com/macros/s/AKfycbx5KL4TPVBKPqiPIPQvIVYM-Ri819CEbT5kloJ3_enwWXv9SxBVECrlfzzIlWyu6rboAA/exec", "formEndpoint": "", "qboInviteEmail": "laurapoincot@gmail.com", "waitlistEndpoint": "", "intakeEndpoint": "", "substackUrl": "https://runitliketherich.substack.com/", "youtubeUrl": "https://www.youtube.com/@RunItLikeTheRich", "instagramUrl": "https://www.instagram.com/runitliketherich/", "facebookUrl": "https://www.facebook.com/profile.php?id=61583470245237", "linkedinUrl": "https://www.linkedin.com/in/run-it-like-the-rich-with-laura-poincot/", "tiktokUrl": "", "shopUrl": "", "signupEndpoint": ""};
   // hide ways that have no link yet
   document.querySelectorAll('[data-need]').forEach(function(el){
     if(!C[el.getAttribute('data-need')]) el.hidden = true;
@@ -585,9 +585,17 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
       e.preventDefault();
       if(!f.reportValidity()) return;
       var em = f.querySelector('input[type=email]').value.trim();
-      if(C.signupEndpoint){
-        fetch(C.signupEndpoint, {method:'POST', mode:'no-cors', body: new URLSearchParams({email: em, source: 'Clean Start Checklist', page: location.hostname})}).catch(function(){});
-      } else if(C.substackUrl){
+      // Log it AND subscribe them. These used to be either/or, which meant
+      // turning on logging would have quietly stopped the Substack sign-up.
+      var ep = C.formCatcher || C.signupEndpoint;
+      if(ep){
+        fetch(ep, {method:'POST', mode:'no-cors', body: new URLSearchParams({
+          form: 'freebie', email: em,
+          which: f.getAttribute('data-source') || 'Free checklist',
+          site: location.hostname, source: 'Free checklist'
+        })}).catch(function(){});
+      }
+      if(C.substackUrl){
         var a = document.createElement('a');
         a.href = C.substackUrl.replace(/\/$/, '') + '/subscribe?email=' + encodeURIComponent(em);
         a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove();
@@ -615,7 +623,19 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
       var fd = new FormData(form), o = {};
       fd.forEach(function(v,k){ o[k] = v; });
       function show(m){ st.textContent = m; st.hidden = false; }
-      if(C.formEndpoint){
+      if(C.formCatcher){
+        show('Sending…');
+        o.form = 'call'; o.site = location.hostname; o.source = o.topic || 'Contact form';
+        o.bestTime = o.reach || '';
+        // no-cors: the Apps Script answers with a redirect no browser will
+        // let us read, so we never learn if it worked. Showing the happy
+        // message is the right call — the row lands either way, and a scary
+        // error on a form that did send is worse than no confirmation.
+        fetch(C.formCatcher, {method:'POST', mode:'no-cors', body: new URLSearchParams(o)})
+          .catch(function(){});
+        form.reset();
+        show('Got it. Laura will come back to you — usually same day.');
+      } else if(C.formEndpoint){
         show('Sending…');
         fetch(C.formEndpoint, {method:'POST', body:fd, headers:{'Accept':'application/json'}})
           .then(function(r){ if(!r.ok) throw 0; form.reset(); show('Got it. Your message is in Laura\'s inbox.'); })
