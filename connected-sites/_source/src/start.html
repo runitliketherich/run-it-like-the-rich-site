@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Everything I offer, from free downloads to a full back-office reset — and which one you actually need.">
+<meta property="og:title" content="Where to start | Run It Like the Rich">
+<meta property="og:description" content="Free tools, a $495 review, and everything between. Start with what fits.">
+<meta property="og:url" content="https://runitliketherich.com/start">
+<title>Where to start | Run It Like the Rich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+:root{
+  --bg:#f8f4ec; --surface:#fffdf8; --sunk:#efe7d8; --fg:#13243b; --muted:#5b6977; --line:#e1d7c4;
+  --navy:#13243b; --gold:#c89a45; --goldsoft:#f1e3c4; --rust:#9a4f33;
+  --onbtn:#fffdf8;
+  --serif:"Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --sans:"Figtree","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.55}
+h1,h2,h3{font-family:var(--serif);font-weight:700;margin:0;line-height:1.15;text-wrap:balance;color:var(--navy)}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:13px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--rust)}
+.muted{color:var(--muted)}
+section{padding-block:52px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;border-radius:8px;padding:11px 18px;border:1.5px solid var(--navy);color:var(--navy);background:transparent;cursor:pointer;text-align:center}
+.btn.solid{background:var(--navy);color:var(--onbtn)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#13243b}
+.btn:hover{filter:brightness(1.06)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+.sitebar{background:var(--navy);color:var(--onbtn);font-size:14px}
+.sitebar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:10px;flex-wrap:wrap}
+.sitebar a{color:var(--onbtn);text-decoration:none;font-weight:700}
+.sitebar a.home{font-family:var(--serif);font-size:17px}
+
+.hero{padding-block:56px 36px;border-bottom:1px solid var(--line)}
+.hero h1{font-size:clamp(34px,6vw,54px)}
+.hero h1 em{font-style:italic;color:var(--rust);font-weight:400}
+.hero .lede{font-size:19px;margin-top:16px;max-width:60ch}
+.hero .who{margin-top:20px;font-size:15px;color:var(--muted);border-left:3px solid var(--gold);padding-left:12px;max-width:56ch}
+
+/* the decision strip */
+.decide{background:var(--sunk);border-bottom:1px solid var(--line)}
+.decide .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px}
+.decide .card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:12px;padding:18px 20px}
+.decide .card b{display:block;font-family:var(--serif);font-size:19px;color:var(--navy);margin-bottom:6px}
+.decide .card p{font-size:15px;color:var(--muted)}
+.decide .card a{display:inline-block;margin-top:10px;font-weight:700;font-size:15px;color:var(--rust);text-decoration:none}
+.decide .card a:hover{text-decoration:underline}
+
+h2.sec{font-size:clamp(26px,4vw,36px);margin-top:8px}
+.sub{color:var(--muted);margin-top:8px;max-width:62ch}
+
+/* product ledger */
+.ledger{display:flex;flex-direction:column;margin-top:26px;border-top:2px solid var(--navy)}
+.item{display:grid;grid-template-columns:200px minmax(0,1fr) 230px;gap:26px;padding-block:26px;border-bottom:1px solid var(--line)}
+.item .tag{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--rust)}
+.item h3{font-size:25px;margin-top:5px}
+.item .for{margin-top:7px;font-family:var(--serif);font-style:italic;color:var(--muted);font-size:16px}
+.item .takes{font-weight:700;margin-bottom:8px}
+.item ul{margin:0;padding-left:18px;display:grid;gap:5px;font-size:16px}
+.price{display:flex;flex-direction:column;gap:10px}
+.amt{font-family:var(--serif);font-size:30px;font-weight:700;line-height:1;color:var(--navy);font-variant-numeric:tabular-nums}
+.amt small{font-family:var(--sans);font-size:14px;font-weight:600;color:var(--muted)}
+.alt{font-size:14px;color:var(--muted)}
+.item.free .amt{color:var(--rust)}
+
+.note{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-top:26px}
+.note b{font-family:var(--serif);font-size:19px}
+.note p{margin-top:7px;color:var(--muted);font-size:16px}
+
+.close{border-top:2px solid var(--navy)}
+.close h2{font-size:clamp(28px,4.4vw,42px);max-width:22ch}
+.close p{max-width:62ch;margin-top:14px}
+.sign{font-family:var(--serif);font-style:italic;color:var(--rust);font-size:21px;margin-top:26px}
+footer{padding-block:22px 40px;font-size:13px;color:var(--muted);border-top:1px solid var(--line)}
+
+@media (max-width:860px){
+  .decide .grid{grid-template-columns:1fr}
+  .item{grid-template-columns:1fr;gap:12px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="sitebar"><div class="wrap">
+  <a class="home" href="/">Run It Like the Rich</a>
+  <a href="https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support" target="_blank" rel="noopener">Book a free call</a>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <p class="eyebrow">Where to start</p>
+  <h1>Start with what fits. <em>Not with what costs the most.</em></h1>
+  <p class="lede">Everything I offer is below, cheapest first, with what each one actually takes care of.
+    Most owners should start with something free. A few need the whole thing done. The list tells you which.</p>
+  <p class="who">I'm Laura Leopardi. For 25 years I've worked behind the scenes as the right hand to
+    self-made business owners, fixing the Admin, Books and Compliance nobody wants to deal with
+    until it costs them.</p>
+</div></header>
+
+<section class="decide"><div class="wrap">
+  <p class="eyebrow">If you only read one thing</p>
+  <h2 class="sec">Three questions, three answers.</h2>
+  <div class="grid">
+    <div class="card">
+      <b>"I don't know what's wrong."</b>
+      <p>You suspect something's off but can't name it. Start free and find out.</p>
+      <a href="#free">The free tools →</a>
+    </div>
+    <div class="card">
+      <b>"I know something's wrong."</b>
+      <p>You want someone who's done this for 25 years to look and tell you straight.</p>
+      <a href="#review">The ABC Review, $495 →</a>
+    </div>
+    <div class="card">
+      <b>"I know, and I don't have time."</b>
+      <p>You want it done, not managed. I do the work and train your team to keep it running.</p>
+      <a href="#done">The deep dive →</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="free"><div class="wrap">
+  <p class="eyebrow">Free</p>
+  <h2 class="sec">Start here. Nothing to pay, nothing to book.</h2>
+  <p class="sub">These are the same tools I use on paid engagements. If they're all you need, that's a good outcome.</p>
+
+  <div class="ledger">
+    <article class="item free">
+      <div><p class="tag">Free app</p><h3>The 120</h3><p class="for">For the owner who wants a list of what to check.</p></div>
+      <div>
+        <p class="takes">Takes care of:</p>
+        <ul>
+          <li>120 back-office routines that find money or stop fines</li>
+          <li>Tick what applies to you, assign an owner and a date</li>
+          <li>Download it as a calendar that actually repeats — quarterly stays quarterly</li>
+          <li>Download the spreadsheet as your own working copy</li>
+        </ul>
+      </div>
+      <div class="price"><p class="amt">Free</p><a class="btn gold" href="/radar">Open The 120</a></div>
+    </article>
+
+    <article class="item free">
+      <div><p class="tag">Free download</p><h3>The Proactive Bookkeeper Checklist</h3><p class="for">For the owner who already has a bookkeeper.</p></div>
+      <div>
+        <p class="takes">Takes care of:</p>
+        <ul>
+          <li>50 checks across 10 areas, from banking to payroll to owner perks</li>
+          <li>Hand it to your bookkeeper and go through it together</li>
+          <li>Anything left unticked is where money and time are leaking</li>
+        </ul>
+      </div>
+      <div class="price"><p class="amt">Free</p>
+        <a class="btn gold" href="/proactive-bookkeeper-checklist.pdf" data-gated="Proactive Bookkeeper Checklist" download>Get the checklist</a></div>
+    </article>
+
+    <article class="item free">
+      <div><p class="tag">Free call</p><h3>Owner consultation</h3><p class="for">For the owner who'd rather just ask someone.</p></div>
+      <div>
+        <p class="takes">Takes care of:</p>
+        <ul>
+          <li>Thirty minutes, no obligation, no pitch</li>
+          <li>You tell me what's going on; I tell you straight which option fits</li>
+          <li>Including when the answer is that you don't need me</li>
+        </ul>
+      </div>
+      <div class="price"><p class="amt">Free <small>30 min</small></p>
+        <a class="btn gold" href="https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support" target="_blank" rel="noopener">Book a time</a></div>
+    </article>
+  </div>
+</div></section>
+
+<section style="background:var(--sunk)" id="review"><div class="wrap">
+  <p class="eyebrow">Find out where you stand</p>
+  <h2 class="sec">Paid, and priced so you can start small.</h2>
+  <p class="sub">Every one of these stands on its own. None of them requires the next one.</p>
+
+  <div class="ledger">
+    <article class="item">
+      <div><p class="tag">Workbooks</p><h3>The ABC Workbooks</h3><p class="for">For the owner who'd rather do it themselves, on paper.</p></div>
+      <div>
+        <p class="takes">Takes care of:</p>
+        <ul>
+          <li>Three workbooks — Admin, Books, Compliance — used one at a time or as a set</li>
+          <li>The same questions I ask on a paid engagement, with room to answer them</li>
+          <li>Prompts, checklists and note space, not a book you read once</li>
+        </ul>
+      </div>
+      <div class="price"><p class="amt">$29 <small>each</small></p><p class="alt">or <b>$69</b> for all three</p></div>
+    </article>
+
+    <article class="item">
+      <div><p class="tag">Compliance</p><h3>Compliance in Control</h3><p class="for">For the owner who's missed a filing, or nearly did.</p></div>
+      <div>
+        <p class="takes">Takes care of:</p>
+        <ul>
+          <li>Every filing, renewal and registration your business actually has to make</li>
+          <li>Researched for your state, your industry and your entity type — not a generic list</li>
+          <li>Loaded as recurring calendar reminders, with the right person named on each</li>
+          <li>Set up once. It reminds you every year after that.</li>
+        </ul>
+      </div>
+      <div class="price"><p class="amt">$295 <small>one-time</small></p><p class="alt">Per entity. Extra entities quoted.</p></div>
+    </article>
+
+    <article class="item">
+      <div><p class="tag">The diagnostic</p><h3>The ABC Review</h3><p class="for">For the owner who wants to know what's actually wrong.</p></div>
+      <div>
+        <p class="takes">Takes care of:</p>
+        <ul>
+          <li>A full look at your Admin, your Books and your Compliance</li>
+          <li>What's wrong, what's missing, and what each item would cost you</li>
+          <li>Whether your books agree with the tax return you filed</li>
+          <li>A fix list with an owner and an estimate against every item</li>
+          <li>Written so your own bookkeeper can work from it without calling me</li>
+        </ul>
+      </div>
+      <div class="price"><p class="amt">$495</p><p class="alt">I don't touch your books. No entries, no adjustments.</p></div>
+    </article>
+
+    <article class="item">
+      <div><p class="tag">Support</p><h3>Block time</h3><p class="for">For the owner whose bookkeeper needs someone to call.</p></div>
+      <div>
+        <p class="takes">Takes care of:</p>
+        <ul>
+          <li>Hours you buy once and use when you need them. They don't expire.</li>
+          <li>Screen share, with your person driving — they keep what they learn</li>
+          <li>The parts where a wrong move makes things worse</li>
+          <li>Real answers to "is this right?" from someone who's seen it before</li>
+        </ul>
+      </div>
+      <div class="price"><p class="amt">$495 <small>/ 5 hours</small></p><p class="alt">or <b>$950</b> for 10 hours</p></div>
+    </article>
+  </div>
+</div></section>
+
+<section id="done"><div class="wrap">
+  <p class="eyebrow">Get it built</p>
+  <h2 class="sec">When you'd rather it was just done.</h2>
+
+  <div class="ledger">
+    <article class="item">
+      <div><p class="tag">Build it with me</p><h3>ABC Starter — your Virtual HQ</h3><p class="for">For the owner with a capable team who needs the plan.</p></div>
+      <div>
+        <p class="takes">Takes care of:</p>
+        <ul>
+          <li>Your step-by-step plan, built from your own workbook answers</li>
+          <li>The Virtual HQ template — one place your whole business is run from</li>
+          <li>Your file system built in your Drive, using names you choose</li>
+          <li>A chart of accounts and a starter compliance calendar for your industry</li>
+          <li>A review call with me, then twelve months of support and the full video library</li>
+        </ul>
+      </div>
+      <div class="price"><p class="amt">$1,500 <small>to start</small></p><p class="alt">then $150/month for 12 months,<br>or <b>$3,000</b> paid in full (save $300)</p></div>
+    </article>
+
+    <article class="item">
+      <div><p class="tag">Deep dive</p><h3>The Full Reset</h3><p class="for">For the owner who wants it done, not managed.</p></div>
+      <div>
+        <p class="takes">Takes care of:</p>
+        <ul>
+          <li><b>I do the work.</b> One person on your team gets me what I need — that's the whole ask of them</li>
+          <li>A full review of your Admin, Books and Compliance</li>
+          <li>Books cleaned up, caught up and tied to your tax returns</li>
+          <li>Your Virtual HQ built and set up for how your business actually runs</li>
+          <li>Then I train your team to run it as a company, so it keeps going after I'm gone</li>
+          <li>Books a buyer, a bank or your CPA can trust</li>
+        </ul>
+      </div>
+      <div class="price"><p class="amt">From $5,000</p><p class="alt">Quoted after a free call. Can be split into payments.</p></div>
+    </article>
+  </div>
+
+  <div class="note">
+    <b>More than one business?</b>
+    <p>Every company gets its own hub. Smaller ones — a rental property, a holding entity — get a lighter,
+      lower-cost hub, and all of them tie into one owner master Virtual HQ. Quoted on how many you have.</p>
+  </div>
+</div></section>
+
+<section class="close"><div class="wrap">
+  <p class="eyebrow">Still not sure</p>
+  <h2>Then take the free call, and I'll tell you.</h2>
+  <p>Thirty minutes. You tell me what's going on and I'll tell you which of these fits — or that none of
+    them do and you're fine as you are. I'd rather say that than sell you something you don't need.
+    I only want to help the people who need it.</p>
+  <div class="row" style="margin-top:20px">
+    <a class="btn solid" href="https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support" target="_blank" rel="noopener">Book a free 30-minute call</a>
+    <a class="btn" href="/radar">Or start free with The 120</a>
+  </div>
+  <p class="sign">Keep it lean. Keep it clean. Run it like the rich.</p>
+</div></section>
+
+<footer><div class="wrap">Run It Like the Rich · runitliketherich.com · General information about business systems and bookkeeping practice. Not tax, legal or accounting advice for your situation.</div></footer>
+
+<script>window.RILTR_FORM_ENDPOINT = "__ENDPOINT__";</script>
+<script src="/gate.js" defer></script>
+</body>
+</html>

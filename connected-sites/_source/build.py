@@ -408,6 +408,10 @@ def main():
                     f'<script>window.RILTR_FORM_ENDPOINT={json.dumps(CONFIG["formCatcher"])};</script>\n'
                     '<script src="/gate.js" defer></script>\n</body>')
             (out / "new-year.html").write_text(ny)
+            # /start — the one page every product links from. Standalone too.
+            (out / "start.html").write_text(
+                (SRC / "start.html").read_text()
+                .replace("__ENDPOINT__", CONFIG["formCatcher"]))
         if key == "vhq":
             for m in ("virtual-hq-tour.mp4", "virtual-hq-tour.jpg"):
                 src = SRC / "media" / m
