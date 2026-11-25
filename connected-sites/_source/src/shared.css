@@ -19,8 +19,8 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
 .wrap{max-width:1120px;margin:0 auto;padding-inline:var(--gut)}
 h1,h2,h3{font-family:var(--serif);font-weight:700;letter-spacing:-.02em;margin:0;text-wrap:balance;color:var(--navy)}
-h1{font-size:clamp(40px,7vw,72px);line-height:1.04}
-h2{font-size:clamp(32px,5vw,48px);line-height:1.08}
+h1{font-size:clamp(30px,4.2vw,50px);line-height:1.1}
+h2{font-size:clamp(26px,3.4vw,38px);line-height:1.12}
 h3{font-size:23px;line-height:1.22}
 p{margin:0}
 .lead{font-size:clamp(18px,2.2vw,20px);line-height:1.6;max-width:62ch}
