@@ -656,6 +656,53 @@ li{margin-bottom:4px !important}
 /* header nav and the announcement line */
 .top a.lnk{font-size:16px !important}
 .top .home b{font-size:24px !important}
+
+/* ===== clean palette: white, navy, one gold ============================
+   Was cream + sand + gold + rust + navy. Five colours, four of them warm,
+   which is what made it look dingy rather than crisp.                    */
+
+:root{
+  --paper:#ffffff !important;
+  --band:#f3f6f8 !important;      /* cool light grey, not sand */
+  --ink:#0f2740 !important;
+  --accent:#c08f2c !important;
+  --accent-hot:#0f2740 !important;
+  --cream:#ffffff !important;
+  --soft:#f3f6f8 !important;
+  --tint:#f3f6f8 !important;
+  --light:#ffffff !important;
+  --rust:#0f2740 !important;      /* rust retired */
+  --line:#dde3e8 !important;
+  --rule:#dde3e8 !important;
+}
+body{background:#fff !important;color:#2b3e51 !important}
+section:nth-of-type(odd){background:#fff !important}
+section:nth-of-type(even){background:#f3f6f8 !important}
+h1,h2,h3{color:#0f2740 !important}
+
+/* labels: navy, with the gold bar doing the colour work */
+.eyebrow{color:#0f2740 !important;border-left:5px solid #c08f2c !important}
+[class*="tag"],[class*="chip"],[class*="pill"]{color:#0f2740 !important}
+
+/* rules: quiet grey, gold reserved for buttons and the label bars */
+.grid > *,.cards > *{border-top:1px solid #dde3e8 !important}
+section:nth-of-type(even) .grid > *{border-top-color:#d5dde4 !important}
+section{border-top:0 !important}
+
+/* panels sit on white with a plain border */
+.freebie,[class*="freebie"]{background:#fff !important;border:1px solid #dde3e8 !important}
+
+/* buttons */
+.btn-gold{background:#c08f2c !important;color:#1a1200 !important}
+.btn-navy{background:#0f2740 !important;color:#fff !important}
+.btn-line{background:#fff !important;border:1px solid #0f2740 !important;color:#0f2740 !important}
+
+/* masthead + the announcement bar */
+.top{background:#0f2740 !important;border-bottom:0 !important}
+.strip{background:#fff !important;border-bottom:1px solid #dde3e8 !important}
+.strip span{color:#0f2740 !important}
+main a:not(.btn){color:#0f2740 !important}
+section a:not(.btn),section:nth-of-type(even) a:not(.btn){color:#0f2740 !important}
 </style>
 <link rel="canonical" href="https://runitliketherich.com/train-the-gaap">
 <meta property="og:title" content="Run It Like the Rich">
