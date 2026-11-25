@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* ============================================================
+   Documentary direction — condensed caps display, mono body,
+   flat bands, hard edges. Laura's navy + gold, not their teal.
+   ============================================================ */
+
+:root{
+  --ink:#10243d; --band:#e9e1d1; --paper:#f4efe4; --cream:#fffdf8;
+  --accent:#d2a452; --accent-hot:#c0803a;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --disp:'Oswald',Impact,sans-serif;
+}
+
+*{border-radius:0 !important;box-shadow:none !important}
+
+body{
+  font-family:var(--mono) !important;
+  font-size:16.5px !important;
+  line-height:1.78 !important;
+  color:#24384a !important;
+  background:var(--paper) !important;
+  letter-spacing:-.1px !important;
+}
+
+/* ---------- display type ---------- */
+h1,h2,h3,.h1,.h2{
+  font-family:var(--disp) !important;
+  font-weight:700 !important;
+  text-transform:uppercase !important;
+  line-height:1.08 !important;
+  letter-spacing:.004em !important;
+  color:var(--ink) !important;
+  text-wrap:balance;
+}
+h1{font-size:clamp(34px,3.2vw,46px) !important}
+h2{font-size:clamp(27px,2.6vw,36px) !important}
+h3{font-size:clamp(19px,1.7vw,23px) !important}
+
+/* ---------- eyebrow = rule + mono caps ---------- */
+.eyebrow{
+  font-family:var(--mono) !important;
+  font-size:14px !important;
+  font-weight:600 !important;
+  letter-spacing:.15em !important;
+  text-transform:uppercase !important;
+  color:var(--accent-hot) !important;
+  display:inline-block !important;
+  border-left:4px solid var(--accent) !important;
+  padding:1px 0 1px 13px !important;
+  margin-bottom:22px !important;
+}
+
+/* ---------- buttons: hard rectangles ---------- */
+a.btn,button,.btn,input[type=submit]{
+  font-family:var(--mono) !important;
+  font-size:14px !important;
+  font-weight:600 !important;
+  letter-spacing:.14em !important;
+  text-transform:uppercase !important;
+  padding:16px 26px !important;
+  border-radius:0 !important;
+}
+a.btn.primary,.btn.primary,input[type=submit]{
+  background:var(--accent) !important;color:#17202c !important;border:0 !important;
+}
+a.btn.ghost,.btn.ghost,a.btn.secondary{
+  background:transparent !important;color:var(--ink) !important;
+  border:1px solid var(--ink) !important;
+}
+
+/* ---------- alternating full-bleed bands ---------- */
+section:nth-of-type(even){background:var(--band) !important;color:#24384a !important}
+section:nth-of-type(even) h1,
+section:nth-of-type(even) h2,
+section:nth-of-type(even) h3{color:var(--ink) !important}
+section:nth-of-type(even) .eyebrow{color:var(--accent-hot) !important}
+section:nth-of-type(even) p{color:#3b4f61 !important}
+section:nth-of-type(odd){background:var(--paper) !important}
+
+/* ---------- entries: top rule, no tile ---------- */
+.grid > *,.cards > *{
+  background:transparent !important;
+  border:0 !important;
+  border-top:2px solid var(--accent) !important;
+  padding:24px 0 0 !important;
+}
+section:nth-of-type(even) .grid > *{border-top-color:#c9a86a !important}
+
+/* ---------- tags become mono slugs ---------- */
+[class*="tag"],[class*="chip"],[class*="pill"]{
+  background:transparent !important;border:0 !important;padding:0 !important;
+  font-family:var(--mono) !important;font-size:13px !important;font-weight:600 !important;
+  letter-spacing:.13em !important;text-transform:uppercase !important;
+  color:var(--accent-hot) !important;
+}
+
+/* ---------- links ---------- */
+main a:not(.btn){
+  color:var(--accent-hot) !important;
+  text-decoration:underline !important;
+  text-underline-offset:4px !important;
+  text-decoration-thickness:1px !important;
+}
+section:nth-of-type(even) main a:not(.btn),
+section:nth-of-type(even) a:not(.btn){color:var(--accent-hot) !important}
+
+/* ---------- masthead ---------- */
+.top{background:var(--ink) !important;border-bottom:3px solid var(--accent) !important}
+.top a,.top b{color:#f4efe4 !important;font-family:var(--mono) !important;
+  font-size:13.5px !important;letter-spacing:.06em !important}
+.top .home b{font-family:var(--disp) !important;font-size:22px !important;
+  text-transform:uppercase !important;letter-spacing:.02em !important}
+
+/* inputs */
+input[type=email],input[type=text]{
+  font-family:var(--mono) !important;border:1px solid #b9ad93 !important;
+  border-radius:0 !important;padding:14px !important;background:#fff !important;
+}
+
+/* ---------- fixes against the real markup ---------- */
+
+/* nav was wrapping: mono is wider than the sans it replaced */
+.top nav{white-space:nowrap !important;gap:20px !important}
+.top a.lnk{font-size:12.5px !important;letter-spacing:.02em !important}
+.top .home span{display:none !important}          /* duplicate subtitle */
+.top .home b{font-size:21px !important}
+
+/* navy buttons disappeared on the navy bands */
+section:nth-of-type(even) .btn-navy{background:var(--ink) !important;color:#f4efe4 !important}
+section:nth-of-type(even) .btn-line{background:transparent !important;
+  border:1px solid var(--ink) !important;color:var(--ink) !important}
+.btn-gold{background:var(--accent) !important;color:#17202c !important;border:0 !important}
+.btn-navy{background:var(--ink) !important;color:#f4efe4 !important;border:0 !important}
+.btn-line{background:transparent !important;border:1px solid var(--ink) !important;color:var(--ink) !important}
+
+/* don't recolour links in the gold announcement bar — only inside sections */
+main a:not(.btn){color:inherit !important;text-decoration:underline !important}
+section a:not(.btn){color:var(--accent-hot) !important}
+section:nth-of-type(even) a:not(.btn){color:var(--accent-hot) !important}
+
+
+/* ============================  MOBILE  ============================ */
+@media (max-width:880px){
+  .top .wrap{flex-direction:column !important;align-items:flex-start !important;gap:11px !important}
+  .top nav{white-space:normal !important;flex-wrap:wrap !important;gap:6px 16px !important;width:100% !important}
+  .top a.lnk{font-size:13.5px !important}
+  .top .home b{font-size:19px !important}
+  .top .btn{width:100% !important;text-align:center !important;margin-top:4px !important}
+
+  h1{font-size:30px !important;line-height:1.14 !important}
+  h2{font-size:25px !important}
+  h3{font-size:20px !important}
+  body{font-size:16px !important;line-height:1.72 !important}
+  .eyebrow{font-size:13px !important;letter-spacing:.12em !important}
+
+  .hero-grid{display:block !important}
+  .hero-grid > * + *{margin-top:30px !important}
+  .grid,.cards{display:block !important}
+  .grid > *,.cards > *{margin-top:26px !important}
+
+  a.btn,.btn{display:block !important;width:100% !important;text-align:center !important;
+             box-sizing:border-box !important;margin:10px 0 0 !important}
+
+  section > .wrap,.wrap{padding-left:18px !important;padding-right:18px !important}
+  section{padding-top:38px !important;padding-bottom:38px !important}
+  .strip{font-size:12px !important}
+  img,video,iframe{max-width:100% !important;height:auto !important}
+}
+@media (max-width:420px){
+  h1{font-size:27px !important}
+  body{font-size:15.5px !important}
+}

@@ -75,7 +75,7 @@ def b64(p):
 
 MARK_GOLD = b64("mark-navy.png")  # light look: navy script on cream
 MARK_NAVY = b64("mark-navy.png")
-CSS = (SRC / "shared.css").read_text()
+CSS = (SRC / "shared.css").read_text() + "\n" + (SRC / "established.css").read_text()
 
 def url_for(key, mode, anchor=""):
     if key == "clean":
@@ -98,8 +98,16 @@ def header(key, mode):
     strip = "".join(
         f'<a href="{url_for(k, mode)}"{cur if k == key else ""}>{dom}</a>' for k, dom, *_ in SHOWN)
     links = [("vhq", "Virtual HQ"), ("gaap", "Train the GAAP"), ("exit", "StoryBook Exit"), ("riltr", "Articles")]
+    # On runitliketherich.com the first two go to the pages on this site, not
+    # across to the other domains; a visitor should be able to read about
+    # everything without leaving.
+    local = {"vhq": "virtual-hq", "gaap": "train-the-gaap"}
+    def href(k):
+        if key == "riltr" and k in local:
+            return ("/" if mode == "deploy" else "") + local[k] + (".html" if mode == "preview" else "")
+        return url_for(k, mode)
     nav = "".join(
-        f'<a class="lnk" href="{url_for(k, mode)}">{t}</a>' for k, t in links if k != key)
+        f'<a class="lnk" href="{href(k)}">{t}</a>' for k, t in links if k != key)
     contact = url_for("hub", mode, "contact")
     home_name = "Laura Poincot" if key == "hub" else s[2]
     return f'''<div class="strip"><div class="wrap"><span>Our sites</span>{strip}</div></div>
@@ -126,7 +134,7 @@ def footer(key, mode):
   </div>
   <div class="signoff">
     <img class="mk" src="{MARK_GOLD}" alt="Run it like the Rich">
-    <p><b>Keep it lean. Keep it clean. Run it like the rich.</b><br>{CONFIG["email"]} · Orlando, Florida · © 2026 Laura Leopardi</p>
+    <p><b>Keep it lean. Keep it clean. Run it like the rich.</b><br>{CONFIG["email"]} · Orlando, Florida · © 2026 Laura Poincot</p>
   </div>
 </div></footer>'''
 
@@ -266,7 +274,7 @@ def page(key, mode, standalone, raw=None, title=None, desc=None, path=""):
     head = f'''<title>{title or s[4]}</title>
 <meta name="description" content="{html.escape(desc or s[5])}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Oswald:wght@500;700&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap">
 <style>{CSS}</style>'''
     if mode == "deploy":
         head += f'\n<link rel="canonical" href="https://{s[1]}/{path}">\n<meta property="og:title" content="{s[4]}">\n<meta property="og:description" content="{html.escape(s[5])}">'
@@ -379,6 +387,17 @@ def tool_raw(tk):
 }})();
 </script>'''.replace("__CONFIG__", json.dumps(CONFIG))
 
+
+# Subject pages on runitliketherich.com. Bodies live in src/pages/<slug>.html
+# and are passed to page() as raw, so they skip the hero/freebie injection.
+INFO_PAGES = {
+    "virtual-hq":     ("riltr", "Virtual HQ", "One owner-controlled place to run the business from, built inside the Google Workspace you already pay for."),
+    "train-the-gaap": ("riltr", "Train the GAAP", "An oversight program that teaches your bookkeeper GAAP and gives them someone in their corner."),
+    "abc-review":     ("riltr", "The ABC Review", "Score your back office across Admin, Books and Compliance, and see where it stands."),
+    "retire-from":    ("riltr", "Building the Business You Can Retire From", "The series on getting a business ready to hand over, sell or step back from."),
+    "mantras":        ("riltr", "Say them until they stick", "The operator lines worth repeating."),
+}
+
 def main():
     for d in ("preview", "deploy"):
         shutil.rmtree(ROOT / d, ignore_errors=True)
@@ -420,6 +439,14 @@ def main():
                     continue
                 shutil.copy(src, out / m)
                 shutil.copy(src, ROOT / "preview" / m)
+    for slug, (site, title, desc) in INFO_PAGES.items():
+        src_body = SRC / "pages" / f"{slug}.html"
+        if not src_body.exists():
+            print(f"  note: pages/{slug}.html missing, skipped"); continue
+        body = src_body.read_text()
+        kw = dict(raw=body, title=title, desc=desc, path=slug)
+        (ROOT / "preview" / f"{slug}.html").write_text(page(site, "preview", True, **kw))
+        (ROOT / "deploy" / BY_KEY[site][1] / f"{slug}.html").write_text(page(site, "deploy", True, **kw))
     for tk, t in TOOLS.items():
         raw = tool_raw(tk)
         kw = dict(raw=raw, title=t["title"], desc=t["lead"], path=t["slug"])
