@@ -110,6 +110,8 @@ def header(key, mode):
         return url_for(k, mode)
     nav = "".join(
         f'<a class="lnk" href="{href(k)}">{t}</a>' for k, t in links if k != key)
+    about_href = ("/about" if mode == "deploy" else "about.html")
+    nav = f'<a class="lnk" href="{about_href}">About</a>' + nav if key == "hub" else nav
     contact = url_for("hub", mode, "contact")
     home_name = "Laura Poincot" if key == "hub" else s[2]
     return f'''<div class="strip"><div class="wrap"><span>Our sites</span>{strip}</div></div>
@@ -393,6 +395,7 @@ def tool_raw(tk):
 # Subject pages on runitliketherich.com. Bodies live in src/pages/<slug>.html
 # and are passed to page() as raw, so they skip the hero/freebie injection.
 INFO_PAGES = {
+    "about":          ("hub", "About Laura Poincot", "Twenty-seven years inside other people's books: financial system data repair, multi-entity accounting and exit-ready books."),
     "virtual-hq":     ("riltr", "Virtual HQ", "One owner-controlled place to run the business from, built inside the Google Workspace you already pay for."),
     "train-the-gaap": ("riltr", "Train the GAAP", "An oversight program that teaches your bookkeeper GAAP and gives them someone in their corner."),
     "abc-review":     ("riltr", "The ABC Review", "Score your back office across Admin, Books and Compliance, and see where it stands."),
