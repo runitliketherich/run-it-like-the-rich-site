@@ -726,6 +726,84 @@ section a:not(.btn),section:nth-of-type(even) a:not(.btn){color:#0f2740 !importa
 .wide-fig img{width:100%;height:auto;display:block;border:1px solid #dde3e8}
 .wide-fig figcaption{font-size:17.5px;line-height:1.5;color:#55636f;margin-top:12px;max-width:62em}
 @media (max-width:880px){.wide-fig figcaption{font-size:16.5px}}
+
+/* ===== long-form article (The Slow Bleed) ============================= */
+.byline{font-size:17px;color:#55636f;margin:0}
+.article{max-width:40em;font-size:19.5px;line-height:1.68}
+.article p{margin:0 0 20px}
+.article h2{margin:46px 0 16px;font-size:clamp(24px,2.1vw,30px) !important;
+  padding-top:22px;border-top:2px solid #0f2740}
+.article h3{margin:34px 0 10px;font-size:21px !important;color:#B3272D !important}
+.article ul.checks{margin:0 0 22px;padding:0;list-style:none}
+.article ul.checks li{position:relative;padding-left:20px;margin-bottom:9px}
+.article ul.checks li::before{content:"";position:absolute;left:0;top:.62em;
+  width:8px;height:2px;background:#B3272D}
+.article a{color:#B3272D;text-decoration:underline;text-underline-offset:3px}
+.article .pullq{font-size:26px;line-height:1.3;font-weight:700;color:#0f2740;
+  border-left:5px solid #B3272D;padding:4px 0 4px 20px;margin:34px 0}
+@media (max-width:880px){
+  .article{font-size:18.5px;line-height:1.66}
+  .article h2{margin:36px 0 14px;padding-top:18px}
+  .article .pullq{font-size:21px;padding-left:15px;margin:26px 0}
+}
+
+/* ===== SIZE UP — one step bigger across the board (55+ readability) === */
+body{font-size:20.5px !important;line-height:1.6 !important}
+h1{font-size:clamp(35px,3.3vw,48px) !important}
+h2{font-size:clamp(28px,2.6vw,38px) !important}
+h3{font-size:clamp(22px,1.9vw,26px) !important}
+.lead{font-size:23px !important;line-height:1.55 !important}
+.eyebrow{font-size:17px !important;letter-spacing:.1em !important}
+.card p,.grid p,.cards p{font-size:19.5px !important}
+.tag,[class*="tag"],[class*="chip"],[class*="pill"]{font-size:16px !important}
+a.btn,button,.btn,input[type=submit]{font-size:17px !important;padding:16px 26px !important}
+.btn-sm{font-size:16px !important;padding:12px 20px !important}
+input[type=email],input[type=text]{font-size:18px !important}
+.top a.lnk{font-size:18px !important}
+.top .home b{font-size:27px !important}
+.top .btn{font-size:16px !important}
+.strip,.strip span,.strip a{font-size:16.5px !important}
+.whois figcaption{font-size:21px}
+.whois figcaption b{font-size:26px}
+.wide-fig figcaption{font-size:19px}
+.byline{font-size:18.5px}
+.article{font-size:21.5px;line-height:1.66;max-width:36em}
+.article h2{font-size:clamp(27px,2.3vw,34px) !important}
+.article h3{font-size:24px !important}
+.article .pullq{font-size:29px}
+.sq legend,.opt b,.opt em,.sc-qs label{font-size:inherit !important}
+
+@media (max-width:880px){
+  body{font-size:19px !important;line-height:1.6 !important}
+  h1{font-size:32px !important}
+  h2{font-size:27px !important}
+  h3{font-size:22px !important}
+  .lead{font-size:20.5px !important}
+  .eyebrow{font-size:15.5px !important}
+  .card p,.grid p,.cards p{font-size:18.5px !important}
+  .top a.lnk{font-size:16.5px !important}
+  .top .home b{font-size:22px !important}
+  .article{font-size:20px;line-height:1.64}
+  .article .pullq{font-size:23px}
+  .whois figcaption{font-size:19px}
+}
+@media (max-width:420px){
+  h1{font-size:29px !important}
+  body{font-size:18px !important}
+}
+.checks li{font-size:19.5px !important;line-height:1.5 !important;margin-bottom:9px !important}
+.muted,small,.note,.fineprint,figcaption small{font-size:17.5px !important}
+label,legend{font-size:19px !important}
+@media (max-width:880px){
+  .checks li{font-size:18.5px !important}
+  .muted,small,.note,.fineprint{font-size:16.5px !important}
+  label,legend{font-size:18px !important}
+}
+@media (max-width:880px){
+  .strip .wrap,.strip nav,.strip{flex-wrap:wrap !important;overflow:visible !important;white-space:normal !important}
+  .strip .wrap{gap:6px 14px !important;justify-content:flex-start !important}
+  .strip{font-size:15.5px !important;line-height:1.5 !important}
+}
 </style>
 <link rel="canonical" href="https://runitliketherich.com/">
 <meta property="og:title" content="Run It Like the Rich">
@@ -744,7 +822,7 @@ section a:not(.btn),section:nth-of-type(even) a:not(.btn){color:#0f2740 !importa
     <h1>Admin. Books. Compliance. Then everything else.</h1>
     <p class="lead">Running it like the rich isn't about flash. It's systems, discipline, calm and repeatable processes. Get the foundation right and the business stops depending on you.</p>
     <div class="row">
-      <a class="btn btn-gold" href="#scorecard">Take the ABC Scorecard</a>
+      <a class="btn btn-gold" href="/abc-review">Take the ABC Scorecard</a>
       <a class="btn btn-line" href="https://thehq.online/#join" target="_blank" rel="noopener">Join the HQ Club waitlist</a>
     </div>
   </div>
@@ -778,6 +856,15 @@ section a:not(.btn),section:nth-of-type(even) a:not(.btn){color:#0f2740 !importa
   </figure>
 </div></section>
 <section class="sec"><div class="wrap">
+  <div class="feature">
+    <p class="eyebrow">Start with the essay</p>
+    <h2><a href="/slow-bleed">The Slow Bleed: how going paperless cost small business owners control</a></h2>
+    <p class="lead">We didn't eliminate the office. We scattered it. What that cost owners over fifteen years &mdash; and what it takes to get the back office back.</p>
+    <p><a class="btn btn-navy btn-sm" href="/slow-bleed">Read it</a></p>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
   <div class="sec-head">
     <p class="eyebrow">Start here</p>
     <h2>Pick your way in.</h2>
@@ -787,7 +874,7 @@ section a:not(.btn),section:nth-of-type(even) a:not(.btn){color:#0f2740 !importa
     <div class="card"><span class="tag">Free</span><h3>The Proactive Bookkeeper Checklist</h3><p>How a good bookkeeper pays for themselves, over and over. 50 checkboxes across 10 areas to hand to your bookkeeper or office manager.</p><div class="foot"><a class="btn btn-navy btn-sm" href="/proactive-bookkeeper-checklist.pdf" data-gated="Proactive Bookkeeper Checklist" download>Download the checklist</a></div></div>
     <div class="card"><span class="tag">Weekly</span><h3>Read the newsletter</h3><p>Owner reset ideas, business systems, money routines and Run It Like the Rich lessons.</p><div class="foot"><a class="btn btn-navy btn-sm" data-need="substackUrl" data-fill="substackUrl" href="#" target="_blank" rel="noopener">Read on Substack</a></div></div>
     <div class="card"><span class="tag">Free</span><h3>Watch the videos</h3><p>Short lessons on business systems, books, compliance and owner discipline.</p><div class="foot"><a class="btn btn-navy btn-sm" data-need="youtubeUrl" data-fill="youtubeUrl" href="#" target="_blank" rel="noopener">Watch on YouTube</a></div></div>
-    <div class="card"><span class="tag">2 minutes</span><h3>Score your back office</h3><p>Nine questions across Admin, Books and Compliance. See where you stand.</p><div class="foot"><a class="btn btn-navy btn-sm" href="#scorecard">Take the Scorecard</a></div></div>
+    <div class="card"><span class="tag">2 minutes</span><h3>Score your back office</h3><p>Nine questions across Admin, Books and Compliance. See where you stand.</p><div class="foot"><a class="btn btn-navy btn-sm" href="/abc-review">Take the Scorecard</a></div></div>
     <div class="card"><span class="tag">Florida · Free</span><h3>The Clean Start Checklist</h3><p>Every setup step for a new company: forming it, banking it, keeping it legal and filing it so a buyer could follow it someday. With a sales tax lookup by ZIP and a compliance calendar.</p><div class="foot"><a class="btn btn-navy btn-sm" href="https://runitliketherich.com/clean-start">Open the checklist</a></div></div>
   </div>
 </div></section>

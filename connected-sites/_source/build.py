@@ -397,6 +397,7 @@ INFO_PAGES = {
     "train-the-gaap": ("riltr", "Train the GAAP", "An oversight program that teaches your bookkeeper GAAP and gives them someone in their corner."),
     "abc-review":     ("riltr", "The ABC Review", "Score your back office across Admin, Books and Compliance, and see where it stands."),
     "retire-from":    ("riltr", "Building the Business You Can Retire From", "The series on getting a business ready to hand over, sell or step back from."),
+    "slow-bleed":     ("riltr", "The Slow Bleed", "How going paperless cost small business owners control \u2014 and what it takes to get the back office back."),
     "mantras":        ("riltr", "Say them until they stick", "The operator lines worth repeating."),
 }
 

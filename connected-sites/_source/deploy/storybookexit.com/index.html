@@ -726,6 +726,84 @@ section a:not(.btn),section:nth-of-type(even) a:not(.btn){color:#0f2740 !importa
 .wide-fig img{width:100%;height:auto;display:block;border:1px solid #dde3e8}
 .wide-fig figcaption{font-size:17.5px;line-height:1.5;color:#55636f;margin-top:12px;max-width:62em}
 @media (max-width:880px){.wide-fig figcaption{font-size:16.5px}}
+
+/* ===== long-form article (The Slow Bleed) ============================= */
+.byline{font-size:17px;color:#55636f;margin:0}
+.article{max-width:40em;font-size:19.5px;line-height:1.68}
+.article p{margin:0 0 20px}
+.article h2{margin:46px 0 16px;font-size:clamp(24px,2.1vw,30px) !important;
+  padding-top:22px;border-top:2px solid #0f2740}
+.article h3{margin:34px 0 10px;font-size:21px !important;color:#B3272D !important}
+.article ul.checks{margin:0 0 22px;padding:0;list-style:none}
+.article ul.checks li{position:relative;padding-left:20px;margin-bottom:9px}
+.article ul.checks li::before{content:"";position:absolute;left:0;top:.62em;
+  width:8px;height:2px;background:#B3272D}
+.article a{color:#B3272D;text-decoration:underline;text-underline-offset:3px}
+.article .pullq{font-size:26px;line-height:1.3;font-weight:700;color:#0f2740;
+  border-left:5px solid #B3272D;padding:4px 0 4px 20px;margin:34px 0}
+@media (max-width:880px){
+  .article{font-size:18.5px;line-height:1.66}
+  .article h2{margin:36px 0 14px;padding-top:18px}
+  .article .pullq{font-size:21px;padding-left:15px;margin:26px 0}
+}
+
+/* ===== SIZE UP — one step bigger across the board (55+ readability) === */
+body{font-size:20.5px !important;line-height:1.6 !important}
+h1{font-size:clamp(35px,3.3vw,48px) !important}
+h2{font-size:clamp(28px,2.6vw,38px) !important}
+h3{font-size:clamp(22px,1.9vw,26px) !important}
+.lead{font-size:23px !important;line-height:1.55 !important}
+.eyebrow{font-size:17px !important;letter-spacing:.1em !important}
+.card p,.grid p,.cards p{font-size:19.5px !important}
+.tag,[class*="tag"],[class*="chip"],[class*="pill"]{font-size:16px !important}
+a.btn,button,.btn,input[type=submit]{font-size:17px !important;padding:16px 26px !important}
+.btn-sm{font-size:16px !important;padding:12px 20px !important}
+input[type=email],input[type=text]{font-size:18px !important}
+.top a.lnk{font-size:18px !important}
+.top .home b{font-size:27px !important}
+.top .btn{font-size:16px !important}
+.strip,.strip span,.strip a{font-size:16.5px !important}
+.whois figcaption{font-size:21px}
+.whois figcaption b{font-size:26px}
+.wide-fig figcaption{font-size:19px}
+.byline{font-size:18.5px}
+.article{font-size:21.5px;line-height:1.66;max-width:36em}
+.article h2{font-size:clamp(27px,2.3vw,34px) !important}
+.article h3{font-size:24px !important}
+.article .pullq{font-size:29px}
+.sq legend,.opt b,.opt em,.sc-qs label{font-size:inherit !important}
+
+@media (max-width:880px){
+  body{font-size:19px !important;line-height:1.6 !important}
+  h1{font-size:32px !important}
+  h2{font-size:27px !important}
+  h3{font-size:22px !important}
+  .lead{font-size:20.5px !important}
+  .eyebrow{font-size:15.5px !important}
+  .card p,.grid p,.cards p{font-size:18.5px !important}
+  .top a.lnk{font-size:16.5px !important}
+  .top .home b{font-size:22px !important}
+  .article{font-size:20px;line-height:1.64}
+  .article .pullq{font-size:23px}
+  .whois figcaption{font-size:19px}
+}
+@media (max-width:420px){
+  h1{font-size:29px !important}
+  body{font-size:18px !important}
+}
+.checks li{font-size:19.5px !important;line-height:1.5 !important;margin-bottom:9px !important}
+.muted,small,.note,.fineprint,figcaption small{font-size:17.5px !important}
+label,legend{font-size:19px !important}
+@media (max-width:880px){
+  .checks li{font-size:18.5px !important}
+  .muted,small,.note,.fineprint{font-size:16.5px !important}
+  label,legend{font-size:18px !important}
+}
+@media (max-width:880px){
+  .strip .wrap,.strip nav,.strip{flex-wrap:wrap !important;overflow:visible !important;white-space:normal !important}
+  .strip .wrap{gap:6px 14px !important;justify-content:flex-start !important}
+  .strip{font-size:15.5px !important;line-height:1.5 !important}
+}
 </style>
 <link rel="canonical" href="https://storybookexit.com/">
 <meta property="og:title" content="StoryBook Exit">
@@ -770,6 +848,7 @@ section a:not(.btn),section:nth-of-type(even) a:not(.btn){color:#0f2740 !importa
     <div class="stack">
       <p class="eyebrow">Why start early</p>
       <h2>You can't manufacture years of clean history in six months.</h2>
+      <p class="pull">They don't just buy the owner's memories. They need evidence.</p>
     </div>
     <div class="stack">
       <p>Serious buyers look at multi-year trends. They want consistent books, documented procedures and proof the team runs the business without you. None of that can be rushed in the months before a sale.</p>
@@ -798,6 +877,7 @@ section a:not(.btn),section:nth-of-type(even) a:not(.btn){color:#0f2740 !importa
   <div class="sec-head">
     <p class="eyebrow">What the owner sees vs. what the buyer sees</p>
     <h2>Owner-dependent or transferable?</h2>
+    <p class="lead">The value you can't prove is the value you may end up giving away.</p>
   </div>
   <div class="tbl cmp"><table>
     <thead><tr><th>Area</th><th>Owner-dependent</th><th>Transferable</th></tr></thead>
