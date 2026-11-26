@@ -799,6 +799,34 @@ section a:not(.btn),section:nth-of-type(even) a:not(.btn){color:#0f2740 !importa
   </ol>
 </div></section>
 
+<script>
+(function(){
+  var f = document.getElementById('sc'); if(!f) return;
+  var TIPS = {
+    A: 'Your lowest score is Admin. Scattered files and running from memory drag on every day. Start with a Virtual HQ: one folder structure, one password protocol, one place for procedures.',
+    B: 'Your lowest score is Books. Without clean, current books you can’t make reliable tax, payroll or draw decisions. Start with a QuickBooks Online review and a reconciliation routine.',
+    C: 'Your lowest score is Compliance. Missed sales tax, annual reports or payroll deadlines bring penalties and can suspend your company. Start with one compliance calendar with 30 days’ notice.'
+  };
+  function upd(){
+    var s = {A:0,B:0,C:0}, n = 0;
+    f.querySelectorAll('input:checked').forEach(function(i){ s[i.dataset.cat] += +i.value; n++; });
+    var t = s.A + s.B + s.C;
+    document.getElementById('sc-total').textContent = t;
+    ['A','B','C'].forEach(function(k){
+      document.getElementById('sc-' + k.toLowerCase()).textContent = s[k] + ' / 15';
+      document.getElementById('bar-' + k.toLowerCase()).style.width = (s[k] / 15 * 100) + '%';
+    });
+    var prof = document.getElementById('sc-prof'), tip = document.getElementById('sc-tip');
+    if(n < 9){ prof.textContent = n ? (9 - n) + ' to go. Answer all nine to see your profile.' : 'Answer all nine to see your profile.'; tip.hidden = true; return; }
+    prof.innerHTML = t >= 40 ? '<b>The Wealthy Operator.</b> Your back office is disciplined. You run from facts, not guesswork, and you’re built to scale or sell.'
+      : t >= 25 ? '<b>The Growing Hustler.</b> Sales are working, but back-office blind spots are quietly leaking profit, time and sanity.'
+      : '<b>Administrative Fog.</b> Systems are scattered, books are behind and deadlines are ticking. You’re working too hard in the business to build systems for it.';
+    var low = ['A','B','C'].sort(function(a,b){ return s[a] - s[b]; })[0];
+    tip.textContent = TIPS[low]; tip.hidden = false;
+  }
+  f.addEventListener('change', upd); upd();
+})();
+</script>
 </main>
 <footer class="family on-navy"><div class="wrap">
   <p class="eyebrow" style="color:var(--gold)">One system, four front doors</p>

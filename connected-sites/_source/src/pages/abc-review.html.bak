@@ -1,0 +1,54 @@
+<section class="sec sec-soft" id="scorecard"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">The ABC Owner Scorecard</p>
+    <h1>Where does your business really stand?</h1>
+    <p class="lead muted">Rate your back office on nine benchmarks. Your score updates as you go.</p>
+  </div>
+  <div class="sc-grid">
+    <form class="sc-qs" id="sc" onsubmit="return false">
+      {{SCORECARD}}
+    </form>
+    <aside class="sc-res on-navy" aria-live="polite">
+      <p class="eyebrow">Your score</p>
+      <div class="sc-total"><span id="sc-total">0</span><small> / 45</small></div>
+      <p class="sc-prof" id="sc-prof">Answer all nine to see your profile.</p>
+      <div class="bars">
+        <div><div class="bl"><span>A · Admin</span><b id="sc-a">0 / 15</b></div><div class="bar"><i id="bar-a"></i></div></div>
+        <div><div class="bl"><span>B · Books</span><b id="sc-b">0 / 15</b></div><div class="bar"><i id="bar-b"></i></div></div>
+        <div><div class="bl"><span>C · Compliance</span><b id="sc-c">0 / 15</b></div><div class="bar"><i id="bar-c"></i></div></div>
+      </div>
+      <p class="sc-tip" id="sc-tip" hidden></p>
+      <div class="stack" style="gap:10px">
+        <a class="btn btn-gold" href="{{JOIN}}"{{JOIN_ATTR}}>Join the HQ Club waitlist</a>
+        <a class="btn btn-line" href="{{BOOK}}"{{BOOK_ATTR}}>Talk it through with Laura</a>
+      </div>
+    </aside>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">The ABC framework</p>
+    <h2>Three letters every owner needs, in order.</h2>
+  </div>
+  <div class="grid g3">
+    <div class="card"><span class="tag">A</span><h3>Admin &amp; Operations</h3><p>Files, passwords, workflows, SOPs and the weekly, monthly and yearly rhythms that keep things moving.</p></div>
+    <div class="card"><span class="tag">B</span><h3>Books</h3><p>Clean books, real reconciliations and reporting you can actually decide from.</p></div>
+    <div class="card"><span class="tag">C</span><h3>Compliance</h3><p>Filings, licenses, payroll and the deadlines that cost money when they're missed.</p></div>
+  </div>
+</div></section>
+
+<section class="sec sec-soft" id="reset"><div class="wrap">
+  <div class="sec-head">
+    <p class="eyebrow">The Business Reset</p>
+    <h2>Five R's to fix it while it's running.</h2>
+  </div>
+  <ol class="steps">
+    <li><div><h3>Reveal</h3><p>See what's really happening in the business, not what you hope is happening.</p></div></li>
+    <li><div><h3>Reframe</h3><p>Decide what matters. Edit the plan, not the mission.</p></div></li>
+    <li><div><h3>Rebuild</h3><p>Put the Admin, Books and Compliance systems in place.</p></div></li>
+    <li><div><h3>Refine</h3><p>Tighten what works. Automate the ordinary.</p></div></li>
+    <li><div><h3>Repeat</h3><p>Run the rhythm every week, month and year. Process beats panic.</p></div></li>
+  </ol>
+</div></section>
+
