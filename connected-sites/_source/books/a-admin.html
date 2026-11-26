@@ -1,0 +1,878 @@
+<!doctype html><html><head><meta charset="utf-8"><title>A — Admin — Get Your Office Back</title><style>
+@page {
+  size: Letter;
+  margin: 22mm 20mm 20mm 20mm;
+}
+@page :first { margin: 0 }
+
+:root{
+  --navy:#0f2740; --red:#B3272D; --ink:#22313f;
+  --grey:#f3f6f8; --line:#d7dee4; --muted:#5b6a76;
+}
+*{box-sizing:border-box}
+body{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:11.3pt; line-height:1.52; color:var(--ink); margin:0;
+}
+
+/* ---------- cover ---------- */
+.cover{
+  height:100vh; page-break-after:always; background:var(--navy); color:#fff;
+  padding:30mm 22mm; display:flex; flex-direction:column;
+}
+.cover .letter{
+  font-size:150pt; line-height:.85; font-weight:700; color:#fff; margin:0 0 6mm;
+}
+.cover .rule{width:46mm;height:3.2mm;background:var(--red);margin:0 0 9mm}
+.cover h1{font-size:34pt;line-height:1.1;margin:0 0 4mm;color:#fff;border:0;padding:0}
+.cover h2{font-size:17pt;font-weight:400;color:#c3d2df;margin:0;border:0;padding:0}
+.cover .spacer{flex:1}
+.cover .who{font-size:14pt;color:#fff;margin:0 0 1.5mm}
+.cover .brand{font-size:11pt;color:#9fb4c7;letter-spacing:.06em;text-transform:uppercase}
+.cover .book{
+  font-size:9.5pt;letter-spacing:.18em;text-transform:uppercase;color:var(--red);
+  font-weight:700;margin:0 0 4mm;
+}
+
+/* ---------- headings ---------- */
+h1{
+  font-size:21pt;line-height:1.15;color:var(--navy);margin:0 0 5mm;
+  padding-top:4mm;border-top:2.4pt solid var(--navy);
+  page-break-before:always; page-break-after:avoid;
+}
+h1:first-of-type{page-break-before:avoid}
+h2{font-size:15pt;color:var(--navy);margin:9mm 0 3mm;page-break-after:avoid}
+h3{font-size:12.4pt;color:var(--red);margin:7mm 0 2mm;page-break-after:avoid}
+p{margin:0 0 3.4mm}
+em{color:var(--muted)}
+strong{color:var(--navy)}
+hr{border:0;border-top:1pt solid var(--line);margin:8mm 0}
+
+/* ---------- lists ---------- */
+ul,ol{margin:0 0 4mm;padding-left:6mm}
+li{margin-bottom:1.8mm}
+ul{list-style:none;padding-left:6mm}
+ul li{position:relative}
+ul li::before{
+  content:"";position:absolute;left:-5mm;top:2.1mm;
+  width:2.6mm;height:0.9mm;background:var(--red);
+}
+/* checkbox lines keep their box, lose the dash */
+ul li.cbx::before{display:none}
+
+/* ---------- tables ---------- */
+table{
+  width:100%;border-collapse:collapse;margin:0 0 5mm;font-size:10.2pt;
+  page-break-inside:avoid;
+}
+th{
+  background:var(--navy);color:#fff;text-align:left;padding:2.4mm 2.6mm;
+  font-size:9.6pt;font-weight:700;
+}
+td{border:0.6pt solid var(--line);padding:2.6mm;vertical-align:top}
+tbody tr:nth-child(even) td{background:var(--grey)}
+/* worksheet tables: tall empty rows to write in */
+table.ws td{height:11mm;background:#fff}
+table.ws tbody tr:nth-child(even) td{background:#fcfdfe}
+
+/* ---------- fill-in rules ---------- */
+.fill{display:block;border-bottom:0.8pt solid var(--line);height:7mm;margin:2mm 0 4mm}
+
+blockquote{
+  margin:5mm 0;padding:0 0 0 5mm;border-left:3pt solid var(--red);
+  font-size:13pt;line-height:1.35;color:var(--navy);font-weight:700;
+}
+.pull{
+  margin:6mm 0;padding:4mm 5mm;background:var(--grey);
+  border-left:3pt solid var(--red);font-size:11.3pt;
+}
+</style></head><body><section class="cover">
+  <div class="book">Book One of the ABC Owner Reset</div>
+  <div class="letter">A</div>
+  <div class="rule"></div>
+  <h1>Admin</h1>
+  <h2>Get Your Office Back</h2>
+  <div class="spacer"></div>
+  <p class="who">Laura Poincot</p>
+  <p class="brand">Run It Like the Rich</p>
+</section><h2>Before you start</h2>
+<p>This is the first of three workbooks.</p>
+<p><strong>A — Admin</strong> is this one. How the office functions: where things live, who does what, who has access, and what happens when someone leaves.</p>
+<p><strong>B — Books</strong> is the second. Whether the numbers you rely on are true, current, and usable for decisions.</p>
+<p><strong>C — Compliance</strong> is the third. The licenses, filings, renewals and deadlines that keep you allowed to operate.</p>
+<p>Admin comes first on purpose. You cannot clean up books that live in four places, and you cannot build a compliance calendar when nobody agrees where the calendar is. Admin is the floor the other two stand on.</p>
+<p>You do not have to finish this in one sitting. Most owners work through it over two or three weeks, a section at a time, usually on a Friday afternoon when the phone slows down.</p>
+<p>Everything in here is meant to be written on. Where you see a worksheet, fill it in. The worksheets are the part you will actually use six months from now.</p>
+<hr />
+<h2>Part One: What happened to your office</h2>
+<h3>We didn't eliminate the office. We scattered it.</h3>
+<p>I want to talk about something I've watched happen to small business owners over the last 10 to 15 years. And I don't think we've talked nearly enough about what it's costing them.</p>
+<p>Think about how a small business used to operate.</p>
+<p>There was a physical office. Filing cabinets. An inbox on someone's desk. A calendar on the wall. A place for incoming mail, bills to be paid, employee records, customer files, and things that needed attention.</p>
+<p>It wasn't perfect. Paper could get lost, employees could make mistakes, and owners still needed controls.</p>
+<p>But at least there was a central place to look.</p>
+<p>Then we started going paperless.</p>
+<p>First, we moved the accounting online. Then payroll. Then customer records, HR, scheduling, contracts, banking, insurance, and compliance.</p>
+<p>One cloud became three. One email became five. A new app was added for this. Another portal was added for that.</p>
+<p>Employees started receiving important company information through their personal email accounts. Someone who left the company three years ago might still have access to company files, while the current owner doesn't even know where those files are.</p>
+<p>Renewal notices are buried in inboxes. Bills are sitting in portals. Documents are saved under different names in different clouds.</p>
+<p>And passwords? Half the business seems to depend on somebody remembering which email address was used to set up an account.</p>
+<p>We didn't eliminate the office. We scattered it.</p>
+<h3>The problem wasn't the cloud. It was the missing system.</h3>
+<p>I believe cloud technology has tremendous advantages for small businesses. Remote access, collaboration, automation, backups, and real-time financial reporting can make a business much easier to operate.</p>
+<p>But putting everything online is not the same as having a system.</p>
+<p>A software vendor can sell you an excellent product. That doesn't mean the product will automatically work with everything else you're using.</p>
+<p>Someone still has to decide:</p>
+<ul>
+<li>Where does each type of information belong?</li>
+<li>Who is responsible for reviewing it?</li>
+<li>Who has access, and who approves that access?</li>
+<li>What happens when someone leaves?</li>
+<li>How are systems connected and checked for accuracy?</li>
+<li>Where do bills, reminders, renewals, and compliance deadlines go?</li>
+<li>How does the owner see what needs attention without opening ten different programs?</li>
+</ul>
+<p>Large companies may have accounting departments, HR teams, IT administrators, and operations managers overseeing these things.</p>
+<p>Small business owners usually don't.</p>
+<p>The owner, office manager, or bookkeeper ends up trying to hold everything together while also running the business.</p>
+<p>And that's where the slow bleed begins.</p>
+<h3>What the old office did without anyone thinking about it</h3>
+<p>Before you rebuild it, it helps to see what you actually had. Every one of these was a control. Nobody called it that.</p>
+<table>
+<thead>
+<tr>
+<th>The old way</th>
+<th>What it actually did</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Company records in locked file cabinets, one hallway</td>
+<td>Everyone knew which drawer held the tax returns, leases and contracts</td>
+</tr>
+<tr>
+<td>Templates and forms in the copier binder</td>
+<td>One clean master. Everyone used the same version</td>
+</tr>
+<tr>
+<td>Urgent bills and mail in the red rush tray</td>
+<td>An unpaid notice stayed in sight until somebody handled it</td>
+</tr>
+<tr>
+<td>Quotes and orders on 3-part carbon forms</td>
+<td>The customer, the office and the shop got identical copies</td>
+</tr>
+<tr>
+<td>Deadlines and renewals on the wall calendar by the door</td>
+<td>Tax dates, permits and schedules at a glance</td>
+</tr>
+<tr>
+<td>Signed checks and door keys</td>
+<td>You saw every dollar leave, and taking back a key ended access</td>
+</tr>
+</tbody>
+</table>
+<p>None of that went away because it stopped being needed.</p>
+<p>It went away because it stopped being visible.</p>
+<h3>What it costs you every week</h3>
+<p>The hidden cost isn't just another subscription.</p>
+<p>It's the hours spent hunting for documents. It's the bill that went unpaid because the notice was sent to the wrong inbox. It's the insurance renewal nobody saw. It's the duplicate subscription that nobody remembers approving. It's the employee who can't do their job without asking the owner where everything is. It's the important customer relationship that exists only in an employee's email.</p>
+<p>Individually, these problems may seem small.</p>
+<p>But over five or ten years, think about how much owner time, staff time, cash, and opportunity may have been lost.</p>
+<p>The research backs up what you already feel. McKinsey's work on the social economy found knowledge workers spend about 1.8 hours a day — roughly a fifth of the week — searching for and gathering information. Hire five people, and the fifth one spends all week looking for answers.</p>
+<p>It isn't only the hunting. It's the switching. Gloria Mark at UC Irvine has been timing how long people stay on one screen since 2004. Back then it was about two and a half minutes. Now it's about 47 seconds. And once someone gets pulled off a task, it takes around 23 minutes to get back into it.</p>
+<p>Every "Hey, where's the…?" text costs you more than the minute it takes to answer.</p>
+<p>Then there's the software itself. Flexera's 2026 State of the Cloud report puts wasted cloud spend at 29 percent, the first increase in five years. That's large companies, with whole teams watching the bills. Most small businesses have nobody watching. Apps renew on the card, logins outlive the employees who used them, and three tools quietly do the same job.</p>
+<h3>The bigger cost is what you weren't doing</h3>
+<p>While you were holding it together, you weren't developing the next manager. You weren't reviewing margins every month. You weren't turning specialty knowledge into repeatable services. You weren't exploring additional profit centers or recurring monthly revenue. You weren't building a company that could run without you.</p>
+<p>You were busy trying to find the business information you already paid to create.</p>
+<p>That is the real price of a scattered office, and it does not show up on any invoice.</p>
+<hr />
+<h2>Part Two: Score your Admin</h2>
+<p>Nine questions make up the full ABC Review. Three of them are Admin, and those three are here.</p>
+<p>Answer honestly. The score is only useful if it is true. Circle one answer per question and write the points in the box.</p>
+<h3>A1 · File and information structure</h3>
+<p><em>Where are your critical files, emails, passwords and vendor agreements stored?</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Answer</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>☐</td>
+<td><strong>Scattered across multiple systems.</strong> Desktops, email threads, paper. Finding documents takes real effort.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><strong>In the cloud, but unorganized.</strong> Google Drive or Dropbox, but no naming convention or folder structure.</td>
+<td>2</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><strong>A structured command center.</strong> One shared hub with clear guidelines, folder structure and password security.</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Your A1 score: <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span></strong></p>
+<h3>A2 · Owner routines</h3>
+<p><em>How do you handle weekly and monthly admin: reconciliations, billing, reviewing records?</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Answer</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>☐</td>
+<td><strong>Reactive, from memory.</strong> Done when something breaks, an invoice is overdue or a tax deadline forces it.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><strong>Periodic, but inconsistent.</strong> I try to do it monthly, but it slips by weeks when I get busy.</td>
+<td>2</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><strong>Scheduled, locked routines.</strong> Admin time is on my calendar every week. Reports happen like clockwork.</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Your A2 score: <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span></strong></p>
+<h3>A3 · Operations documentation</h3>
+<p><em>Are your workflows, key contact lists and system procedures written down?</em></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Answer</th>
+<th>Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>☐</td>
+<td><strong>Completely undocumented.</strong> It's all in my head or my employees' heads. If someone leaves, things break.</td>
+<td>0</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><strong>Loose or outdated notes.</strong> Some scattered docs, incomplete and rarely updated.</td>
+<td>2</td>
+</tr>
+<tr>
+<td>☐</td>
+<td><strong>A clean operating hub.</strong> Essential procedures and emergency guidelines are documented in one place.</td>
+<td>5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Your A3 score: <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span></strong></p>
+<h3>Your Admin total: <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span> out of 15</h3>
+<p><strong>11–15.</strong> Your Admin is in good shape. Work through Part Five anyway: the access list and the offboarding checklist are where even organized businesses turn out to have a hole.</p>
+<p><strong>6–10.</strong> The bones are there. You have tools and some structure, but no agreed system, so it holds together because you hold it together. Start with the A drawer in Part Four.</p>
+<p><strong>0–5.</strong> You are the system. That is fixable, and it is the most valuable work you can do this quarter. Start at Part Three and go in order. Do not try to do all of it at once.</p>
+<hr />
+<h2>Part Three: The six controls</h2>
+<p>You don't need an IT department or another dashboard at two thousand dollars a month. You need one visible structure that brings the old office back, only digital.</p>
+<p>I call it the Virtual HQ. Three of its six controls are Admin, and they are the three in this book. The other three live in the Books and Compliance workbooks.</p>
+<h3>1. The Owner's Desk</h3>
+<p><em>Replaces walking the floor and logging into twenty tools.</em></p>
+<p>One page. Four things: cash, what's active, what's due in the next 14 days, and what's waiting on your approval.</p>
+<p>That is all it has to do. Owners who try to build a page showing everything end up with a page nobody opens. If you can answer "are we all right this week" in thirty seconds, the Owner's Desk is working.</p>
+<h3>2. The ABC file cabinet</h3>
+<p><em>Replaces searching with filing.</em></p>
+<p>The whole company gets three drawers, the same for everyone: A for Admin, B for Books, C for Compliance. Every record has one home, and every record is three clicks away.</p>
+<p>Part Four is the full drawer list. This is the single highest-value thing in this workbook.</p>
+<h3>3. The copier binder</h3>
+<p><em>SOPs and templates.</em></p>
+<p>Do not write two hundred manuals alone at night. You will not finish, and what you do finish will be out of date.</p>
+<p>Map the 10 to 15 steps that take a customer from first call to paid invoice. Have one person record the screen while the person who actually does the job walks through it. Keep one master of every form, so nobody copies an old one.</p>
+<p>Worksheet 3 in Part Five is where you map those steps.</p>
+<h3>4. The front desk</h3>
+<p><em>Clean intake and offboarding.</em></p>
+<p>Requests come in through forms with required fields, not texts and email attachments.</p>
+<p>Keep one access list of every login. When someone leaves, a five-minute checklist cuts off everything: email, Drive, accounting, bank, payroll, social.</p>
+<p>It is the modern version of taking back the key. Worksheets 1 and 2 cover both halves.</p>
+<h3>5. The front door</h3>
+<p><em>One home page.</em></p>
+<p>Build it on Google Sites, which is included free with Google Workspace, or Notion if your team already lives there.</p>
+<p>Every control above sits behind one link. Staff see what they need. Managers and the owner see more.</p>
+<h3>6. The wall calendar</h3>
+<p><em>Compliance and renewals.</em></p>
+<p>Every renewal, filing, license and insurance certificate on one shared calendar with 30 days' warning.</p>
+<p>This one belongs to the Compliance workbook, and it is built there. It is listed here so you can see the whole structure at once.</p>
+<hr />
+<h2>Part Four: The A drawer, folder by folder</h2>
+<p>This is the same cabinet I set up for every client.</p>
+<p>Two rules make it work, and skipping either one is how file systems die:</p>
+<p><strong>Number the folders</strong>, so they always sort in the same order on every screen.</p>
+<p><strong>Nobody invents a new top-level folder.</strong> If something doesn't fit, it goes in the closest existing folder and you discuss it at the monthly review. One exception becomes six, and six becomes the mess you started with.</p>
+<h3>A1 · Company</h3>
+<p>Formation papers, operating agreement or bylaws, ownership records, EIN letter, bank resolutions.</p>
+<p>The things that prove the company exists and who owns it. If you have ever had to go looking for your articles of organization while someone waited on the phone, this folder is why.</p>
+<p>☐ Articles of organization or incorporation
+☐ Operating agreement or bylaws, signed
+☐ Ownership records and any changes over time
+☐ EIN letter
+☐ Bank resolutions and signature authority
+☐ Minutes, if your entity requires them</p>
+<h3>A2 · Team</h3>
+<p>Org chart, job descriptions, handbook, hiring and onboarding files, offboarding checklist.</p>
+<p>☐ Current org chart, even if it's five boxes
+☐ A job description for every role, including the ones you fill yourself
+☐ Employee handbook
+☐ Onboarding packet and checklist
+☐ Offboarding checklist (Worksheet 2)
+☐ Personnel files, stored separately from general team documents</p>
+<h3>A3 · Operations</h3>
+<p>SOPs, master templates, quote and invoice forms, vendor list, equipment list.</p>
+<p>☐ The 10–15 core procedures (Worksheet 3)
+☐ One master of every form and template
+☐ Vendor list with account numbers and contacts
+☐ Equipment list with serial numbers and purchase dates
+☐ Emergency procedures: who to call, in what order</p>
+<h3>A4 · Customers and Sales</h3>
+<p>Customer contracts, price sheets, proposals, key customer list.</p>
+<p>This is the folder buyers look at hardest, and the one most likely to live in one employee's inbox.</p>
+<p>☐ Signed customer contracts
+☐ Current price sheets, with the date they took effect
+☐ Proposal and quote templates
+☐ Key customer list, with the relationship history</p>
+<h3>A5 · Marketing</h3>
+<p>Logo and brand files, photos, website and listing logins, ad accounts.</p>
+<p>☐ Logo files, in more than one format
+☐ Brand colors and fonts, written down
+☐ Photography you own or have the right to use
+☐ Website, domain and hosting logins (cross-referenced in A6)
+☐ Google Business Profile and directory listings
+☐ Ad accounts and who controls the billing</p>
+<h3>A6 · Access and Software</h3>
+<p>The master login list, who has access to what, every subscription and who owns it.</p>
+<p>If you only build one folder from this entire workbook, build this one. It is the folder that decides whether a departure is a five-minute task or a three-week problem.</p>
+<p>☐ Master access list (Worksheet 1)
+☐ Every subscription, its cost, its renewal date and its owner
+☐ Which accounts are in a company email and which are in a personal one
+☐ Password manager, with the owner holding the master account
+☐ Admin rights: who has them, and who approves granting them</p>
+<hr />
+<h2>Part Five: The worksheets</h2>
+<h3>Worksheet 1 · The master access list</h3>
+<p>Fill a row for every tool, portal, bank, and account the business depends on. Most owners find between 20 and 60. Finding more than you expected is the normal result, not a bad sign.</p>
+<p>The column that matters most is the third one. An account set up under someone's personal email is an account the company does not actually own.</p>
+<table class="ws">
+<thead>
+<tr>
+<th>Tool or account</th>
+<th>What it's for</th>
+<th>Email it's registered to</th>
+<th>Company or personal?</th>
+<th>Who has access</th>
+<th>Monthly cost</th>
+<th>Renewal date</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>When the list is done, answer these three:</strong></p>
+<p>Which accounts are registered to a personal email address? <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span></p>
+<p>Which ones would you lose access to if that person left tomorrow? <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span></p>
+<p>Which two tools are doing the same job? <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span></p>
+<h3>Worksheet 2 · The offboarding checklist</h3>
+<p>Build this once, use it every time. The goal is five minutes, not five days.</p>
+<p>Write your own list below, using your access list from Worksheet 1. Start with anything that touches money.</p>
+<table class="ws">
+<thead>
+<tr>
+<th>Step</th>
+<th>System</th>
+<th>Who does it</th>
+<th>Done</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Bank and card access removed</td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Payroll access removed</td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Accounting system access removed</td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Email suspended, forwarded, archived</td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td>File storage access removed</td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Shared drives: ownership transferred</td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Social and marketing accounts</td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Keys, fobs, equipment returned</td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Customer contacts transferred</td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Password manager seat removed</td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>11</td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>12</td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The test:</strong> hand this list to someone who does not work in your office. Could they complete it without calling you?</p>
+<h3>Worksheet 3 · Map the money path</h3>
+<p>Write the steps a customer actually travels, from the first call to the money in the bank. Most businesses have between 10 and 15. If you get to 25, you are writing tasks instead of steps.</p>
+<p>For each one, name the person who owns it — not the department, the person.</p>
+<table class="ws">
+<thead>
+<tr>
+<th>#</th>
+<th>Step</th>
+<th>Who owns it</th>
+<th>Where it's recorded</th>
+<th>Written down?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>6</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>7</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>8</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>9</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>10</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>11</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>12</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>13</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>14</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+<tr>
+<td>15</td>
+<td></td>
+<td></td>
+<td></td>
+<td>☐</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Then circle the steps where the answer to "written down?" is no, and that only you can do.</strong> Those are the steps that keep you from taking two weeks off, and they are the first ones to record.</p>
+<h3>Worksheet 4 · Who does what</h3>
+<p>Four questions, for each area of the business. These are the questions I ask in the first hour of an ABC Review.</p>
+<table class="ws">
+<thead>
+<tr>
+<th>Area</th>
+<th>Who does it?</th>
+<th>Where does it go?</th>
+<th>Who checks it?</th>
+<th>What happens if they leave?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Incoming mail and notices</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Paying bills</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Invoicing customers</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Collections</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Payroll</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>New hire setup</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Customer contracts</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Renewals and licenses</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Bank reconciliation</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Filing and records</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Any row with a blank in column four is a single point of failure.</strong> Count them: <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span></p>
+<h3>Worksheet 5 · Name it once</h3>
+<p>A folder structure dies when two people name the same thing two ways. Decide these now, write them down, and put the page in A3.</p>
+<p><strong>Files are named:</strong> <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span></p>
+<p><em>Example: YYYY-MM-DD Vendor Description — 2026-03-14 Acme Invoice 4417</em></p>
+<p><strong>Dates are written:</strong> <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span></p>
+<p><em>Pick one. YYYY-MM-DD sorts correctly on every system; nothing else does.</em></p>
+<p><strong>Customers are named:</strong> <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span></p>
+<p><em>Legal name or the name you call them? Pick one and stay with it.</em></p>
+<p><strong>Draft versus final is marked by:</strong> <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span></p>
+<p><strong>Scanned paper goes:</strong> <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span></p>
+<p><strong>Who decides when there's a disagreement:</strong> <span style="display:inline-block;border-bottom:0.8pt solid #d7dee4;min-width:52mm">&nbsp;</span></p>
+<hr />
+<h2>Part Six: Your first 30 days</h2>
+<p>You are not rebuilding the business. You are putting the office back in one place. Thirty days is enough to do the Admin half.</p>
+<p><strong>Days 1–7 — Build the drawers.</strong>
+Create A, B and C at the top level of your file storage, with the numbered A folders from Part Four inside A. Do not move anything yet. Just build the empty cabinet, so there is somewhere for things to go.</p>
+<p><strong>Days 8–14 — Fill the access list.</strong>
+Worksheet 1. Pull 90 days of bank and card statements and work through every charge. This is where you find the subscriptions nobody approved and the accounts registered to someone's personal email.</p>
+<p><strong>Days 15–21 — Stop the bleeding.</strong>
+Cancel what's dead. Move the accounts that are registered to a personal email into a company email. Assign one owner to every tool. Write the offboarding checklist, Worksheet 2.</p>
+<p><strong>Days 22–30 — File what's current.</strong>
+Not the archive. Just this year. Move current contracts, the signed operating agreement, the current price sheet, the insurance certificates and the vendor list into their drawers. The archive can wait for a slow week; what you need this month cannot.</p>
+<p><strong>On day 30</strong>, ask someone on your team to find three documents without asking you where they are. If they can, the cabinet is working.</p>
+<hr />
+<h2>Part Seven: What done looks like</h2>
+<p>You open one page in the morning and see the whole company again: cash, what's active, what's due, and what's waiting on you.</p>
+<p>Your team knows where everything goes, so they stop asking you.</p>
+<p>Every account is registered to the company, and you could cut off a departing employee in five minutes.</p>
+<p>Every form has one master, and nobody is working from a copy of a copy.</p>
+<p>You can take two weeks off and the business does not notice.</p>
+<p>And if a buyer, a bank or a new manager ever asks to see how the company runs, you do not scramble. You share the cabinet.</p>
+<p>That is all a Virtual HQ is: the same system you already ran, only digital.</p>
+<p>You built the business. Now build the proof.</p>
+<hr />
+<h2>What's next</h2>
+<p><strong>B — Books</strong> takes the same approach to your numbers: whether the books are current, whether they tie to your tax returns, and whether you can read them well enough to price and plan from them.</p>
+<p><strong>C — Compliance</strong> builds the wall calendar: every license, filing, renewal and insurance certificate on one page with 30 days' warning.</p>
+<p><strong>The ABC Review</strong> is where I do this with you. I go through Admin, Books and Compliance in your actual systems and tell you what I find — what's solid, what's scattered, and what it's costing you.</p>
+<p>Start with the ABCs: Admin. Books. Compliance.</p>
+<p>Because a better back office isn't just about staying organized.</p>
+<p>It's about protecting what you've spent a lifetime building.</p>
+<p>A back-office reset doesn't cost. It pays.</p>
+<p><strong>Run It Like the Rich.</strong></p>
+<hr />
+<h2>About Laura Poincot</h2>
+<p>I've spent more than 25 years working behind the scenes with business owners, helping them manage their books, operations, employees, compliance, and the systems that keep everything running. I've seen how much value can be protected when the back office works, and how quickly things get complicated when it doesn't.</p>
+<p>I created Run It Like the Rich to share practical ways owners can regain control, strengthen the companies they've built, and create more options for their future.</p>
+<p>Orlando, Florida.</p>
+<hr />
+<h2>Sources</h2>
+<p>McKinsey Global Institute, <em>The Social Economy: Unlocking Value and Productivity Through Social Technologies</em> (2012).</p>
+<p>Gloria Mark, University of California, Irvine; see <em>Attention Span</em> (2023) for the screen-attention and task-resumption findings.</p>
+<p>Flexera, <em>2026 State of the Cloud Report</em>.</p>
+<hr />
+<p><em>© 2026 Laura Poincot · Run It Like the Rich · runitliketherich.com</em></p>
+<p><em>This workbook is general business information, not legal, tax or accounting advice for your specific situation.</em></p></body></html>
