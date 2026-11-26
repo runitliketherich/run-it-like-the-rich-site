@@ -94,16 +94,17 @@ const doc = new Document({
       }),
       new Paragraph({
         spacing: { after: 60 },
-        children: [new TextRun({ text: "laurapoincot@gmail.com  ·  Remote / Hybrid",
+        children: [new TextRun({ text: "support@thehq.online  ·  Remote / Hybrid",
           size: 20, color: "55636F", font: "Georgia" })],
       }),
       rule(60),
 
       // ---------- profile ----------
       H("PROFILE"),
-      P("Accounting professional with 27 years in owner-led and multi-entity finance, and the same 27 years spent inside the systems that hold the numbers. Since 1999 I have researched, found, converted, repaired and implemented financial systems. A strong database background takes that work past configuration and into the data itself: expert-level financial system data repair, balancing and historical cleanup at the record level, not only the transaction level."),
-      P("For the last five years that work has been close to continuous — system and digital document resets for owners getting their companies ready for valuation and sale, where the books have to survive a buyer's examination rather than just close each month."),
-      P("In the same period, AI and automation features rolled out in QuickBooks Online have damaged books that were previously clean. Diagnosing and undoing that damage has become a specialty."),
+      P("Accounting professional, in accounting since 1999 \u2014 twenty-seven years, and almost all of it in house, as the accountant and operations manager inside the business rather than a visitor to it."),
+      P("For fifteen of those years I worked for a group of self-made multi-millionaires: multi-entity partnerships spanning commercial real estate and development, the largest off-airport parking operation in Orlando, auto salvage, aviation services and aircraft rental, and more than 115 commercial properties whose owners I dealt with directly \u2014 which is where the industry range comes from."),
+      P("I have not only used accounting systems, I have built them: general ledger systems, and the ledger side of software that had only an operational front end. That meant working with the coders and software inventors on which journal entries had to post, and when, for data to land in the general ledger correctly. Knowing how the modules flow is the key to cleaning anything up."),
+      P("A strong database background takes that into the data itself: financial system data repair, balancing and historical cleanup at the record level. The last five years have been near-continuous system and digital document resets for owners preparing their companies for valuation and sale \u2014 and undoing the damage that QuickBooks Online\u2019s AI and automation features have done to books that were previously clean."),
       P("I have never been unable to fix a set of books.", { bold: true, after: 60 }),
 
       // ---------- what I do ----------
@@ -112,6 +113,11 @@ const doc = new Document({
       B("Multi-year cleanups — balance sheet, equity, intercompany and clearing accounts"),
       B("Diagnosing and correcting AI and automation damage in QuickBooks Online"),
       B("System selection, conversion, migration and implementation"),
+      B("General ledger design, chart-of-accounts rebuilds and module mapping"),
+      B("Point-of-sale, payroll, field-management and job-costing systems mapped into the financial system without cluttering the ledger"),
+      B("Tax planning, tax credits and tax strategy for owner-led and multi-entity businesses"),
+      B("Commercial lending \u2014 negotiating loans for operating companies and properties"),
+      B("Commercial insurance, workers\u2019 compensation, licensing and multi-county regulatory requirements"),
       B("Valuation and exit readiness: books a buyer, lender or auditor can test"),
       B("Month-end close, reconciliation, management reporting and owner dashboards"),
       B("Tax-ready workpapers and CPA coordination — 1120, 1120S, 1065, Schedules C and E, K-1 flow-through"),
@@ -120,7 +126,7 @@ const doc = new Document({
 
       // ---------- industries ----------
       H("INDUSTRIES SERVED"),
-      P("Commercial real estate, property management and development  ·  Construction and specialty trades  ·  Restaurant and franchise  ·  Home and commercial services  ·  Food distribution and perishable manufacturing  ·  Vacation and short-term rental  ·  Parking and transportation  ·  Auto salvage  ·  Professional services firms", { after: 60 }),
+      P("Commercial real estate, property management and development  ·  Construction and specialty trades  ·  Restaurant and franchise  ·  Home and commercial services  ·  Food distribution and perishable manufacturing  ·  Aviation services and aircraft rental  ·  Vacation and short-term rental  ·  Parking and transportation  ·  Auto salvage  ·  Professional services firms", { after: 60 }),
 
       // ---------- experience ----------
       H("EXPERIENCE"),
@@ -134,10 +140,10 @@ const doc = new Document({
       B("Implement QuickBooks Online and Desktop workflows, integrations, digital filing systems, compliance calendars and practical SOPs."),
 
       ...ROLE("Accountant / Property & Business Operations Manager",
-              "Commercial real-estate and operating portfolio, 15–20 affiliated entities", "Feb 2007 – Mar 2020"),
-      B("Managed full-cycle accounting and operational reporting across commercial real estate, property management, development and a high-volume off-airport parking operation."),
+              "Multi-entity partnerships owned by self-made millionaires \u2014 15\u201320 affiliated entities", "Feb 2007 – Mar 2020"),
+      B("Managed full-cycle accounting and operational reporting across commercial real estate, property management, development, the largest off-airport parking operation in Orlando, auto salvage, and aviation services and aircraft rental."),
       B("Oversaw entity-level and consolidated cash flow, intercompany balances, AP, AR, payroll coordination, month-end close and owner reporting."),
-      B("Handled accounting and administration for more than 120 commercial tenants: rent billing, collections, CAM tracking, lease renewals, rent rolls and variance reporting for owners and lenders."),
+      B("Handled accounting and administration for more than 115 commercial properties and dealt directly with their owners: rent billing, collections, CAM tracking, lease renewals, rent rolls and variance reporting for owners and lenders."),
       B("Managed sales tax, tangible personal property tax, real estate tax, business licenses and annual revenue-audit support under aviation-authority requirements."),
       B("Served as primary liaison to CPA firms, lenders and ownership, producing complete financial packages and partnership schedules."),
 
