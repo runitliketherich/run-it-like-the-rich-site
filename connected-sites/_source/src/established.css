@@ -308,3 +308,20 @@ section{border-top:0 !important}
 .strip span{color:#0f2740 !important}
 main a:not(.btn){color:#0f2740 !important}
 section a:not(.btn),section:nth-of-type(even) a:not(.btn){color:#0f2740 !important}
+
+/* ===== red, and the photo band ======================================== */
+:root{--accent:#B3272D !important;--accent-hot:#B3272D !important}
+.eyebrow{border-left-color:#B3272D !important}
+.btn-gold{background:#B3272D !important;color:#fff !important}
+.strip a[aria-current]{background:#B3272D !important;color:#fff !important;padding:3px 9px !important}
+.top .btn-gold{background:#B3272D !important}
+
+.photo-band{background:#fff !important;padding-top:34px !important;padding-bottom:34px !important}
+.whois{display:grid;grid-template-columns:minmax(0,520px) 1fr;gap:34px;align-items:center;margin:0}
+.whois img{width:100%;height:auto;display:block;border:1px solid #dde3e8}
+.whois figcaption{font-size:19px;line-height:1.55;color:#3a4752}
+.whois figcaption b{display:block;font-size:23px;color:#0f2740;margin-bottom:8px}
+@media (max-width:880px){
+  .whois{grid-template-columns:1fr;gap:18px}
+  .whois figcaption{font-size:17.5px}
+}

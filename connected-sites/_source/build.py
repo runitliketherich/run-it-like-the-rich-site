@@ -97,7 +97,9 @@ def header(key, mode):
     cur = ' aria-current="page"'
     strip = "".join(
         f'<a href="{url_for(k, mode)}"{cur if k == key else ""}>{dom}</a>' for k, dom, *_ in SHOWN)
-    links = [("vhq", "Virtual HQ"), ("gaap", "Train the GAAP"), ("exit", "StoryBook Exit"), ("riltr", "Articles")]
+    # Verbs, not product names. A visitor reads "Train" faster than
+    # "Train the GAAP" and does not have to decode a brand first.
+    links = [("vhq", "Build"), ("gaap", "Train"), ("exit", "Exit"), ("riltr", "Read")]
     # On runitliketherich.com the first two go to the pages on this site, not
     # across to the other domains; a visitor should be able to read about
     # everything without leaving.
@@ -113,7 +115,7 @@ def header(key, mode):
     return f'''<div class="strip"><div class="wrap"><span>Our sites</span>{strip}</div></div>
 <header class="top"><div class="wrap">
   <a class="home" href="{url_for(key, mode)}"><b>{home_name}</b><span>Run It Like the Rich</span></a>
-  <nav aria-label="Sites">{nav}<a class="lnk" href="{contact}">Contact</a>
+  <nav aria-label="Sites">{nav}<a class="lnk" href="{contact}">Talk</a>
   <a class="btn btn-gold btn-sm" href="{join}"{link_attrs(join)}>Free weekly letter</a></nav>
 </div></header>'''
 
@@ -414,6 +416,11 @@ def main():
             shutil.copy(SRC / "clean-start.html", out / "clean-start.html")
             for f in ("proactive-bookkeeper-checklist.pdf", "radar.html", "ask.html"):
                 shutil.copy(SRC / f, out / f)
+            for m in ("laura-abc-framework.jpg", "ninetys-office.jpg"):
+                src_m = SRC / "media" / m
+                if src_m.exists():
+                    shutil.copy(src_m, out / m)
+                    shutil.copy(src_m, ROOT / "preview" / m)
             # Linked from the Substack welcome email. Standalone, so the
             # endpoint is injected here rather than hardcoded in the file.
             (out / "welcome.html").write_text(
