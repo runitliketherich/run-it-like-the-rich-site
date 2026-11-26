@@ -55,9 +55,9 @@ SITES = [
      "Virtual HQ", "Virtual HQ: one controlled operating environment for your business."),
     ("riltr", "runitliketherich.com", "Run It Like the Rich", "The operator mindset: articles, the Reset, and merch.",
      "Run It Like the Rich", "Admin, Books, Compliance. Keep it lean. Keep it clean. Run it like the rich."),
-    ("gaap", "trainthegaap.com", "Train the GAAP", "Backup and the why behind the books, for your bookkeeper.",
-     "Train the GAAP", "Your bookkeeper is the most unsupported person in your business. Train the GAAP gives them the why behind the work and an ally to call."),
-    ("exit", "storybookexit.com", "StoryBook Exit", "Build the business you can retire from.",
+    ("gaap", "trainthegaap.com", "Train the GAAP", "Bookkeeper oversight: GAAP, best practices and the why.",
+     "Train the GAAP", "Train the GAAP is a bookkeeper oversight program: an ABC Review, a review of your books, then a meeting to explain every error and change. GAAP (Generally Accepted Accounting Principles) plus business and industry best practices."),
+    ("exit", "storybookexit.com", "StoryBook Exit", "Get your business ready to sell, years before you sell it.",
      "StoryBook Exit", "A 24–30 month pre-sale operating program for owners 5–10 years from retirement."),
 ]
 BY_KEY = {s[0]: s for s in SITES}
@@ -284,7 +284,7 @@ def page(key, mode, standalone, raw=None, title=None, desc=None, path=""):
     # The download gate. Served per-domain so every site can gate its own
     # downloads; the endpoint is set before the script so it can read it.
     gate = (f'<script>window.RILTR_FORM_ENDPOINT={json.dumps(CONFIG["formCatcher"])};</script>'
-            f'\n<script src="/gate.js" defer></script>')
+            f'\n<script src="/gate.js" defer></script>\n<script src="/pdf.js" defer></script>')
     inner = f"{header(key, mode)}\n<main>{body}</main>\n{footer(key, mode)}\n{js}\n{gate}"
     if standalone:
         return f'<!doctype html>\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">\n{head}\n</head><body>\n{inner}\n</body></html>\n'
@@ -413,9 +413,12 @@ def main():
         out.mkdir(parents=True)
         (out / "index.html").write_text(page(key, "deploy", standalone=True))
         shutil.copy(SRC / "gate.js", out / "gate.js")   # every site gates its own downloads
+        shutil.copy(SRC / "pdf.js", out / "pdf.js")     # "Save as PDF" on every results page
         if key == "riltr":
-            shutil.copy(SRC / "clean-start.html", out / "clean-start.html")
-            for f in ("proactive-bookkeeper-checklist.pdf", "radar.html", "ask.html"):
+            PDFJS = '<script src="/pdf.js" defer></script>\n</body>'
+            (out / "clean-start.html").write_text((SRC / "clean-start.html").read_text().replace("</body>", PDFJS, 1))
+            (out / "ask.html").write_text((SRC / "ask.html").read_text().replace("</body>", PDFJS, 1))
+            for f in ("proactive-bookkeeper-checklist.pdf", "radar.html"):
                 shutil.copy(SRC / f, out / f)
             for m in ("laura-abc-framework.jpg", "ninetys-office.jpg"):
                 src_m = SRC / "media" / m
@@ -426,7 +429,8 @@ def main():
             # endpoint is injected here rather than hardcoded in the file.
             (out / "welcome.html").write_text(
                 (SRC / "welcome.html").read_text()
-                .replace("__ENDPOINT__", CONFIG["formCatcher"]))
+                .replace("__ENDPOINT__", CONFIG["formCatcher"])
+                .replace("</body>", '<script src="/pdf.js" defer></script>\n</body>', 1))
             # new-year.html is its own standalone document, so it never passes
             # through page(); inject the download gate on the way out.
             ny = (SRC / "new-year.html").read_text()
