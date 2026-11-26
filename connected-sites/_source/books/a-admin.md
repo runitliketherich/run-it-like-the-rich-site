@@ -29,7 +29,7 @@ Everything in here is meant to be written on. Where you see a worksheet, fill it
 
 ## Part One: What happened to your office
 
-### We didn't eliminate the office. We scattered it.
+### We got rid of the office. But what replaced it?
 
 I want to talk about something I've watched happen to small business owners over the last 10 to 15 years. And I don't think we've talked nearly enough about what it's costing them.
 
@@ -53,7 +53,7 @@ Renewal notices are buried in inboxes. Bills are sitting in portals. Documents a
 
 And passwords? Half the business seems to depend on somebody remembering which email address was used to set up an account.
 
-We didn't eliminate the office. We scattered it.
+Every tool made one piece faster. Together they took the room apart.
 
 ### The problem wasn't the cloud. It was the missing system.
 
@@ -490,7 +490,46 @@ You built the business. Now build the proof.
 
 **C — Compliance** builds the wall calendar: every license, filing, renewal and insurance certificate on one page with 30 days' warning.
 
-**The ABC Review** is where I do this with you. I go through Admin, Books and Compliance in your actual systems and tell you what I find — what's solid, what's scattered, and what it's costing you.
+Each workbook is sold on its own, or take all three as a set.
+
+---
+
+## If you'd rather not build it alone
+
+You have the plan. Some owners want the office built with them instead of by them.
+
+### The ABC Review
+
+I go through Admin, Books and Compliance in your actual systems and tell you what I find: what's solid, what's slipping, and what it's costing you. You get the findings and the order to fix them in.
+
+**$645.**
+
+### ABC Starter + 1 Year of Support
+
+Your plan, your HQ, and a year of support. Everything included:
+
+- Your step-by-step plan, built from your answers in these workbooks
+- The Virtual HQ Google Sites template
+- Your file system built in your Google Drive, from the names you choose in Worksheet 5
+- A standard chart of accounts for your industry
+- A starter compliance calendar for your industry
+- A review call with me
+- Twelve months of support
+- The full video library
+
+**$1,500 to start, then $150 a month for 12 months. Or $3,000 paid in full, which saves you $300.**
+
+I review every plan myself, so spots are limited each month.
+
+### Done-for-You Reset
+
+If you want it built rather than guided, I do the whole reset with your team.
+
+**Starts at a $2,500 deposit.**
+
+Everything is at **runitliketherich.com**, or book a call and tell me what's worrying you first. I'll tell you honestly what I'd fix first — even if the answer is that you don't need me yet.
+
+---
 
 Start with the ABCs: Admin. Books. Compliance.
 
