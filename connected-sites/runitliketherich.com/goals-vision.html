@@ -3,7 +3,7 @@
 <title>The Goals & Vision Checklist</title>
 <meta name="description" content="Pick the goals that matter to you, then work through the vision steps. Check them off as you go. Edit the plan, not the mission.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Oswald:wght@500;700&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap">
 <style>/* Layout: paper page, navy banner bands with the brand's blue diagonal + gold rule; one column of content max 1120px. Single brand theme by choice. */
 :root{
   --navy:#10243d; --blue:#173653; --gold:#d2a452; --rust:#8f4c34;
@@ -392,6 +392,418 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 .wl-done h3{font-size:26px}
 
 .offer .price{align-self:start}
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=IBM+Plex+Mono:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* ============================================================
+   Documentary direction — condensed caps display, mono body,
+   flat bands, hard edges. Laura's navy + gold, not their teal.
+   ============================================================ */
+
+:root{
+  --ink:#10243d; --band:#e9e1d1; --paper:#f4efe4; --cream:#fffdf8;
+  --accent:#d2a452; --accent-hot:#c0803a;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --disp:'Oswald',Impact,sans-serif;
+}
+
+*{border-radius:0 !important;box-shadow:none !important}
+
+body{
+  font-family:Georgia,'Times New Roman',serif !important;
+  font-size:18px !important;
+  line-height:1.62 !important;
+  color:#24384a !important;
+  background:var(--paper) !important;
+  letter-spacing:-.1px !important;
+}
+
+/* ---------- display type ---------- */
+h1,h2,h3,.h1,.h2{
+  font-family:Georgia,'Times New Roman',serif !important;
+  font-weight:700 !important;
+  text-transform:none !important;
+  line-height:1.18 !important;
+  letter-spacing:-.004em !important;
+  color:var(--ink) !important;
+  text-wrap:balance;
+}
+h1{font-size:clamp(31px,2.9vw,42px) !important}
+h2{font-size:clamp(25px,2.3vw,33px) !important}
+h3{font-size:clamp(19px,1.6vw,22px) !important}
+
+/* ---------- eyebrow = rule + mono caps ---------- */
+.eyebrow{
+  font-family:var(--mono) !important;
+  font-size:14px !important;
+  font-weight:600 !important;
+  letter-spacing:.15em !important;
+  text-transform:uppercase !important;
+  color:var(--accent-hot) !important;
+  display:inline-block !important;
+  border-left:4px solid var(--accent) !important;
+  padding:1px 0 1px 13px !important;
+  margin-bottom:22px !important;
+}
+
+/* ---------- buttons: hard rectangles ---------- */
+a.btn,button,.btn,input[type=submit]{
+  font-family:Figtree,'Helvetica Neue',Arial,sans-serif !important;
+  font-size:15px !important;
+  font-weight:600 !important;
+  letter-spacing:.14em !important;
+  text-transform:uppercase !important;
+  padding:16px 26px !important;
+  border-radius:0 !important;
+}
+a.btn.primary,.btn.primary,input[type=submit]{
+  background:var(--accent) !important;color:#17202c !important;border:0 !important;
+}
+a.btn.ghost,.btn.ghost,a.btn.secondary{
+  background:transparent !important;color:var(--ink) !important;
+  border:1px solid var(--ink) !important;
+}
+
+/* ---------- alternating full-bleed bands ---------- */
+section:nth-of-type(even){background:var(--band) !important;color:#24384a !important}
+section:nth-of-type(even) h1,
+section:nth-of-type(even) h2,
+section:nth-of-type(even) h3{color:var(--ink) !important}
+section:nth-of-type(even) .eyebrow{color:var(--accent-hot) !important}
+section:nth-of-type(even) p{color:#3b4f61 !important}
+section:nth-of-type(odd){background:var(--paper) !important}
+
+/* ---------- entries: top rule, no tile ---------- */
+.grid > *,.cards > *{
+  background:transparent !important;
+  border:0 !important;
+  border-top:2px solid var(--accent) !important;
+  padding:24px 0 0 !important;
+}
+section:nth-of-type(even) .grid > *{border-top-color:#c9a86a !important}
+
+/* ---------- tags become mono slugs ---------- */
+[class*="tag"],[class*="chip"],[class*="pill"]{
+  background:transparent !important;border:0 !important;padding:0 !important;
+  font-family:var(--mono) !important;font-size:13px !important;font-weight:600 !important;
+  letter-spacing:.13em !important;text-transform:uppercase !important;
+  color:var(--accent-hot) !important;
+}
+
+/* ---------- links ---------- */
+main a:not(.btn){
+  color:var(--accent-hot) !important;
+  text-decoration:underline !important;
+  text-underline-offset:4px !important;
+  text-decoration-thickness:1px !important;
+}
+section:nth-of-type(even) main a:not(.btn),
+section:nth-of-type(even) a:not(.btn){color:var(--accent-hot) !important}
+
+/* ---------- masthead ---------- */
+.top{background:var(--ink) !important;border-bottom:3px solid var(--accent) !important}
+.top a,.top b{color:#f4efe4 !important;font-family:Figtree,Arial,sans-serif !important;
+  font-size:13.5px !important;letter-spacing:.06em !important}
+.top .home b{font-family:Georgia,serif !important;font-size:22px !important;
+  text-transform:none !important;letter-spacing:0 !important}
+
+/* inputs */
+input[type=email],input[type=text]{
+  font-family:var(--mono) !important;border:1px solid #b9ad93 !important;
+  border-radius:0 !important;padding:14px !important;background:#fff !important;
+}
+
+/* ---------- fixes against the real markup ---------- */
+
+/* nav was wrapping: mono is wider than the sans it replaced */
+.top nav{white-space:nowrap !important;gap:20px !important}
+.top a.lnk{font-size:12.5px !important;letter-spacing:.02em !important}
+.top .home span{display:none !important}          /* duplicate subtitle */
+.top .home b{font-size:21px !important}
+
+/* navy buttons disappeared on the navy bands */
+section:nth-of-type(even) .btn-navy{background:var(--ink) !important;color:#f4efe4 !important}
+section:nth-of-type(even) .btn-line{background:transparent !important;
+  border:1px solid var(--ink) !important;color:var(--ink) !important}
+.btn-gold{background:var(--accent) !important;color:#17202c !important;border:0 !important}
+.btn-navy{background:var(--ink) !important;color:#f4efe4 !important;border:0 !important}
+.btn-line{background:transparent !important;border:1px solid var(--ink) !important;color:var(--ink) !important}
+
+/* don't recolour links in the gold announcement bar — only inside sections */
+main a:not(.btn){color:inherit !important;text-decoration:underline !important}
+section a:not(.btn){color:var(--accent-hot) !important}
+section:nth-of-type(even) a:not(.btn){color:var(--accent-hot) !important}
+
+
+/* ============================  MOBILE  ============================ */
+@media (max-width:880px){
+  .top .wrap{flex-direction:column !important;align-items:flex-start !important;gap:11px !important}
+  .top nav{white-space:normal !important;flex-wrap:wrap !important;gap:6px 16px !important;width:100% !important}
+  .top a.lnk{font-size:13.5px !important}
+  .top .home b{font-size:19px !important}
+  .top .btn{width:100% !important;text-align:center !important;margin-top:4px !important}
+
+  h1{font-size:29px !important;line-height:1.2 !important}
+  h2{font-size:25px !important}
+  h3{font-size:20px !important}
+  body{font-size:17.5px !important;line-height:1.6 !important}
+  .eyebrow{font-size:13px !important;letter-spacing:.12em !important}
+
+  .hero-grid{display:block !important}
+  .hero-grid > * + *{margin-top:30px !important}
+  .grid,.cards{display:block !important}
+  .grid > *,.cards > *{margin-top:26px !important}
+
+  a.btn,.btn{display:block !important;width:100% !important;text-align:center !important;
+             box-sizing:border-box !important;margin:10px 0 0 !important}
+
+  section > .wrap,.wrap{padding-left:18px !important;padding-right:18px !important}
+  section{padding-top:38px !important;padding-bottom:38px !important}
+  .strip{font-size:12px !important}
+  img,video,iframe{max-width:100% !important;height:auto !important}
+}
+@media (max-width:420px){
+  h1{font-size:27px !important}
+  body{font-size:15.5px !important}
+}
+
+/* ===== tighter, and no tiny labels ===================================== */
+
+/* the little chips above each entry read as normal words now */
+[class*="tag"],[class*="chip"],[class*="pill"]{
+  font-family:Georgia,serif !important;
+  font-size:16.5px !important;
+  font-weight:400 !important;
+  font-style:italic !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+  color:#8f4c34 !important;
+  margin-bottom:2px !important;
+}
+.eyebrow{
+  font-size:17px !important;
+  font-family:Georgia,serif !important;
+  font-style:italic !important;
+  font-weight:400 !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+  border-left:4px solid var(--accent) !important;
+  padding:0 0 0 12px !important;
+  margin-bottom:14px !important;
+}
+
+/* space: this page had room for a second page inside it */
+:root{--sec:clamp(22px,2.4vw,34px) !important}
+section{padding-top:34px !important;padding-bottom:34px !important}
+section > .wrap{padding-top:0 !important;padding-bottom:0 !important}
+.band.hero{padding-top:26px !important;padding-bottom:26px !important}
+h1,h2,h3{margin:0 0 12px !important}
+p{margin:0 0 12px !important}
+.grid,.cards{gap:20px 34px !important}
+.grid > *,.cards > *{padding-top:14px !important;margin-top:0 !important}
+a.btn,.btn{margin-top:12px !important;padding:12px 20px !important}
+ul,ol{margin:10px 0 !important}
+li{margin-bottom:4px !important}
+
+/* entries were flex columns with the button pushed to the bottom edge,
+   which is what made those holes under every paragraph */
+.grid > *,.cards > *{display:block !important}
+.grid > * > *:last-child,.cards > * > *:last-child{margin-bottom:0 !important}
+.grid .btn,.cards .btn{margin-top:14px !important}
+
+/* hero was 640px tall for four lines and two buttons */
+.band.hero{padding-top:18px !important;padding-bottom:18px !important}
+.band.hero .wrap{align-items:start !important}
+.band.hero h1{margin-bottom:14px !important}
+.band.hero p{margin-bottom:16px !important}
+.band.hero .btn{margin:0 0 10px !important;display:inline-block !important}
+.hero-grid{gap:30px !important;align-items:start !important}
+
+/* the freebie panel had its own generous padding */
+.freebie,[class*="freebie"]{padding:22px !important}
+.freebie li,[class*="freebie"] li{margin-bottom:3px !important}
+
+/* ===== the gold labels were still small and washed out ================ */
+
+/* "Start here", "Free checklist" — the label above each section */
+.eyebrow{
+  font-size:20px !important;
+  font-style:normal !important;
+  font-weight:700 !important;
+  font-family:Georgia,serif !important;
+  color:#7d3f28 !important;
+  border-left:5px solid var(--accent) !important;
+  padding:2px 0 2px 14px !important;
+  margin-bottom:16px !important;
+}
+
+/* "Nov-Dec · Limited", "Free", "Weekly" — the label above each entry */
+[class*="tag"],[class*="chip"],[class*="pill"]{
+  font-size:18px !important;
+  font-style:normal !important;
+  font-weight:700 !important;
+  color:#7d3f28 !important;
+  margin-bottom:4px !important;
+}
+
+/* the "Our sites" row across the very top */
+.strip{font-size:15px !important;padding:9px 0 !important}
+.strip span{font-size:15px !important;font-weight:700 !important;color:#7d3f28 !important;
+  text-transform:none !important;letter-spacing:0 !important}
+.strip a{font-size:15px !important;color:#2c3f52 !important}
+.strip a[aria-current]{font-weight:700 !important;color:#10243d !important}
+
+/* header nav and the announcement line */
+.top a.lnk{font-size:16px !important}
+.top .home b{font-size:24px !important}
+
+/* ===== clean palette: white, navy, one gold ============================
+   Was cream + sand + gold + rust + navy. Five colours, four of them warm,
+   which is what made it look dingy rather than crisp.                    */
+
+:root{
+  --paper:#ffffff !important;
+  --band:#f3f6f8 !important;      /* cool light grey, not sand */
+  --ink:#0f2740 !important;
+  --accent:#c08f2c !important;
+  --accent-hot:#0f2740 !important;
+  --cream:#ffffff !important;
+  --soft:#f3f6f8 !important;
+  --tint:#f3f6f8 !important;
+  --light:#ffffff !important;
+  --rust:#0f2740 !important;      /* rust retired */
+  --line:#dde3e8 !important;
+  --rule:#dde3e8 !important;
+}
+body{background:#fff !important;color:#2b3e51 !important}
+section:nth-of-type(odd){background:#fff !important}
+section:nth-of-type(even){background:#f3f6f8 !important}
+h1,h2,h3{color:#0f2740 !important}
+
+/* labels: navy, with the gold bar doing the colour work */
+.eyebrow{color:#0f2740 !important;border-left:5px solid #c08f2c !important}
+[class*="tag"],[class*="chip"],[class*="pill"]{color:#0f2740 !important}
+
+/* rules: quiet grey, gold reserved for buttons and the label bars */
+.grid > *,.cards > *{border-top:1px solid #dde3e8 !important}
+section:nth-of-type(even) .grid > *{border-top-color:#d5dde4 !important}
+section{border-top:0 !important}
+
+/* panels sit on white with a plain border */
+.freebie,[class*="freebie"]{background:#fff !important;border:1px solid #dde3e8 !important}
+
+/* buttons */
+.btn-gold{background:#c08f2c !important;color:#1a1200 !important}
+.btn-navy{background:#0f2740 !important;color:#fff !important}
+.btn-line{background:#fff !important;border:1px solid #0f2740 !important;color:#0f2740 !important}
+
+/* masthead + the announcement bar */
+.top{background:#0f2740 !important;border-bottom:0 !important}
+.strip{background:#fff !important;border-bottom:1px solid #dde3e8 !important}
+.strip span{color:#0f2740 !important}
+main a:not(.btn){color:#0f2740 !important}
+section a:not(.btn),section:nth-of-type(even) a:not(.btn){color:#0f2740 !important}
+
+/* ===== red, and the photo band ======================================== */
+:root{--accent:#B3272D !important;--accent-hot:#B3272D !important}
+.eyebrow{border-left-color:#B3272D !important}
+.btn-gold{background:#B3272D !important;color:#fff !important}
+.strip a[aria-current]{background:#B3272D !important;color:#fff !important;padding:3px 9px !important}
+.top .btn-gold{background:#B3272D !important}
+
+.photo-band{background:#fff !important;padding-top:34px !important;padding-bottom:34px !important}
+.whois{display:grid;grid-template-columns:minmax(0,520px) 1fr;gap:34px;align-items:center;margin:0}
+.whois img{width:100%;height:auto;display:block;border:1px solid #dde3e8}
+.whois figcaption{font-size:19px;line-height:1.55;color:#3a4752}
+.whois figcaption b{display:block;font-size:23px;color:#0f2740;margin-bottom:8px}
+@media (max-width:880px){
+  .whois{grid-template-columns:1fr;gap:18px}
+  .whois figcaption{font-size:17.5px}
+}
+
+/* a full-width figure with a caption under it */
+.wide-fig{margin:0}
+.wide-fig img{width:100%;height:auto;display:block;border:1px solid #dde3e8}
+.wide-fig figcaption{font-size:17.5px;line-height:1.5;color:#55636f;margin-top:12px;max-width:62em}
+@media (max-width:880px){.wide-fig figcaption{font-size:16.5px}}
+
+/* ===== long-form article (The Slow Bleed) ============================= */
+.byline{font-size:17px;color:#55636f;margin:0}
+.article{max-width:40em;font-size:19.5px;line-height:1.68}
+.article p{margin:0 0 20px}
+.article h2{margin:46px 0 16px;font-size:clamp(24px,2.1vw,30px) !important;
+  padding-top:22px;border-top:2px solid #0f2740}
+.article h3{margin:34px 0 10px;font-size:21px !important;color:#B3272D !important}
+.article ul.checks{margin:0 0 22px;padding:0;list-style:none}
+.article ul.checks li{position:relative;padding-left:20px;margin-bottom:9px}
+.article ul.checks li::before{content:"";position:absolute;left:0;top:.62em;
+  width:8px;height:2px;background:#B3272D}
+.article a{color:#B3272D;text-decoration:underline;text-underline-offset:3px}
+.article .pullq{font-size:26px;line-height:1.3;font-weight:700;color:#0f2740;
+  border-left:5px solid #B3272D;padding:4px 0 4px 20px;margin:34px 0}
+@media (max-width:880px){
+  .article{font-size:18.5px;line-height:1.66}
+  .article h2{margin:36px 0 14px;padding-top:18px}
+  .article .pullq{font-size:21px;padding-left:15px;margin:26px 0}
+}
+
+/* ===== SIZE UP — one step bigger across the board (55+ readability) === */
+body{font-size:20.5px !important;line-height:1.6 !important}
+h1{font-size:clamp(35px,3.3vw,48px) !important}
+h2{font-size:clamp(28px,2.6vw,38px) !important}
+h3{font-size:clamp(22px,1.9vw,26px) !important}
+.lead{font-size:23px !important;line-height:1.55 !important}
+.eyebrow{font-size:17px !important;letter-spacing:.1em !important}
+.card p,.grid p,.cards p{font-size:19.5px !important}
+.tag,[class*="tag"],[class*="chip"],[class*="pill"]{font-size:16px !important}
+a.btn,button,.btn,input[type=submit]{font-size:17px !important;padding:16px 26px !important}
+.btn-sm{font-size:16px !important;padding:12px 20px !important}
+input[type=email],input[type=text]{font-size:18px !important}
+.top a.lnk{font-size:18px !important}
+.top .home b{font-size:27px !important}
+.top .btn{font-size:16px !important}
+.strip,.strip span,.strip a{font-size:16.5px !important}
+.whois figcaption{font-size:21px}
+.whois figcaption b{font-size:26px}
+.wide-fig figcaption{font-size:19px}
+.byline{font-size:18.5px}
+.article{font-size:21.5px;line-height:1.66;max-width:36em}
+.article h2{font-size:clamp(27px,2.3vw,34px) !important}
+.article h3{font-size:24px !important}
+.article .pullq{font-size:29px}
+.sq legend,.opt b,.opt em,.sc-qs label{font-size:inherit !important}
+
+@media (max-width:880px){
+  body{font-size:19px !important;line-height:1.6 !important}
+  h1{font-size:32px !important}
+  h2{font-size:27px !important}
+  h3{font-size:22px !important}
+  .lead{font-size:20.5px !important}
+  .eyebrow{font-size:15.5px !important}
+  .card p,.grid p,.cards p{font-size:18.5px !important}
+  .top a.lnk{font-size:16.5px !important}
+  .top .home b{font-size:22px !important}
+  .article{font-size:20px;line-height:1.64}
+  .article .pullq{font-size:23px}
+  .whois figcaption{font-size:19px}
+}
+@media (max-width:420px){
+  h1{font-size:29px !important}
+  body{font-size:18px !important}
+}
+.checks li{font-size:19.5px !important;line-height:1.5 !important;margin-bottom:9px !important}
+.muted,small,.note,.fineprint,figcaption small{font-size:17.5px !important}
+label,legend{font-size:19px !important}
+@media (max-width:880px){
+  .checks li{font-size:18.5px !important}
+  .muted,small,.note,.fineprint{font-size:16.5px !important}
+  label,legend{font-size:18px !important}
+}
+@media (max-width:880px){
+  .strip .wrap,.strip nav,.strip{flex-wrap:wrap !important;overflow:visible !important;white-space:normal !important}
+  .strip .wrap{gap:6px 14px !important;justify-content:flex-start !important}
+  .strip{font-size:15.5px !important;line-height:1.5 !important}
+}
 </style>
 <link rel="canonical" href="https://runitliketherich.com/goals-vision">
 <meta property="og:title" content="Run It Like the Rich">
@@ -400,7 +812,7 @@ a.soc:hover{border-color:var(--navy);color:var(--navy)}
 <div class="strip"><div class="wrap"><span>Our sites</span><a href="https://virtualhq.online/">virtualhq.online</a><a href="https://runitliketherich.com/" aria-current="page">runitliketherich.com</a><a href="https://trainthegaap.com/">trainthegaap.com</a><a href="https://storybookexit.com/">storybookexit.com</a></div></div>
 <header class="top"><div class="wrap">
   <a class="home" href="https://runitliketherich.com/"><b>Run It Like the Rich</b><span>Run It Like the Rich</span></a>
-  <nav aria-label="Sites"><a class="lnk" href="https://virtualhq.online/">Virtual HQ</a><a class="lnk" href="https://trainthegaap.com/">Train the GAAP</a><a class="lnk" href="https://storybookexit.com/">StoryBook Exit</a><a class="lnk" href="https://laurapoincot.com/#contact">Contact</a>
+  <nav aria-label="Sites"><a class="lnk" href="/virtual-hq">Build</a><a class="lnk" href="/train-the-gaap">Train</a><a class="lnk" href="https://storybookexit.com/">Exit</a><a class="lnk" href="https://laurapoincot.com/#contact">Talk</a>
   <a class="btn btn-gold btn-sm" href="https://runitliketherich.substack.com/" target="_blank" rel="noopener">Free weekly letter</a></nav>
 </div></header>
 <main><section class="band"><div class="wrap" style="padding-block:clamp(40px,7vw,80px)">
