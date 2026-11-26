@@ -804,6 +804,32 @@ label,legend{font-size:19px !important}
   .strip .wrap{gap:6px 14px !important;justify-content:flex-start !important}
   .strip{font-size:15.5px !important;line-height:1.5 !important}
 }
+
+/* ===== typed text must be readable in every field ==================== */
+/* the restyle forced white input backgrounds; the gate modal still had
+   near-white text on them, so typing was invisible. */
+input[type=text],input[type=email],input[type=tel],input[type=number],
+input[type=search],textarea,select{
+  background:#fff !important;
+  color:#0f2740 !important;
+  -webkit-text-fill-color:#0f2740 !important;
+  caret-color:#B3272D !important;
+  border:1px solid #c7d2db !important;
+}
+::placeholder{color:#78858f !important;opacity:1 !important}
+.rg input[type=text],.rg input[type=email]{
+  background:#fff !important;color:#0f2740 !important;
+  -webkit-text-fill-color:#0f2740 !important;border:1px solid #c7d2db !important;
+}
+.rg input:focus,input:focus,textarea:focus{
+  background:#fff !important;color:#0f2740 !important;
+  border-color:#B3272D !important;outline:2px solid rgba(179,39,45,.25) !important;
+  outline-offset:1px !important;
+}
+input:-webkit-autofill,input:-webkit-autofill:focus{
+  -webkit-text-fill-color:#0f2740 !important;
+  box-shadow:0 0 0 1000px #fff inset !important;
+}
 </style>
 <link rel="canonical" href="https://storybookexit.com/">
 <meta property="og:title" content="StoryBook Exit">
