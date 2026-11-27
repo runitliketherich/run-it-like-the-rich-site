@@ -112,6 +112,9 @@ def header(key, mode):
         f'<a class="lnk" href="{href(k)}">{t}</a>' for k, t in links if k != key)
     about_href = ("/about" if mode == "deploy" else "about.html")
     nav = f'<a class="lnk" href="{about_href}">About</a>' + nav if key == "hub" else nav
+    if key == "riltr":
+        shop_href = ("/products" if mode == "deploy" else "products.html")
+        nav = f'<a class="lnk" href="{shop_href}">Shop</a>' + nav
     contact = url_for("hub", mode, "contact")
     home_name = "Laura Poincot" if key == "hub" else s[2]
     return f'''<div class="strip"><div class="wrap"><span>Our sites</span>{strip}</div></div>
@@ -395,6 +398,7 @@ def tool_raw(tk):
 # Subject pages on runitliketherich.com. Bodies live in src/pages/<slug>.html
 # and are passed to page() as raw, so they skip the hero/freebie injection.
 INFO_PAGES = {
+    "products":       ("riltr", "Everything in one place", "The ABC Review, ABC Starter, Support Blocks, the Virtual HQ template, the Done-for-You Reset and the free checklists \u2014 every option and what it costs."),
     "about":          ("hub", "About Laura Poincot", "Twenty-seven years inside other people's books: financial system data repair, multi-entity accounting and exit-ready books."),
     "virtual-hq":     ("riltr", "Virtual HQ", "One owner-controlled place to run the business from, built inside the Google Workspace you already pay for."),
     "train-the-gaap": ("riltr", "Train the GAAP", "An oversight program that teaches your bookkeeper GAAP and gives them someone in their corner."),
