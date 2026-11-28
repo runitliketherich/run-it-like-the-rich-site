@@ -953,13 +953,20 @@ input:-webkit-autofill,input:-webkit-autofill:focus{
           site: location.hostname, source: 'Free checklist'
         })}).catch(function(){});
       }
+      // The Substack sign-up opens in a background tab. It used to open in
+      // the foreground, which threw the reader onto Substack and left the
+      // checklist sitting unseen on the tab they had just left.
       if(C.substackUrl){
-        var a = document.createElement('a');
-        a.href = C.substackUrl.replace(/\/$/, '') + '/subscribe?email=' + encodeURIComponent(em);
-        a.target = '_blank'; a.rel = 'noopener'; document.body.appendChild(a); a.click(); a.remove();
+        var sub = C.substackUrl.replace(/\/$/, '') + '/subscribe?email=' + encodeURIComponent(em);
+        var w = window.open(sub, '_blank', 'noopener');
+        if(w && w.blur){ try{ w.blur(); window.focus(); }catch(err){} }
       }
       f.hidden = true;
-      f.parentNode.querySelector('.fb-done').hidden = false;
+      var done = f.parentNode.querySelector('.fb-done');
+      if(done) done.hidden = false;
+      // Then take them straight to the checklist, which is what they asked for.
+      var goal = done && done.querySelector('a[href]');
+      if(goal){ setTimeout(function(){ location.href = goal.href; }, 400); }
     });
   });
   // topic preselect from #book / #join / #message
