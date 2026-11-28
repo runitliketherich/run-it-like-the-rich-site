@@ -66,7 +66,13 @@ BY_KEY = {s[0]: s for s in SITES}
 # promoted in the "Our sites" strip, the footer grid or the nav.
 #   hub — keeps Laura's name off every page of the network
 #   hq  — HQ Club has no checkout yet, so every link to it dead-ends
-HIDDEN = {"hub", "hq"}
+# Flip to True when virtualhq.online, trainthegaap.com and storybookexit.com
+# are ready to take visitors. While False they still build and stay reachable
+# at their own domains, but nothing on runitliketherich.com points at them:
+# the strip, the footer grid and the nav all route to the pages on this site.
+SISTER_SITES_LIVE = False
+
+HIDDEN = {"hub", "hq"} | (set() if SISTER_SITES_LIVE else {"vhq", "gaap", "exit"})
 SHOWN = [s for s in SITES if s[0] not in HIDDEN]
 NUMWORD = {2: "two", 3: "three", 4: "four", 5: "five", 6: "six"}
 
@@ -104,6 +110,8 @@ def header(key, mode):
     # across to the other domains; a visitor should be able to read about
     # everything without leaving.
     local = {"vhq": "virtual-hq", "gaap": "train-the-gaap"}
+    if not SISTER_SITES_LIVE:
+        local["exit"] = "retire-from"
     def href(k):
         if key == "riltr" and k in local:
             return ("/" if mode == "deploy" else "") + local[k] + (".html" if mode == "preview" else "")
@@ -117,7 +125,9 @@ def header(key, mode):
         nav = f'<a class="lnk" href="{shop_href}">Shop</a>' + nav
     contact = url_for("hub", mode, "contact")
     home_name = "Laura Poincot" if key == "hub" else s[2]
-    return f'''<div class="strip"><div class="wrap"><span>Our sites</span>{strip}</div></div>
+    strip_html = (f'<div class="strip"><div class="wrap"><span>Our sites</span>{strip}</div></div>'
+                  if len(SHOWN) > 1 else '')
+    return f'''{strip_html}
 <header class="top"><div class="wrap">
   <a class="home" href="{url_for(key, mode)}"><b>{home_name}</b><span>Run It Like the Rich</span></a>
   <nav aria-label="Sites">{nav}<a class="lnk" href="{contact}">Talk</a>
@@ -129,11 +139,14 @@ def footer(key, mode):
     for k, dom, name, line, *_ in SHOWN:
         cls = ' class="here"' if k == key else ""
         cards.append(f'<a{cls} href="{url_for(k, mode)}"><span>{dom}</span><b>{name}</b><em>{line}</em></a>')
+    fam = ("" if len(SHOWN) < 2 else
+           f'<p class="eyebrow" style="color:var(--gold)">One system, '
+           f'{NUMWORD.get(len(SHOWN), len(SHOWN))} front doors</p>'
+           '<h2>Every site leads to the same place: a business that runs without you.</h2>'
+           f'<div class="fam-grid">{"".join(cards)}</div>')
     book = CONFIG["bookingUrl"] or url_for("hub", mode, "book")
     return f'''<footer class="family on-navy"><div class="wrap">
-  <p class="eyebrow" style="color:var(--gold)">One system, {NUMWORD.get(len(SHOWN), len(SHOWN))} front doors</p>
-  <h2>Every site leads to the same place: a business that runs without you.</h2>
-  <div class="fam-grid">{"".join(cards)}</div>
+{fam}
   <div class="follow">
     <div class="stack" style="gap:8px"><b>Follow along</b><div class="socs">{social_links()}</div>
     <b style="margin-top:10px">Free checklists</b><div class="socs"><a class="soc" href="{url_for("clean", mode)}">Clean Start</a><a class="soc" href="{url_for("goals-vision", mode)}">Goals &amp; Vision</a><a class="soc" href="{url_for("qbo-learning", mode)}">QuickBooks Learning List</a><a class="soc" href="{url_for("exit-plan", mode)}">Exit Plan</a></div></div>
@@ -251,6 +264,11 @@ JS = r'''
 </script>'''
 
 def fill(body, key, mode):
+    fam = ("" if len(SHOWN) < 2 else
+           f'<p class="eyebrow" style="color:var(--gold)">One system, '
+           f'{NUMWORD.get(len(SHOWN), len(SHOWN))} front doors</p>'
+           '<h2>Every site leads to the same place: a business that runs without you.</h2>'
+           f'<div class="fam-grid">{"".join(cards)}</div>')
     book = CONFIG["bookingUrl"] or url_for("hub", mode, "book")
     join = url_for("hq", mode, "join")
     reps = {
@@ -478,6 +496,35 @@ def main():
         kw = dict(raw=raw, title=t["title"], desc=t["lead"], path=t["slug"])
         (ROOT / "preview" / f"{t['slug']}.html").write_text(page(t["site"], "preview", True, **kw))
         (ROOT / "deploy" / BY_KEY[t["site"]][1] / f"{t['slug']}.html").write_text(page(t["site"], "deploy", True, **kw))
+        # A checklist whose home site is hidden still has to be reachable, so
+        # it also gets built onto runitliketherich.com, in that site's own
+        # clothes rather than the hidden site's.
+        if not SISTER_SITES_LIVE and t["site"] in HIDDEN and t["site"] != "riltr":
+            (ROOT / "deploy" / BY_KEY["riltr"][1] / f"{t['slug']}.html").write_text(
+                page("riltr", "deploy", True, **kw))
+    # Until the sister sites are ready, nothing on runitliketherich.com sends
+    # a visitor to them. The equivalent page on this site takes the link
+    # instead, so no content is lost and no one lands somewhere unfinished.
+    if not SISTER_SITES_LIVE:
+        swap = {
+            "https://virtualhq.online/": "/virtual-hq",
+            "https://virtualhq.online": "/virtual-hq",
+            "https://trainthegaap.com/": "/train-the-gaap",
+            "https://trainthegaap.com": "/train-the-gaap",
+            "https://storybookexit.com/": "/retire-from",
+            "https://storybookexit.com": "/retire-from",
+            # the two checklists now built onto this site as well
+            "https://trainthegaap.com/qbo-learning": "/qbo-learning",
+            "https://storybookexit.com/exit-plan": "/exit-plan",
+        }
+        n = 0
+        for f in (ROOT / "deploy" / BY_KEY["riltr"][1]).glob("*.html"):
+            t = orig = f.read_text()
+            for a, b in sorted(swap.items(), key=lambda kv: -len(kv[0])):
+                t = t.replace(f'href="{a}"', f'href="{b}"')
+            if t != orig:
+                f.write_text(t); n += 1
+        print(f"sister sites hidden: rerouted links on {n} riltr pages")
     print("built", [p.name for p in (ROOT / "preview").iterdir()])
 
 if __name__ == "__main__":
