@@ -19,7 +19,7 @@ CONFIG = {
     "email": "support@thehq.online",
     "phone": "",          # mobile for texts, e.g. "407-555-0123"
     "chatUrl": "",        # instant chat link, e.g. WhatsApp wa.me/1407..., Messenger m.me/..., or a live-chat page
-    "bookingUrl": "https://calendly.com/thehq-support/how-can-i-help-books-beyond-business-support",
+    "bookingUrl": "https://calendly.com/thehq-support/business-review",
     "joinUrl": "",        # HQ Club checkout / payment link
     # Every form on every site posts here. One Apps Script, one spreadsheet,
     # one tab per form type. See _source/../radar/lead-catcher-apps-script.gs
